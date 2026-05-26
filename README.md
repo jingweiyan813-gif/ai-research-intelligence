@@ -217,3 +217,30 @@ airi fetch github --limit 2 --no-save
 ```
 
 当前仍不实现 Hacker News、OpenReview、RSS/company blogs、Devpost、评分、趋势、LLM、报告或邮件发送。
+
+## Hacker News 与 Company RSS 连接器
+
+Step 9 增加了两个生态信号来源：`HackerNewsConnector` 和 `CompanyBlogsConnector`。
+
+Hacker News 连接器用于捕捉社区关注度：
+
+- 使用官方 Firebase API 的 `topstories` / `newstories` / `item` 元数据。
+- 只读取 story 元数据，不抓取评论，不抓取外链页面。
+- 根据 `keywords`、`min_score`、`freshness_days` 和 `max_results` 过滤。
+- 将 score 和 comments 映射到 `CommunitySignals`。
+
+Company RSS/blog 连接器用于捕捉公司和实验室官方动态：
+
+- 读取 `configs/sources.yml` 中的公开 RSS/Atom feeds。
+- 只读取 feed entry 元数据，不抓取全文页面。
+- 根据关键词和 freshness window 过滤。
+- 将 feed/company name 映射到 `CompanySignals`，并标记为 official announcement。
+
+命令：
+
+```bash
+airi fetch hn --limit 2 --no-save
+airi fetch company --limit 2 --no-save
+```
+
+当前仍不实现 OpenReview、Devpost、评分、去重、主题/实体抽取、趋势算法、LLM、报告、邮件或数据库。

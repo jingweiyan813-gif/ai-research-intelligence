@@ -22,6 +22,9 @@ class SourceConfig(StrictConfigModel):
     max_results: int = Field(default=10, gt=0)
     freshness_days: int | None = Field(default=None, gt=0)
     min_stars: int | None = Field(default=None, ge=0)
+    keywords: list[str] = Field(default_factory=list)
+    min_score: int | None = Field(default=None, ge=0)
+    feeds: list[dict[str, str]] = Field(default_factory=list)
 
 
 class SourcesConfig(StrictConfigModel):

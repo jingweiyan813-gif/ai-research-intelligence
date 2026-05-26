@@ -123,3 +123,56 @@ airi fetch github --limit 2 --no-save
 ```
 
 Concrete connectors for Hacker News, OpenReview, RSS/company blogs, and Devpost remain out of scope for this step.
+
+## Hacker News Connector
+
+`HackerNewsConnector` is implemented in `src/airi/connectors/hackernews.py` and uses the official Hacker News Firebase API.
+
+Scope:
+
+- Reads `topstories.json` and `newstories.json`.
+- Reads item metadata from `item/<id>.json`.
+- Does not fetch comments.
+- Does not scrape linked pages.
+- Does not summarize or classify with LLMs.
+
+Config fields from `configs/sources.yml`:
+
+- `keywords`: matched against story title and URL.
+- `min_score`: lower score bound when a score exists.
+- `freshness_days`: recency filter based on item time.
+- `max_results`: maximum item fetches/results.
+- `enabled`: disables the connector when false.
+
+Normalization behavior:
+
+- Stories become `ItemType.DISCUSSION` items.
+- `score` and `descendants` map to `CommunitySignals`.
+- Stories without external URLs use the Hacker News item URL only when they match configured keywords.
+- Deleted/dead stories, non-story items, missing titles, stale items, and low-score items are skipped.
+
+## Company RSS / Blog Connector
+
+`RSSConnector` is the generic RSS/Atom parser in `src/airi/connectors/rss.py`. `CompanyBlogsConnector` wraps configured official company/lab feeds in `src/airi/connectors/company_blogs.py`.
+
+Scope:
+
+- Reads public RSS/Atom feed metadata.
+- Does not scrape full article pages.
+- Does not call LLMs.
+- Does not score, dedupe, or rank entries.
+
+Config fields from `configs/sources.yml` company_blogs source:
+
+- `feeds`: list of `{name, url}` feed definitions.
+- `keywords`: matched against title and summary.
+- `freshness_days`: recency filter based on published/updated time.
+- `max_results`: result cap.
+- `enabled`: disables the connector when false.
+
+Normalization behavior:
+
+- Entries become `ItemType.COMPANY_UPDATE` items.
+- Feed/company name maps to `CompanySignals.company_name`.
+- `CompanySignals.is_official_announcement` is true.
+- Bad feeds are captured as connector errors without failing all feeds.

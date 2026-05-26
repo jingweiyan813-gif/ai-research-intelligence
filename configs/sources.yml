@@ -44,12 +44,36 @@ sources:
     url: https://news.ycombinator.com
     description: Public technology discussions and launch feedback.
     tags: [community, discussion]
+    keywords:
+      - AI agent
+      - coding agent
+      - LLM
+      - MCP
+      - developer tools
+    min_score: 20
+    max_results: 20
+    freshness_days: 7
   - id: company_blogs
     name: Company Blogs
     enabled: true
     type: publication
     description: Public engineering, research, and product blogs from AI companies.
     tags: [company, product, research]
+    keywords:
+      - agent
+      - coding
+      - model
+      - inference
+      - developer
+    max_results: 20
+    freshness_days: 30
+    feeds:
+      - name: OpenAI Blog
+        url: https://openai.com/news/rss.xml
+      - name: Anthropic News
+        url: https://www.anthropic.com/news/rss.xml
+      - name: Google DeepMind Blog
+        url: https://deepmind.google/discover/blog/rss.xml
   - id: devpost
     name: Devpost
     enabled: false

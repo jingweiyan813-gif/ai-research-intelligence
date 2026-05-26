@@ -118,3 +118,13 @@ The connector is config-driven through `configs/sources.yml`:
 Repository records become `RawSourceItem` objects, then normalize into `IntelligenceItem` contracts with canonical repo URLs, GitHub signals, source metadata, payload hashes, content fingerprints, topics/language keywords, owner organization, and repository full name.
 
 The design remains low-cost and GitHub Actions friendly: small search limits, optional `GH_TOKEN`/`GITHUB_TOKEN`, metadata-only records, and source-isolated pipeline errors.
+
+## Ecosystem Signal Sources: Hacker News And Company RSS
+
+Step 9 adds two metadata-only ecosystem signal sources.
+
+`HackerNewsConnector` captures community attention around AI agents, coding agents, LLM infrastructure, protocols, and developer tools. It reads official Hacker News Firebase API story metadata only. It does not crawl comments or scrape linked pages.
+
+`CompanyBlogsConnector` captures official company and lab movement from configured RSS/Atom feeds. It reads feed entry metadata only and does not scrape full article pages.
+
+Both connectors are config-driven, low-cost, and source-isolated by the fetch pipeline. Their outputs feed the same `RawSourceItem` and `IntelligenceItem` contracts as arXiv and GitHub, preserving payload hashes, source metadata, canonical URLs, source-specific signals, and content fingerprints.
