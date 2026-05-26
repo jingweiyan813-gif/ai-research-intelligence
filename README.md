@@ -176,3 +176,23 @@ airi fetch fake --limit 5 --no-save
 ```
 
 当保存开启时，pipeline 会写入小型状态文件：`latest_items.jsonl`、`source_health.json` 和 `last_run.json`。当前仍不实现 arXiv、GitHub、Hacker News、OpenReview、RSS、company blogs 或 Devpost 等真实连接器。
+
+## arXiv 连接器
+
+Step 7 增加了第一个真实外部来源连接器：`ArxivConnector`。它只读取 arXiv API 的论文元数据，不下载 PDF，不做全文解析。
+
+特点：
+
+- **metadata-only**：只获取标题、摘要、作者、分类、发布时间、更新时间和链接。
+- **配置驱动**：queries、categories、max_results、freshness_days 来自 `configs/sources.yml`。
+- **低成本**：默认小批量请求，按 submittedDate 降序，并在多查询之间加入礼貌延迟。
+- **可追踪**：每个 item 都包含 `SourceMetadata`、connector 名称/版本和 raw payload hash。
+- **确定性归一化**：arXiv PDF/abs URL 会统一成 `https://arxiv.org/abs/<id>`。
+
+命令：
+
+```bash
+airi fetch arxiv --limit 2 --no-save
+```
+
+当前仍不实现 GitHub、Hacker News、OpenReview、RSS/company blogs、Devpost、评分、趋势、LLM、报告或邮件发送。

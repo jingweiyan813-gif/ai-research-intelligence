@@ -9,7 +9,7 @@ import typer
 
 from airi import __version__
 from airi.config import ConfigLoadError, load_app_config
-from airi.connectors import FakeConnector
+from airi.connectors import ArxivConnector, FakeConnector
 from airi.pipeline import FetchPipeline
 from airi.storage import StateStore, StoragePaths
 
@@ -110,6 +110,57 @@ def fetch_fake(
     paths = StoragePaths.default()
     pipeline = FetchPipeline(
         connectors=[FakeConnector(item_count=limit)],
+        state_store=StateStore(paths),
+    )
+    try:
+        result = pipeline.run(limit_per_source=limit, strict=strict, save=not no_save)
+    except RuntimeError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+
+    typer.echo(f"Total items: {result.total_items}")
+    typer.echo(f"Total errors: {result.total_errors}")
+    for connector_result in result.connector_results:
+        typer.echo(
+            "Source "
+            f"{connector_result.source.value}: "
+            f"raw={connector_result.raw_count}, "
+            f"normalized={connector_result.normalized_count}, "
+            f"errors={len(connector_result.errors)}"
+        )
+
+
+@fetch_app.command("arxiv")
+def fetch_arxiv(
+    limit: int | None = typer.Option(None, "--limit", min=1, help="Max arXiv items."),
+    no_save: bool = typer.Option(False, "--no-save", help="Do not write state files."),
+    strict: bool = typer.Option(False, "--strict", help="Fail on connector errors."),
+    days: int | None = typer.Option(None, "--days", min=1, help="Freshness window."),
+) -> None:
+    """Run the metadata-only arXiv fetch pipeline."""
+    try:
+        app_config = load_app_config()
+    except ConfigLoadError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+
+    arxiv_config = next(
+        (
+            source_config
+            for source_config in app_config.sources.sources
+            if source_config.id == "arxiv"
+        ),
+        None,
+    )
+    if arxiv_config is None:
+        typer.echo("arxiv source config not found", err=True)
+        raise typer.Exit(code=1)
+    if days is not None:
+        arxiv_config = arxiv_config.model_copy(update={"freshness_days": days})
+
+    paths = StoragePaths.default()
+    pipeline = FetchPipeline(
+        connectors=[ArxivConnector(arxiv_config)],
         state_store=StateStore(paths),
     )
     try:

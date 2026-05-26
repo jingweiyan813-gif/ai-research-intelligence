@@ -17,6 +17,10 @@ class SourceConfig(StrictConfigModel):
     url: str | None = None
     description: str | None = None
     tags: list[str] = Field(default_factory=list)
+    queries: list[str] = Field(default_factory=list)
+    categories: list[str] = Field(default_factory=list)
+    max_results: int = Field(default=10, gt=0)
+    freshness_days: int | None = Field(default=None, gt=0)
 
 
 class SourcesConfig(StrictConfigModel):

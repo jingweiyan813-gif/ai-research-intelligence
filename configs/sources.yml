@@ -6,6 +6,16 @@ sources:
     url: https://arxiv.org
     description: Public preprints for AI, ML, systems, and agents research.
     tags: [research, papers]
+    queries:
+      - AI agent
+      - coding agent
+      - agent memory
+    categories:
+      - cs.AI
+      - cs.CL
+      - cs.SE
+    max_results: 10
+    freshness_days: 14
   - id: openreview
     name: OpenReview
     enabled: false

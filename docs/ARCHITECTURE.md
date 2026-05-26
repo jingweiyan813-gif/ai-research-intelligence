@@ -86,3 +86,19 @@ The fetch pipeline runs connectors sequentially for now, aggregates normalized i
 Failure behavior is source-isolated by default: one connector error does not stop the whole run. Strict mode exists for CI/debugging and raises when any connector reports errors.
 
 `FakeConnector` is the only connector in this step. It is deterministic and intended for smoke tests, CLI checks, and pipeline tests. Real arXiv, GitHub, Hacker News, OpenReview, RSS/company blog, and Devpost connectors will be added after the base contract is stable.
+
+## First Real Source Connector: arXiv
+
+Step 7 adds `ArxivConnector` as the first real external source connector. It uses the public arXiv Atom API for metadata-only fetching and does not download PDFs.
+
+The connector is config-driven through `configs/sources.yml`:
+
+- `queries`
+- `categories`
+- `max_results`
+- `freshness_days`
+- `enabled`
+
+Fetched Atom entries become `RawSourceItem` objects, then normalize into `IntelligenceItem` contracts with source metadata, paper signals, payload hashes, content fingerprints, canonical arXiv abs URLs, authors, categories, and published timestamps.
+
+The connector remains low-cost by keeping small limits, sorting by submitted date, using a polite User-Agent, and sleeping briefly between multiple query requests. It is intentionally defensive: malformed entries are skipped and connector-level errors are isolated by the base fetch pipeline.
