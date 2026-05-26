@@ -49,3 +49,17 @@ AIRI 的系统路线是：
 - `CompanySignals`：公司名称和是否官方公告。
 
 这种结构让后续新增来源时可以扩展 signals，而不需要破坏核心 `IntelligenceItem` 契约。
+
+## Normalization Responsibilities
+
+The normalization layer provides deterministic utilities shared by future pipeline stages:
+
+- Text normalization keeps punctuation meaningful for technical terms while removing noisy punctuation for matching.
+- URL normalization removes tracking parameters, fragments, unnecessary trailing slashes, and source-specific URL variants.
+- arXiv canonicalization maps PDF and abs links to `https://arxiv.org/abs/<id>` while preserving version suffixes such as `v2`.
+- GitHub canonicalization maps issue, pull, blob, and tree URLs back to `https://github.com/<owner>/<repo>` for repo-level dedupe.
+- Payload hashing uses stable JSON serialization with sorted keys.
+- Content fingerprints normalize title/body text before hashing so whitespace-only changes do not create new identities.
+- Safe slugs and cache keys avoid path separators, path traversal markers, and unsafe filename characters.
+
+Connectors should produce raw data, then call normalization utilities before building `IntelligenceItem` contracts. Dedupe, stable IDs, `seen_items`, cache keys, and future novelty detection should use canonical URLs and fingerprints from this layer.

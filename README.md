@@ -142,3 +142,16 @@ airi storage init --private
 ```
 
 `airi storage doctor` 只确保公开目录存在并打印路径，不写入真实数据。`airi storage init` 默认只创建公开目录；加 `--private` 才会创建 `data/cache` 和 `data/raw`。
+
+## 归一化层
+
+Step 5 增加了 `src/airi/normalize/` 归一化工具层，用于给后续 connectors、dedupe、fingerprinting 和缓存逻辑提供统一的文本、URL、hash 与 slug 处理能力。
+
+设计边界：
+
+- connectors 不应各自实现临时清洗逻辑，而应调用 `airi.normalize`。
+- canonical URL 会用于后续去重、稳定 ID 和来源追踪。
+- content fingerprint 和 source payload hash 会用于 `seen_items`、缓存命中和未来 novelty detection。
+- safe slug/cache key 会避免路径穿越和不安全文件名。
+
+当前只提供确定性的本地工具函数，不抓取外部数据、不调用 API、不评分、不做趋势算法、不调用 LLM。

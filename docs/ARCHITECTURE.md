@@ -51,3 +51,18 @@ Storage responsibilities:
 Public directories are `data/state`, `data/reports`, and `data/sample`. Private/gitignored directories are `data/cache` and `data/raw`. The storage interfaces are intentionally small so they can later be migrated to SQLite or another backend without changing higher-level pipeline contracts.
 
 This layer does not fetch external data, call APIs, score items, detect trends, call LLMs, send email, or power a dashboard.
+
+## Normalization Layer
+
+Step 5 introduces reusable normalization utilities under `src/airi/normalize/`. Future connectors should call this layer instead of implementing ad hoc cleanup inside each source adapter.
+
+Responsibilities:
+
+- `text.py` normalizes whitespace, line structure, matching text, and compact snippets.
+- `url.py` strips tracking parameters and canonicalizes generic, arXiv, and GitHub URLs.
+- `fingerprint.py` creates deterministic SHA-256 hashes for content, payloads, and stable multi-part keys.
+- `slug.py` creates safe slugs and cache keys for file-based storage.
+
+Canonical URLs are expected to feed future dedupe and stable ID generation. Fingerprints are expected to support `seen_items`, cache invalidation, and novelty detection. Safe slugs/cache keys protect file storage from path traversal and unsafe filenames.
+
+This layer does not fetch source data, rank items, detect trends, call LLMs, generate reports, send email, or write to a database.
