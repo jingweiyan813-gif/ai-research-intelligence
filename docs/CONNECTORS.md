@@ -81,3 +81,45 @@ airi fetch arxiv --limit 2 --no-save
 ```
 
 Concrete connectors for GitHub, Hacker News, OpenReview, RSS/company blogs, and Devpost remain out of scope for this step.
+
+## GitHub Connector
+
+`GitHubConnector` is implemented in `src/airi/connectors/github.py` and uses the GitHub Search Repositories API.
+
+Scope:
+
+- Uses `https://api.github.com/search/repositories`.
+- Fetches public repository metadata only.
+- Does not clone repositories.
+- Does not fetch file trees.
+- Does not download repository archives.
+- Does not call GitHub contents APIs.
+- Does not score, dedupe, rank, or summarize repositories.
+
+Config fields are read from the GitHub source entry in `configs/sources.yml`:
+
+- `queries`: search terms.
+- `min_stars`: lower bound added as `stars:>=N`.
+- `freshness_days`: lower bound added as `pushed:>=YYYY-MM-DD`.
+- `max_results`: default request/result cap.
+- `enabled`: disables the connector when false.
+
+Authentication:
+
+- If `GH_TOKEN` or `GITHUB_TOKEN` is set, requests include `Authorization: Bearer <token>`.
+- If no token exists, unauthenticated requests are still supported with lower rate limits.
+
+Normalization behavior:
+
+- GitHub repo URLs canonicalize to `https://github.com/<owner>/<repo>`.
+- Archived, disabled, below-star-threshold, and stale repositories are filtered out.
+- `RawSourceItem.raw_payload` keeps id, node id, full name, URL, description, stars, forks, open issues, pushed/updated/created timestamps, topics, language, archived/disabled flags, license, and owner.
+- `IntelligenceItem` uses `ItemType.REPO`, `SourceType.GITHUB`, `SourceMetadata`, `SignalBundle`, `GitHubSignals`, `source_payload_hash`, and `content_fingerprint`.
+
+CLI smoke command:
+
+```bash
+airi fetch github --limit 2 --no-save
+```
+
+Concrete connectors for Hacker News, OpenReview, RSS/company blogs, and Devpost remain out of scope for this step.

@@ -21,6 +21,7 @@ class SourceConfig(StrictConfigModel):
     categories: list[str] = Field(default_factory=list)
     max_results: int = Field(default=10, gt=0)
     freshness_days: int | None = Field(default=None, gt=0)
+    min_stars: int | None = Field(default=None, ge=0)
 
 
 class SourcesConfig(StrictConfigModel):

@@ -196,3 +196,24 @@ airi fetch arxiv --limit 2 --no-save
 ```
 
 当前仍不实现 GitHub、Hacker News、OpenReview、RSS/company blogs、Devpost、评分、趋势、LLM、报告或邮件发送。
+
+## GitHub 连接器
+
+Step 8 增加了 `GitHubConnector`，用于通过 GitHub Search Repositories API 获取公开仓库元数据。
+
+特点：
+
+- **metadata-first**：只获取仓库元数据，不 clone 仓库、不读取 file tree、不下载 archive。
+- **配置驱动**：queries、min_stars、freshness_days、max_results 来自 `configs/sources.yml`。
+- **低成本**：默认小批量请求，按 updated 降序，支持 `--limit` 控制数量。
+- **可选 token**：如果环境变量 `GH_TOKEN` 或 `GITHUB_TOKEN` 存在，会自动使用 Bearer token 获取更高 rate limit；没有 token 也可匿名请求。
+- **公开仓库追踪**：只面向 GitHub 公开 repository metadata。
+- **确定性归一化**：issue/blob/tree 等 URL 会统一成 `https://github.com/owner/repo`。
+
+命令：
+
+```bash
+airi fetch github --limit 2 --no-save
+```
+
+当前仍不实现 Hacker News、OpenReview、RSS/company blogs、Devpost、评分、趋势、LLM、报告或邮件发送。

@@ -30,6 +30,13 @@ sources:
     url: https://github.com
     description: Public repositories, releases, stars, and developer activity signals.
     tags: [code, devtools]
+    queries:
+      - AI agent
+      - coding agent
+      - LLM infrastructure
+    min_stars: 100
+    max_results: 10
+    freshness_days: 30
   - id: hackernews
     name: Hacker News
     enabled: true

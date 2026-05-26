@@ -102,3 +102,19 @@ The connector is config-driven through `configs/sources.yml`:
 Fetched Atom entries become `RawSourceItem` objects, then normalize into `IntelligenceItem` contracts with source metadata, paper signals, payload hashes, content fingerprints, canonical arXiv abs URLs, authors, categories, and published timestamps.
 
 The connector remains low-cost by keeping small limits, sorting by submitted date, using a polite User-Agent, and sleeping briefly between multiple query requests. It is intentionally defensive: malformed entries are skipped and connector-level errors are isolated by the base fetch pipeline.
+
+## Repository Metadata Source: GitHub
+
+Step 8 adds `GitHubConnector` as the first repository metadata source. It uses GitHub Search Repositories API and deliberately avoids cloning repositories, fetching file trees, downloading archives, or reading repository contents.
+
+The connector is config-driven through `configs/sources.yml`:
+
+- `queries`
+- `min_stars`
+- `max_results`
+- `freshness_days`
+- `enabled`
+
+Repository records become `RawSourceItem` objects, then normalize into `IntelligenceItem` contracts with canonical repo URLs, GitHub signals, source metadata, payload hashes, content fingerprints, topics/language keywords, owner organization, and repository full name.
+
+The design remains low-cost and GitHub Actions friendly: small search limits, optional `GH_TOKEN`/`GITHUB_TOKEN`, metadata-only records, and source-isolated pipeline errors.
