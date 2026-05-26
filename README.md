@@ -155,3 +155,24 @@ Step 5 增加了 `src/airi/normalize/` 归一化工具层，用于给后续 conn
 - safe slug/cache key 会避免路径穿越和不安全文件名。
 
 当前只提供确定性的本地工具函数，不抓取外部数据、不调用 API、不评分、不做趋势算法、不调用 LLM。
+
+## Connector 框架与 Fake Fetch
+
+Step 6 增加了 connector 基类和通用 fetch pipeline。当前只提供 `FakeConnector`，用于测试和 smoke check，不会访问任何外部网络或真实 API。
+
+Connector 合约：
+
+- `fetch_raw()`：返回 `RawSourceItem` 列表。
+- `normalize()`：把单个 `RawSourceItem` 转成 `IntelligenceItem`。
+- `fetch_and_normalize()`：统一执行抓取与归一化，并记录 counts、errors 和 timestamps。
+
+Fetch pipeline 会按顺序运行 connectors。默认情况下，一个 source 失败不会中断整个 pipeline；使用 `strict=True` 时，如果某个 connector 产生错误则会抛出异常。
+
+Smoke 命令：
+
+```bash
+airi fetch fake
+airi fetch fake --limit 5 --no-save
+```
+
+当保存开启时，pipeline 会写入小型状态文件：`latest_items.jsonl`、`source_health.json` 和 `last_run.json`。当前仍不实现 arXiv、GitHub、Hacker News、OpenReview、RSS、company blogs 或 Devpost 等真实连接器。

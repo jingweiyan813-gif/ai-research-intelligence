@@ -66,3 +66,23 @@ Responsibilities:
 Canonical URLs are expected to feed future dedupe and stable ID generation. Fingerprints are expected to support `seen_items`, cache invalidation, and novelty detection. Safe slugs/cache keys protect file storage from path traversal and unsafe filenames.
 
 This layer does not fetch source data, rank items, detect trends, call LLMs, generate reports, send email, or write to a database.
+
+## Connector Layer And Fetch Pipeline
+
+Step 6 introduces connector contracts under `src/airi/connectors/` and a sequential fetch pipeline under `src/airi/pipeline/`.
+
+Connector contract:
+
+- `fetch_raw()` returns raw source payloads as `RawSourceItem` objects.
+- `normalize()` converts one `RawSourceItem` into one `IntelligenceItem`.
+- `fetch_and_normalize()` wraps the two phases, records `ConnectorResult`, and isolates item-level normalization errors.
+
+The fetch pipeline runs connectors sequentially for now, aggregates normalized items, records source health, and optionally writes small JSON/JSONL state files through `StateStore`:
+
+- `latest_items.jsonl`
+- `source_health.json`
+- `last_run.json`
+
+Failure behavior is source-isolated by default: one connector error does not stop the whole run. Strict mode exists for CI/debugging and raises when any connector reports errors.
+
+`FakeConnector` is the only connector in this step. It is deterministic and intended for smoke tests, CLI checks, and pipeline tests. Real arXiv, GitHub, Hacker News, OpenReview, RSS/company blog, and Devpost connectors will be added after the base contract is stable.

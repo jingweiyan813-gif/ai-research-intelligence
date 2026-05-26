@@ -9,13 +9,17 @@ import typer
 
 from airi import __version__
 from airi.config import ConfigLoadError, load_app_config
-from airi.storage import StoragePaths
+from airi.connectors import FakeConnector
+from airi.pipeline import FetchPipeline
+from airi.storage import StateStore, StoragePaths
 
 app = typer.Typer(help="AI Research Intelligence CLI")
 config_app = typer.Typer(help="Validate and inspect configuration files.")
 storage_app = typer.Typer(help="Inspect and initialize local storage directories.")
+fetch_app = typer.Typer(help="Run source fetch pipelines.")
 app.add_typer(config_app, name="config")
 app.add_typer(storage_app, name="storage")
+app.add_typer(fetch_app, name="fetch")
 
 
 @app.callback(invoke_without_command=True)
@@ -94,3 +98,33 @@ def storage_init(
     if private:
         paths.ensure_private_dirs()
         typer.echo("Created private storage directories: data/cache, data/raw")
+
+
+@fetch_app.command("fake")
+def fetch_fake(
+    limit: int = typer.Option(3, "--limit", min=0, help="Number of fake items."),
+    no_save: bool = typer.Option(False, "--no-save", help="Do not write state files."),
+    strict: bool = typer.Option(False, "--strict", help="Fail on connector errors."),
+) -> None:
+    """Run the deterministic fake connector smoke pipeline."""
+    paths = StoragePaths.default()
+    pipeline = FetchPipeline(
+        connectors=[FakeConnector(item_count=limit)],
+        state_store=StateStore(paths),
+    )
+    try:
+        result = pipeline.run(limit_per_source=limit, strict=strict, save=not no_save)
+    except RuntimeError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+
+    typer.echo(f"Total items: {result.total_items}")
+    typer.echo(f"Total errors: {result.total_errors}")
+    for connector_result in result.connector_results:
+        typer.echo(
+            "Source "
+            f"{connector_result.source.value}: "
+            f"raw={connector_result.raw_count}, "
+            f"normalized={connector_result.normalized_count}, "
+            f"errors={len(connector_result.errors)}"
+        )
