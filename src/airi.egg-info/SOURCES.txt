@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+src/airi/__init__.py
+src/airi/cli.py
+src/airi.egg-info/PKG-INFO
+src/airi.egg-info/SOURCES.txt
+src/airi.egg-info/dependency_links.txt
+src/airi.egg-info/entry_points.txt
+src/airi.egg-info/requires.txt
+src/airi.egg-info/top_level.txt
+src/airi/config/__init__.py
+src/airi/config/loader.py
+src/airi/config/schema.py
+src/airi/config/validate.py
+tests/test_config_loader.py
+tests/test_config_validate.py
+tests/test_smoke.py

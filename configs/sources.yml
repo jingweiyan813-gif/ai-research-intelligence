@@ -1,0 +1,42 @@
+sources:
+  - id: arxiv
+    name: arXiv
+    enabled: true
+    type: paper_preprint
+    url: https://arxiv.org
+    description: Public preprints for AI, ML, systems, and agents research.
+    tags: [research, papers]
+  - id: openreview
+    name: OpenReview
+    enabled: false
+    type: paper_review
+    url: https://openreview.net
+    description: Conference submissions and reviews where public access is available.
+    tags: [research, conferences]
+  - id: github
+    name: GitHub
+    enabled: true
+    type: code_repository
+    url: https://github.com
+    description: Public repositories, releases, stars, and developer activity signals.
+    tags: [code, devtools]
+  - id: hackernews
+    name: Hacker News
+    enabled: true
+    type: community_discussion
+    url: https://news.ycombinator.com
+    description: Public technology discussions and launch feedback.
+    tags: [community, discussion]
+  - id: company_blogs
+    name: Company Blogs
+    enabled: true
+    type: publication
+    description: Public engineering, research, and product blogs from AI companies.
+    tags: [company, product, research]
+  - id: devpost
+    name: Devpost
+    enabled: false
+    type: hackathon_project
+    url: https://devpost.com
+    description: Public hackathon projects and prototypes.
+    tags: [projects, prototypes]

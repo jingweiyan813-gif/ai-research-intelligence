@@ -1,0 +1,8 @@
+profile:
+  name: Example User
+  email: researcher@example.com
+  timezone: Asia/Shanghai
+  interests:
+    - ai_agents
+    - coding_agents
+    - llm_infra

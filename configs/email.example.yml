@@ -1,0 +1,12 @@
+email:
+  enabled: false
+  provider: smtp
+  from_address: alerts@example.com
+  to_addresses:
+    - researcher@example.com
+  subject_prefix: "[AIRI]"
+  smtp_host: smtp.example.com
+  smtp_port: 587
+  username: your-smtp-username
+  password: replace-me
+  api_key: not-set

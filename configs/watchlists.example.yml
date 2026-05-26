@@ -1,0 +1,9 @@
+watchlists:
+  - name: Agent Product Launches
+    topics: [ai_agents, coding_agents]
+    sources: [github, hackernews, company_blogs]
+    keywords: [launch, release, beta, open source]
+  - name: Research Automation
+    topics: [research_automation, agent_memory]
+    sources: [arxiv, company_blogs]
+    keywords: [paper, benchmark, memory, evaluation]

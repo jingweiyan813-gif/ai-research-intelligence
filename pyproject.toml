@@ -1,0 +1,44 @@
+[project]
+name = "airi"
+version = "0.1.0"
+description = "Multi-source AI Research Intelligence System skeleton."
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0.0,<3.0.0",
+    "PyYAML>=6.0.0,<7.0.0",
+    "typer>=0.12.0,<1.0.0",
+]
+readme = "README.md"
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.4.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+airi = "airi.cli:app"
+
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 88
+exclude = ['.venv', 'build', 'dist', '__pycache__']
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "C90", "A"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_configs = true
