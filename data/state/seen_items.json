@@ -26,8 +26,8 @@
     "title": "OpenAI named a Leader in enterprise coding agents by Gartner",
     "source": "company_blogs",
     "first_seen_at": "2026-05-27T08:04:49.430254+00:00",
-    "last_seen_at": "2026-05-27T08:04:49.430254+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "seen_count": 2
   },
   "item_213b46320a98": {
     "item_id": "item_213b46320a98",
@@ -36,7 +36,87 @@
     "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
     "source": "company_blogs",
     "first_seen_at": "2026-05-27T08:04:49.430254+00:00",
-    "last_seen_at": "2026-05-27T08:04:49.430254+00:00",
+    "last_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "seen_count": 2
+  },
+  "item_98f5251dde82": {
+    "item_id": "item_98f5251dde82",
+    "canonical_url": "https://openai.com/index/dell-codex-enterprise-partnership",
+    "content_fingerprint": "f30b60999d472ed2ec9850e1988606fe8a37456c899477875c0eec8d00b1dd8c",
+    "title": "OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments",
+    "source": "company_blogs",
+    "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "last_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "seen_count": 1
+  },
+  "item_7a7dc2d2a32c": {
+    "item_id": "item_7a7dc2d2a32c",
+    "canonical_url": "https://openai.com/index/databricks",
+    "content_fingerprint": "369f23fe781f3a3d6ce2ae24007d579f590b5d0f948f5f139a251c07c56b7b1d",
+    "title": "Databricks brings GPT-5.5 to enterprise agent workflows",
+    "source": "company_blogs",
+    "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "last_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "seen_count": 1
+  },
+  "item_142289eaf243": {
+    "item_id": "item_142289eaf243",
+    "canonical_url": "https://openai.com/index/sea-david-chen",
+    "content_fingerprint": "34c3bc3aba05db77795dfb2a1984cd36e73720585dd7791fb02dd5692da05fad",
+    "title": "Sea's View on the Future of Agentic Software Development with Codex",
+    "source": "company_blogs",
+    "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "last_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "seen_count": 1
+  },
+  "item_49c5d7937dbc": {
+    "item_id": "item_49c5d7937dbc",
+    "canonical_url": "https://openai.com/index/work-with-codex-from-anywhere",
+    "content_fingerprint": "d1cb23709861519fee45709277d38f0f7aba9a9ff8cf2de9538806c8d73cd28d",
+    "title": "Work with Codex from anywhere",
+    "source": "company_blogs",
+    "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "last_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "seen_count": 1
+  },
+  "item_81d1cf32a324": {
+    "item_id": "item_81d1cf32a324",
+    "canonical_url": "https://openai.com/academy/how-finance-teams-use-codex",
+    "content_fingerprint": "2a79c4e221a2ee82d459e98e1f93e0d45503e1549c31e2eef8ef4340ea786af4",
+    "title": "How finance teams use Codex",
+    "source": "company_blogs",
+    "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "last_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "seen_count": 1
+  },
+  "item_c449cfd985f7": {
+    "item_id": "item_c449cfd985f7",
+    "canonical_url": "https://openai.com/index/what-parameter-golf-taught-us",
+    "content_fingerprint": "40a23277ee1a1a15fd3c4fd3a34c61bf487c0567b111f492120df9282a2eff6b",
+    "title": "What Parameter Golf taught us about AI-assisted research",
+    "source": "company_blogs",
+    "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "last_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "seen_count": 1
+  },
+  "item_6cc6c176d4aa": {
+    "item_id": "item_6cc6c176d4aa",
+    "canonical_url": "https://openai.com/index/running-codex-safely",
+    "content_fingerprint": "81f4ae21f9295b10f1eb3ddba5c2bd49922db62d5a2aec99968dbf924d6b2cc8",
+    "title": "Running Codex safely at OpenAI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "last_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "seen_count": 1
+  },
+  "item_35ed530420e1": {
+    "item_id": "item_35ed530420e1",
+    "canonical_url": "https://openai.com/index/parloa",
+    "content_fingerprint": "c29ed5f81c44b9d224c8f14206213f79dd4737f58e71ae66a05ae1d8be6bbd15",
+    "title": "Parloa builds service agents customers want to talk to",
+    "source": "company_blogs",
+    "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
+    "last_seen_at": "2026-05-27T11:22:58.334318+00:00",
     "seen_count": 1
   }
 }

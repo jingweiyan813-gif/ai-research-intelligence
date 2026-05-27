@@ -1,40 +1,11 @@
 {
-  "arxiv": {
-    "source": "arxiv",
-    "raw_count": 0,
-    "normalized_count": 0,
-    "error_count": 1,
-    "errors": [
-      "fetch_raw failed: HTTP Error 429: Unknown Error"
-    ],
-    "started_at": "2026-05-27T08:04:44.749765+00:00",
-    "completed_at": "2026-05-27T08:04:45.605975+00:00"
-  },
-  "github": {
-    "source": "github",
-    "raw_count": 2,
-    "normalized_count": 2,
-    "error_count": 0,
-    "errors": [],
-    "started_at": "2026-05-27T08:04:45.606548+00:00",
-    "completed_at": "2026-05-27T08:04:45.828313+00:00"
-  },
-  "hackernews": {
-    "source": "hackernews",
-    "raw_count": 0,
-    "normalized_count": 0,
-    "error_count": 0,
-    "errors": [],
-    "started_at": "2026-05-27T08:04:45.828327+00:00",
-    "completed_at": "2026-05-27T08:04:47.688789+00:00"
-  },
   "company_blogs": {
     "source": "company_blogs",
-    "raw_count": 2,
-    "normalized_count": 2,
+    "raw_count": 10,
+    "normalized_count": 10,
     "error_count": 0,
     "errors": [],
-    "started_at": "2026-05-27T08:04:47.688802+00:00",
-    "completed_at": "2026-05-27T08:04:48.408920+00:00"
+    "started_at": "2026-05-27T11:22:57.839872+00:00",
+    "completed_at": "2026-05-27T11:22:58.278711+00:00"
   }
 }
