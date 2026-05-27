@@ -1,5 +1,28 @@
-# Lightweight sample labels for smoke evaluation.
-# Replace or extend locally for a personal eval set.
+# Sample-only evaluation labels for v0.1 demos.
+# These examples are illustrative and do not need to match current live fetches.
 relevant_item_ids:
-  - item_example_relevant
-notes: "Sample gold labels; safe to keep public."
+  - sample_coding_agent_benchmark
+  - sample_agent_memory_paper
+  - sample_github_coding_agent_repo
+  - sample_company_agent_devtools_update
+high_value_examples:
+  - id: sample_coding_agent_benchmark
+    title: "Coding agent benchmark with reproducible tasks"
+    reason: "Benchmark/eval content is high value for tracking coding-agent progress."
+  - id: sample_agent_memory_paper
+    title: "Agent memory paper with clear methods and experiments"
+    reason: "Research item directly related to agent memory and long-horizon systems."
+  - id: sample_github_coding_agent_repo
+    title: "GitHub coding-agent repo with active development"
+    reason: "Actionable repository signal for developer-tool experimentation."
+  - id: sample_company_agent_devtools_update
+    title: "Official company update about agents and developer tools"
+    reason: "Official source indicating product/lab movement."
+low_value_examples:
+  - title: "Top 10 AI tools you must try"
+    reason: "Generic listicle with weak evidence and low technical depth."
+  - title: "Marketing-only AI productivity post"
+    reason: "Marketing copy without concrete technical signal."
+  - title: "Crypto AI hype announcement"
+    reason: "Unrelated hype topic for this research radar."
+notes: "Replace with personal labels for meaningful precision@k evaluation."

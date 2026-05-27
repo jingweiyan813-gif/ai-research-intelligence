@@ -3,16 +3,18 @@ from __future__ import annotations
 import json
 import platform
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Optional
+from typing import Callable, Optional
 
 import typer
 
 from airi import __version__
 from airi.config import ConfigLoadError, load_app_config
+from airi.config.schema import SourceConfig
 from airi.connectors import (
     ArxivConnector,
+    BaseConnector,
     CompanyBlogsConnector,
     DevpostConnector,
     FakeConnector,
@@ -33,6 +35,7 @@ from airi.intelligence import (
 )
 from airi.models import IntelligenceItem
 from airi.pipeline import FetchPipeline
+from airi.pipeline.fetch import FetchPipelineResult
 from airi.rank import ItemRanker, ItemScorer, explain_score, summarize_top_items
 from airi.report import (
     AlertsReportGenerator,
@@ -158,16 +161,44 @@ def fetch_fake(
         typer.echo(str(exc), err=True)
         raise typer.Exit(code=1) from exc
 
-    typer.echo(f"Total items: {result.total_items}")
-    typer.echo(f"Total errors: {result.total_errors}")
-    for connector_result in result.connector_results:
-        typer.echo(
-            "Source "
-            f"{connector_result.source.value}: "
-            f"raw={connector_result.raw_count}, "
-            f"normalized={connector_result.normalized_count}, "
-            f"errors={len(connector_result.errors)}"
+    _print_fetch_result(result)
+
+
+@fetch_app.command("all")
+def fetch_all(
+    limit_per_source: int | None = typer.Option(
+        None,
+        "--limit-per-source",
+        min=1,
+        help="Max items per enabled source.",
+    ),
+    no_save: bool = typer.Option(False, "--no-save", help="Do not write state files."),
+    strict: bool = typer.Option(False, "--strict", help="Fail on connector errors."),
+    days: int | None = typer.Option(None, "--days", min=1, help="Freshness window."),
+) -> None:
+    """Fetch all enabled configured sources into one combined latest_items file."""
+    try:
+        app_config = load_app_config()
+    except ConfigLoadError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+
+    connectors = _enabled_connectors(app_config.sources.sources, days=days)
+    paths = StoragePaths.default()
+    pipeline = FetchPipeline(connectors=connectors, state_store=StateStore(paths))
+    since = datetime.now(timezone.utc) - timedelta(days=days) if days else None
+    try:
+        result = pipeline.run(
+            since=since,
+            limit_per_source=limit_per_source,
+            strict=strict,
+            save=not no_save,
         )
+    except RuntimeError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+
+    _print_fetch_result(result)
 
 
 @fetch_app.command("arxiv")
@@ -209,16 +240,7 @@ def fetch_arxiv(
         typer.echo(str(exc), err=True)
         raise typer.Exit(code=1) from exc
 
-    typer.echo(f"Total items: {result.total_items}")
-    typer.echo(f"Total errors: {result.total_errors}")
-    for connector_result in result.connector_results:
-        typer.echo(
-            "Source "
-            f"{connector_result.source.value}: "
-            f"raw={connector_result.raw_count}, "
-            f"normalized={connector_result.normalized_count}, "
-            f"errors={len(connector_result.errors)}"
-        )
+    _print_fetch_result(result)
 
 
 @fetch_app.command("github")
@@ -260,16 +282,7 @@ def fetch_github(
         typer.echo(str(exc), err=True)
         raise typer.Exit(code=1) from exc
 
-    typer.echo(f"Total items: {result.total_items}")
-    typer.echo(f"Total errors: {result.total_errors}")
-    for connector_result in result.connector_results:
-        typer.echo(
-            "Source "
-            f"{connector_result.source.value}: "
-            f"raw={connector_result.raw_count}, "
-            f"normalized={connector_result.normalized_count}, "
-            f"errors={len(connector_result.errors)}"
-        )
+    _print_fetch_result(result)
 
 
 @fetch_app.command("hn")
@@ -365,16 +378,7 @@ def fetch_devpost(
         typer.echo(str(exc), err=True)
         raise typer.Exit(code=1) from exc
 
-    typer.echo(f"Total items: {result.total_items}")
-    typer.echo(f"Total errors: {result.total_errors}")
-    for connector_result in result.connector_results:
-        typer.echo(
-            "Source "
-            f"{connector_result.source.value}: "
-            f"raw={connector_result.raw_count}, "
-            f"normalized={connector_result.normalized_count}, "
-            f"errors={len(connector_result.errors)}"
-        )
+    _print_fetch_result(result)
 
 
 def _run_configured_single_source(
@@ -415,6 +419,49 @@ def _run_configured_single_source(
         typer.echo(str(exc), err=True)
         raise typer.Exit(code=1) from exc
 
+    _print_fetch_result(result)
+
+
+ConnectorFactory = Callable[[SourceConfig], BaseConnector]
+
+
+def _connector_factories() -> dict[str, ConnectorFactory]:
+    return {
+        "arxiv": ArxivConnector,
+        "github": GitHubConnector,
+        "hackernews": HackerNewsConnector,
+        "company_blogs": CompanyBlogsConnector,
+        "openreview": OpenReviewConnector,
+        "devpost": DevpostConnector,
+    }
+
+
+def _enabled_connectors(
+    source_configs: list[SourceConfig],
+    *,
+    days: int | None = None,
+) -> list[BaseConnector]:
+    connectors: list[BaseConnector] = []
+    factories = _connector_factories()
+    for source_config in source_configs:
+        if not source_config.enabled:
+            continue
+        factory = factories.get(source_config.id)
+        if factory is None:
+            continue
+        effective_config = source_config
+        if days is not None:
+            if source_config.id == "devpost":
+                effective_config = source_config.model_copy(update={"days_ahead": days})
+            else:
+                effective_config = source_config.model_copy(
+                    update={"freshness_days": days}
+                )
+        connectors.append(factory(effective_config))
+    return connectors
+
+
+def _print_fetch_result(result: FetchPipelineResult) -> None:
     typer.echo(f"Total items: {result.total_items}")
     typer.echo(f"Total errors: {result.total_errors}")
     for connector_result in result.connector_results:

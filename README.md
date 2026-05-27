@@ -404,3 +404,40 @@ GitHub Actions 使用 GitHub Secrets 注入 SMTP 和可选 GitHub token，不会
 - `GH_TOKEN` 或 `GITHUB_TOKEN`，用于 GitHub API 更高 rate limit。
 
 当前项目已经可以作为个人 AI research radar 使用：定时抓取公开来源、生成本地状态、产出 Markdown 报告、发送邮件，并生成轻量 eval 报告。仍不包含 LLM、数据库、dashboard、Slack/飞书/Telegram 或 web app。
+
+## v0.1 完整本地闭环
+
+v0.1 已经可以作为个人 AI Research Intelligence Radar 使用：从公开来源抓取 metadata，做确定性清洗、去重、抽取、排序、趋势分析、报告生成、邮件预览/发送和轻量 eval。
+
+推荐真实使用时优先使用 `fetch all`，因为它会在一个 `FetchPipeline` 中合并多个 enabled sources，并且只写一次 `latest_items.jsonl`、`source_health.json` 和 `last_run.json`。单来源命令如 `airi fetch arxiv`、`airi fetch github` 仍然保留，但它们会覆盖 `latest_items.jsonl`，更适合调试单个 connector。
+
+完整本地流程：
+
+```bash
+airi fetch all --limit-per-source 10
+airi intelligence dedupe
+airi intelligence extract
+airi intelligence novelty --update-seen
+airi rank --profile intelligence --top 10
+airi trends --update-timeseries
+airi correlate --apply
+airi link paper-repos
+airi report weekly
+airi report ecosystem
+airi report alerts
+airi eval ranking
+```
+
+如果只想 smoke test 且不写状态：
+
+```bash
+airi fetch all --limit-per-source 2 --no-save
+```
+
+示例周报见 `docs/examples/weekly_report_example.md`。
+
+### v0.1 状态摘要
+
+- 已完成：多来源 metadata ingestion、deterministic intelligence layer、ranking profiles、trend/correlation/linking、Markdown reports、SMTP email、GitHub Actions、lightweight eval。
+- 仍未包含：LLM、数据库、向量数据库、图数据库、dashboard、web app、新通知渠道。
+- OpenReview 和 Devpost 默认关闭，属于 best-effort optional sources。

@@ -1,0 +1,42 @@
+{
+  "item_f0f9d905d498": {
+    "item_id": "item_f0f9d905d498",
+    "canonical_url": "https://github.com/AlphaGBM/investment-masters",
+    "content_fingerprint": "3e247af2f82ecde34c5008d3df5707e7d18c9d2edd5ee43e941c5b80da329b05",
+    "title": "AlphaGBM/investment-masters",
+    "source": "github",
+    "first_seen_at": "2026-05-27T08:04:49.430254+00:00",
+    "last_seen_at": "2026-05-27T08:04:49.430254+00:00",
+    "seen_count": 1
+  },
+  "item_e3114b40fe9d": {
+    "item_id": "item_e3114b40fe9d",
+    "canonical_url": "https://github.com/chaterm/Chaterm",
+    "content_fingerprint": "78fb418361d52d913596d41a157e8eba35d393bb8c9472df59bff150f4f7de30",
+    "title": "chaterm/Chaterm",
+    "source": "github",
+    "first_seen_at": "2026-05-27T08:04:49.430254+00:00",
+    "last_seen_at": "2026-05-27T08:04:49.430254+00:00",
+    "seen_count": 1
+  },
+  "item_8b9322d91ee5": {
+    "item_id": "item_8b9322d91ee5",
+    "canonical_url": "https://openai.com/index/gartner-2026-agentic-coding-leader",
+    "content_fingerprint": "97ac747220ee106d0bc823f2d7992bb26013017a41f6468cb13b4669e25d1090",
+    "title": "OpenAI named a Leader in enterprise coding agents by Gartner",
+    "source": "company_blogs",
+    "first_seen_at": "2026-05-27T08:04:49.430254+00:00",
+    "last_seen_at": "2026-05-27T08:04:49.430254+00:00",
+    "seen_count": 1
+  },
+  "item_213b46320a98": {
+    "item_id": "item_213b46320a98",
+    "canonical_url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture",
+    "content_fingerprint": "c06daec5e5ecc460f24d21efe404cc07295ac1e68c07ec2a0e6b9cb63ec18aed",
+    "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
+    "source": "company_blogs",
+    "first_seen_at": "2026-05-27T08:04:49.430254+00:00",
+    "last_seen_at": "2026-05-27T08:04:49.430254+00:00",
+    "seen_count": 1
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "2026-05-27": {
+    "ai_agents": {
+      "item_count": 3,
+      "paper_count": 0,
+      "repo_count": 2,
+      "hn_count": 0,
+      "company_count": 1,
+      "source_count": 2
+    },
+    "coding_agents": {
+      "item_count": 1,
+      "paper_count": 0,
+      "repo_count": 0,
+      "hn_count": 0,
+      "company_count": 1,
+      "source_count": 1
+    },
+    "devtools": {
+      "item_count": 1,
+      "paper_count": 0,
+      "repo_count": 1,
+      "hn_count": 0,
+      "company_count": 0,
+      "source_count": 1
+    }
+  }
+}

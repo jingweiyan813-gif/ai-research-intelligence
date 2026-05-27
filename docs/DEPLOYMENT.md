@@ -58,3 +58,20 @@ The system uses public metadata APIs, local JSON/JSONL state, Markdown files, an
 - Bot identity is fixed as `ai-research-radar-bot <bot@example.com>`.
 - Secrets are passed through environment variables and are not echoed.
 - Email reports may reveal your research interests, so choose recipients carefully.
+
+## 6. Recommended Manual Pipeline
+
+For real local or manual GitHub Actions runs, prefer `fetch all` so enabled sources are combined into one latest state file:
+
+```bash
+airi fetch all --limit-per-source 10
+airi intelligence dedupe
+airi intelligence extract
+airi intelligence novelty --update-seen
+airi rank --profile intelligence --top 10
+airi trends --update-timeseries
+airi correlate --apply
+airi report weekly
+```
+
+Single-source fetch commands remain useful for debugging, but they overwrite `latest_items.jsonl`. The scheduled GitHub Actions workflows run the full pipeline scripts and commit generated reports/state when changes exist.
