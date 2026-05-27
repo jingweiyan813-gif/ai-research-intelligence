@@ -1,0 +1,5 @@
+# Lightweight sample labels for smoke evaluation.
+# Replace or extend locally for a personal eval set.
+relevant_item_ids:
+  - item_example_relevant
+notes: "Sample gold labels; safe to keep public."

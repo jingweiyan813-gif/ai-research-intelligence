@@ -46,3 +46,18 @@ Do not store private Obsidian vault content, personal notes, credentials, cookie
 The MIT License applies to the public code and documentation in this repository only. It does not grant rights over private notes, local configs, secrets, Obsidian vaults, unpublished datasets, or any personal files that are not part of the public repository.
 
 The public repository must never read private notes, Obsidian vaults, local secret configs, or credentials by default. Local-only files such as `.env`, `*.local.yml`, `configs/*.local.yml`, `personal/`, `private/`, `vault/`, `data/raw/`, `data/cache/`, and `.cache/` remain protected by `.gitignore`.
+
+## GitHub Secrets And Email Delivery
+
+PR 14-B uses GitHub Secrets or environment variables for SMTP credentials:
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `REPORT_FROM_EMAIL`
+- `REPORT_TO_EMAIL`
+
+These values must never be committed to the repository. The CLI and scripts do not print SMTP passwords, API keys, or secrets. Email preview mode writes local `.eml` preview files and does not require real SMTP credentials.
+
+Email delivery sends generated markdown report content to configured recipients. Treat emailed reports as potentially sensitive because they may reveal your interests, watched topics, or public-source reading habits. The public repository still must not read private notes, Obsidian vaults, private local configs, or secrets.

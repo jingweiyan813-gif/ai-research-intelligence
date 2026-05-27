@@ -158,3 +158,17 @@ Reports read only local state and in-memory analysis outputs:
 ### Constraints
 
 Report generation must be deterministic and evidence-aware. Trend claims included in reports must show evidence item IDs or titles. No LLM calls, email sending, GitHub Actions schedules, external APIs, databases, vector databases, graph databases, dashboards, or eval frameworks are part of PR 14-A.
+
+## Final Automation Loop
+
+PR 14-B completes the personal automation loop:
+
+1. Fetch configured public sources.
+2. Normalize and persist latest items.
+3. Run deterministic extraction, dedupe, novelty, ranking, trends, correlation, and linking.
+4. Generate Markdown reports.
+5. Preview or send reports by plain-text email.
+6. Run lightweight eval and write eval Markdown reports.
+7. Use GitHub Actions schedules for weekly, ecosystem, urgent alert, and eval workflows.
+
+All credentials come from environment variables or GitHub Secrets. No LLM calls, databases, vector databases, graph databases, dashboards, web app, or chat integrations are part of this loop.

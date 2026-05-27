@@ -375,3 +375,32 @@ airi report alerts
 ```
 
 默认输出到 `data/reports/<type>/<YYYY-MM-DD>.md`。也可以用 `--output` 指定路径。邮件发送会在后续 PR 中实现，本 PR 不包含 email、GitHub Actions schedule、dashboard 或 eval。
+
+## Personal Automation Loop
+
+PR 14-B 完成低成本个人自动化闭环：Markdown 报告可以预览邮件、通过 SMTP 发送，并由 GitHub Actions 定时运行。
+
+本地常用命令：
+
+```bash
+airi report weekly
+airi email preview data/reports/weekly/<YYYY-MM-DD>.md
+airi email send data/reports/weekly/<YYYY-MM-DD>.md --dry-run
+airi eval ranking
+python scripts/run_weekly.py --dry-run --no-email
+```
+
+GitHub Actions 使用 GitHub Secrets 注入 SMTP 和可选 GitHub token，不会把密码、API key 或收件人信息写入仓库。必需 secrets：
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `REPORT_FROM_EMAIL`
+- `REPORT_TO_EMAIL`
+
+可选 secrets：
+
+- `GH_TOKEN` 或 `GITHUB_TOKEN`，用于 GitHub API 更高 rate limit。
+
+当前项目已经可以作为个人 AI research radar 使用：定时抓取公开来源、生成本地状态、产出 Markdown 报告、发送邮件，并生成轻量 eval 报告。仍不包含 LLM、数据库、dashboard、Slack/飞书/Telegram 或 web app。

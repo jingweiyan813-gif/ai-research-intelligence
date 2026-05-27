@@ -194,3 +194,22 @@ Report generators:
 - `MarkdownReportRenderer` provides deterministic markdown helpers and safe text formatting.
 
 Reports are written as markdown files under `data/reports/<type>/` by default. Email delivery, GitHub Actions schedules, evals, LLM summarization, databases, vector databases, graph databases, and dashboards remain out of scope.
+
+## Delivery Layer
+
+PR 14-B adds `src/airi/delivery/` for plain-text email delivery. SMTP credentials are read only from environment variables or GitHub Secrets. The delivery layer supports preview mode, writes `.eml` previews locally, and never logs SMTP passwords or API keys.
+
+## Automation Layer
+
+Automation scripts under `scripts/` provide the personal loop:
+
+- `run_weekly.py` processes intelligence, writes a weekly report, and optionally emails it.
+- `run_ecosystem.py` focuses on ecosystem sources and writes an ecosystem report.
+- `run_alerts.py` writes alerts and skips email when there are no high-signal alerts.
+- `run_eval.py` writes lightweight eval reports.
+
+GitHub Actions workflows schedule these scripts and commit changed `data/reports` and `data/state` files only when changes exist. Workflows use minimal `contents: write` permissions and stable bot identity.
+
+## Evaluation Layer
+
+`src/airi/eval/` provides lightweight deterministic quality checks: precision@k, duplicate rate, evidence coverage, and negative-filter presence. Eval reads local latest items and sample/gold labels only. It does not call LLMs, external APIs, databases, or vector stores.

@@ -20,6 +20,8 @@ from airi.connectors import (
     HackerNewsConnector,
     OpenReviewConnector,
 )
+from airi.delivery import EmailConfigError, EmailDelivery, preview_without_credentials
+from airi.eval import DEFAULT_GOLD_PATH, RankingEvaluator
 from airi.intelligence import (
     CrossSourceAnalyzer,
     DedupeEngine,
@@ -47,6 +49,8 @@ intelligence_app = typer.Typer(help="Run local intelligence processing.")
 rank_app = typer.Typer(help="Score and rank latest items.")
 link_app = typer.Typer(help="Link related intelligence items.")
 report_app = typer.Typer(help="Generate markdown intelligence reports.")
+email_app = typer.Typer(help="Preview and send report emails.")
+eval_app = typer.Typer(help="Evaluate ranking and report quality.")
 app.add_typer(config_app, name="config")
 app.add_typer(storage_app, name="storage")
 app.add_typer(fetch_app, name="fetch")
@@ -54,6 +58,8 @@ app.add_typer(intelligence_app, name="intelligence")
 app.add_typer(rank_app, name="rank")
 app.add_typer(link_app, name="link")
 app.add_typer(report_app, name="report")
+app.add_typer(email_app, name="email")
+app.add_typer(eval_app, name="eval")
 
 
 @app.callback(invoke_without_command=True)
@@ -770,3 +776,77 @@ def _write_report(
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(markdown, encoding="utf-8")
     return path
+
+
+@email_app.command("preview")
+def email_preview(report_path: Path) -> None:
+    """Write an email preview file for a markdown report."""
+    paths = StoragePaths.default()
+    body = _read_report(report_path)
+    subject = _default_email_subject(report_path)
+    output = preview_without_credentials(
+        subject,
+        body,
+        paths.reports_dir / "email_preview",
+    )
+    typer.echo(f"Email preview written: {output}")
+
+
+@email_app.command("send")
+def email_send(
+    report_path: Path,
+    subject: str | None = typer.Option(None, "--subject"),
+    dry_run: bool = typer.Option(False, "--dry-run", help="Preview without sending."),
+) -> None:
+    """Send a markdown report by plain text email."""
+    paths = StoragePaths.default()
+    body = _read_report(report_path)
+    resolved_subject = subject or _default_email_subject(report_path)
+    if dry_run:
+        output = preview_without_credentials(
+            resolved_subject,
+            body,
+            paths.reports_dir / "email_preview",
+        )
+        typer.echo(f"Dry run email preview written: {output}")
+        return
+    try:
+        EmailDelivery.from_env().send(resolved_subject, body)
+    except EmailConfigError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+    typer.echo("Email sent.")
+
+
+@eval_app.command("ranking")
+def eval_ranking(
+    gold: Path = typer.Option(DEFAULT_GOLD_PATH, "--gold"),
+    output: Path | None = typer.Option(None, "--output"),
+) -> None:
+    """Evaluate ranked latest_items.jsonl with lightweight metrics."""
+    paths = StoragePaths.default()
+    state_store = StateStore(paths)
+    items = _load_latest_intelligence_items(state_store)
+    evaluator = RankingEvaluator(gold)
+    metrics, markdown = evaluator.evaluate_and_render(items)
+    report_path = output or paths.reports_dir / "eval" / _dated_filename("eval")
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report_path.write_text(markdown, encoding="utf-8")
+    typer.echo(f"Eval report written: {report_path}")
+    for key in sorted(metrics):
+        typer.echo(f"{key}: {metrics[key]:.3f}")
+
+
+def _read_report(report_path: Path) -> str:
+    try:
+        return report_path.read_text(encoding="utf-8")
+    except FileNotFoundError as exc:
+        raise typer.BadParameter(f"Report not found: {report_path}") from exc
+
+
+def _default_email_subject(report_path: Path) -> str:
+    return f"AI Research Intelligence Report: {report_path.stem}"
+
+
+def _dated_filename(prefix: str) -> str:
+    return f"{prefix}-{datetime.now(timezone.utc).date().isoformat()}.md"
