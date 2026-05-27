@@ -12,5 +12,5 @@ def test_alerts_report_handles_no_alerts() -> None:
         generated_at=datetime(2026, 5, 27, tzinfo=timezone.utc),
     ).generate([make_item()], [])
 
-    assert "# AI Research Intelligence Alerts - 2026-05-27" in report
-    assert "No high-signal alerts." in report
+    assert "# AI 技术情报提醒 - 2026-05-27" in report
+    assert "暂无高信号提醒。" in report

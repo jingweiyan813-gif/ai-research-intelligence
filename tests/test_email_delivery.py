@@ -81,3 +81,14 @@ def test_invalid_email_format_fails() -> None:
             from_email="not-email",
             to_email="to@example.com",
         )
+
+
+def test_email_preview_preserves_chinese_utf8(tmp_path) -> None:  # type: ignore[no-untyped-def]
+    path = preview_without_credentials("[AI 技术情报] 周报", "中文正文", tmp_path)
+
+    from email import policy
+    from email.parser import Parser
+
+    message = Parser(policy=policy.default).parsestr(path.read_text(encoding="utf-8"))
+    assert message["Subject"] == "[AI 技术情报] 周报"
+    assert message.get_content().strip() == "中文正文"

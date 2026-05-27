@@ -51,7 +51,7 @@ def format_evidence_refs(refs: Iterable[EvidenceRef]) -> str:
         lines.append(
             f"- `{ref.item_id}` [{safe_markdown_text(ref.title)}]({ref.url}){reason}"
         )
-    return "\n".join(lines) if lines else "- No evidence references."
+    return "\n".join(lines) if lines else "- 暂无证据引用。"
 
 
 def safe_markdown_text(text: Any) -> str:

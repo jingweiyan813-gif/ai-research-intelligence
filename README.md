@@ -1,419 +1,79 @@
-# ai-research-intelligence
+# AI Research Intelligence System
 
-[![CI](https://github.com/jingweiyan813-gif/ai-research-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/jingweiyan813-gif/ai-research-intelligence/actions)
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![CI](https://github.com/jingweiyan813-gif/ai-research-intelligence/actions/workflows/eval_weekly.yml/badge.svg)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-## 一句话定位
+一句话定位：一个低成本、GitHub Actions 驱动的 AI 技术情报系统，用于追踪 AI Agent、Coding Agent、DevTools 和 LLM Infrastructure 的论文、项目、公司动态、社区热点和黑客松机会。
 
-ai-research-intelligence（简称 AIRI）是一个面向 AI 研究与产品动态的本地优先情报流水线骨架，用于后续把公开来源的信息整理成可追踪、可去重、可评分、可报告的研究线索。
+## 项目定位
 
-## 这个项目是什么
+这个项目不是：
 
-这是一个 Python 包和命令行工具的 Step 1 skeleton。当前阶段只提供最小可安装项目结构、`airi` CLI 入口、基础健康检查命令、配置样例和开发检查命令，为后续实现研究情报流水线打地基。
+- 不是 AI News Bot：不追求泛新闻聚合和快讯轰炸。
+- 不是 RSS Digest：不只是把 feed 拼成列表。
+- 不是 LLM Wrapper：v0.1 不调用 LLM，也不依赖 prompt 生成结论。
 
-规划中的架构路线是：
+它是一个 Multi-source AI Research Intelligence System：从多个公开来源收集 metadata，统一成可追溯的数据契约，进行确定性去重、抽取、排序、趋势分析、跨源关联和报告生成。
 
-`Source -> Normalize -> Dedupe -> Enrich -> Score -> Trend -> Report -> Email`
+## 为什么做这个项目
 
-含义如下：
+AI 技术信息源已经过载：GitHub Trending、Hacker News、arXiv、OpenReview、公司博客、黑客松平台都很分散。普通 newsletter 通常不够个性化，也很难解释“为什么这个条目重要”。
 
-- `Source`：从公开来源获取候选信息。
-- `Normalize`：把不同来源整理成统一结构。
-- `Dedupe`：合并重复或高度相似的条目。
-- `Enrich`：补充元数据、上下文和分类信息。
-- `Score`：根据规则或模型给线索打分。
-- `Trend`：识别主题、技术和产品趋势。
-- `Report`：生成面向阅读和决策的报告。
-- `Email`：把报告发送给指定收件人。
+本项目目标是构建一个高信噪比、可追溯、可自动运行的技术情报流：
 
-## 这个项目不是什么
+- 自动追踪公开来源。
+- 保留每条情报的来源和证据。
+- 用确定性规则优先，避免黑盒排序。
+- 通过 GitHub Actions 定时运行。
+- 通过 Email 作为唯一通知渠道。
 
-- 不是新闻机器人。
-- 不是 RSS 摘要服务。
-- 不是私有笔记搜索器。
-- 不是 Obsidian vault 读取工具。
-- 不是已经可用的生产级数据库、仪表盘或自动化报告系统。
-- 当前不会实现 connectors、scoring、reports、LLM、email、database 或 dashboard。
+## 核心能力
 
-## 隐私边界
+- 多源采集：arXiv、GitHub、Hacker News、Company RSS、OpenReview、Devpost。
+- 统一数据契约：`IntelligenceItem`、`SourceMetadata`、`EvidenceRef`、`ScoreBundle`。
+- 去重与 novelty：基于 ID、canonical URL、fingerprint 和 seen state。
+- Topic / Entity extraction：基于配置和内置 watchlist 的规则抽取。
+- Explainable scoring / ranking：每个分数维度都有 `ScoreBreakdown`。
+- Trend engine：按 topic 计算窗口增长、momentum 和趋势类型。
+- Cross-source correlation：识别同一主题是否跨论文、repo、社区、公司动态出现。
+- Paper-repo linking：启发式连接论文和可能相关的 GitHub repo。
+- Markdown reports：周报、生态雷达、提醒报告。
+- Email delivery：SMTP plain-text 邮件和 dry-run preview。
+- GitHub Actions automation：定时运行、提交报告和状态文件。
+- Lightweight eval：precision@k、duplicate rate、evidence coverage 等轻量指标。
 
-公开仓库只面向公开来源和示例配置，不会读取私人笔记、私人目录或 Obsidian vault。任何涉及私人知识库、个人文件、授权账号或本地敏感数据的能力，都不属于当前公开 skeleton 的默认行为。
+## 系统架构
 
-## 当前状态
+```text
+Source
+  → Normalize
+  → Dedupe
+  → Extract
+  → Score / Rank
+  → Trend / Correlate
+  → Report
+  → Email / GitHub Actions
+```
 
-当前状态：Step 1 skeleton。
+设计重点是低成本、可解释、可追溯、可在公开 GitHub 仓库中安全运行。
 
-已包含：
+## 当前支持的信息源
 
-- Python 包结构：`src/airi`
-- CLI 入口：`airi`
-- 基础命令：`airi --help`、`airi version`、`airi doctor`
-- 开发依赖：`pytest`、`ruff`、`mypy`
-- 配置样例：`configs/`
-- 基础文档：`docs/`
+- arXiv：论文 metadata，不下载 PDF。
+- GitHub：repo metadata，不 clone repo，不抓 file tree。
+- Hacker News：story metadata，不抓评论全文。
+- Company RSS：公司 / 实验室公开 feed，不抓全文网页。
+- OpenReview：公开 note/submission metadata，默认关闭。
+- Devpost：hackathon/opportunity metadata，默认关闭。
 
-## 本地开发命令
+OpenReview / Devpost 属于可选且 best-effort 的来源，默认 disabled。v0.1 不下载 PDF、不 clone repository、不做 full article scraping。
 
-建议使用 Python 3.10+ 创建虚拟环境：
+## 快速开始
 
 ```bash
-python3.10 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
 pip install -e ".[dev]"
-```
-
-常用命令：
-
-```bash
-airi --help
-airi version
-airi doctor
-make check
-```
-
-单独运行检查：
-
-```bash
-python -m pytest
-python -m ruff check src tests
-python -m mypy src
-```
-
-## 配置系统
-
-Step 2 增加了配置加载与校验层，用于在不实现真实抓取、评分、报告或邮件发送的前提下，先固定系统边界和配置结构。
-
-默认配置位于 `configs/`：
-
-- `sources.yml`：公开信息源定义，并要求至少一个 source 处于启用状态。
-- `topics.yml`：研究主题与负面主题，并要求至少一个 primary topic。
-- `scoring.yml`：评分权重、阈值和数量限制；权重总和必须为 1.0。
-- `profile.example.yml`：用户画像示例，不应包含私人资料。
-- `email.example.yml`：邮件配置示例，不应包含真实密码、token 或 API key。
-- `watchlists.example.yml`：关注列表示例。
-
-可选本地覆盖文件：
-
-- `configs/profile.local.yml`
-- `configs/email.local.yml`
-- `configs/watchlists.local.yml`
-
-这些 `*.local.yml` 文件可能包含真实值，只用于本地环境，已被 `.gitignore` 排除，不应提交到公开仓库。
-
-配置命令：
-
-```bash
 airi config validate
-airi config show
-```
-
-`airi config show` 只输出脱敏摘要，包括启用的信息源、主要主题、评分权重和本地覆盖文件是否存在，不输出密码、token 或 API key。
-
-## 数据契约层
-
-Step 3 增加了 `src/airi/models/` 数据契约层，用来固定系统内部对象的边界：原始来源条目、归一化情报条目、来源元数据、抽取元数据、证据引用、模块化 signals、可解释 scores、趋势声明和报告结构。
-
-核心原则：
-
-- **可追踪**：每个 `IntelligenceItem` 都必须关联 `SourceMetadata`，保留来源、URL、connector、抓取时间和 payload hash。
-- **证据驱动**：`TrendClaim` 必须引用 `EvidenceRef`，未来报告章节也可以引用 evidence item IDs。
-- **可解释**：`ScoreBundle` 与 `ScoreBreakdown` 保存维度分、最终分、理由和证据引用。
-- **可审计**：`ExtractionMetadata` 记录抽取方法、抽取器名称、版本、时间和置信度。
-- **可演进**：`SignalBundle` 将论文、GitHub、社区、黑客松和公司公告 signals 分开，方便后续扩展新来源。
-
-当前仍不实现 connectors、抓取、排序算法、LLM、邮件发送、数据库、向量数据库或 dashboard。
-
-## 轻量存储层
-
-Step 4 增加了 `src/airi/storage/` 文件存储层，用 JSON/JSONL 支撑个人使用和 GitHub Actions 场景，不需要数据库或服务器。
-
-目录边界：
-
-- `data/state`：公开状态文件，可用于保存小型可提交状态，例如 seen items、source health、last run。
-- `data/reports`：公开报告输出目录。
-- `data/sample`：公开样例数据目录。
-- `data/cache`：私有缓存目录，已 gitignore。
-- `data/raw`：私有原始数据目录，已 gitignore。
-
-存储命令：
-
-```bash
-airi storage doctor
-airi storage init
-airi storage init --private
-```
-
-`airi storage doctor` 只确保公开目录存在并打印路径，不写入真实数据。`airi storage init` 默认只创建公开目录；加 `--private` 才会创建 `data/cache` 和 `data/raw`。
-
-## 归一化层
-
-Step 5 增加了 `src/airi/normalize/` 归一化工具层，用于给后续 connectors、dedupe、fingerprinting 和缓存逻辑提供统一的文本、URL、hash 与 slug 处理能力。
-
-设计边界：
-
-- connectors 不应各自实现临时清洗逻辑，而应调用 `airi.normalize`。
-- canonical URL 会用于后续去重、稳定 ID 和来源追踪。
-- content fingerprint 和 source payload hash 会用于 `seen_items`、缓存命中和未来 novelty detection。
-- safe slug/cache key 会避免路径穿越和不安全文件名。
-
-当前只提供确定性的本地工具函数，不抓取外部数据、不调用 API、不评分、不做趋势算法、不调用 LLM。
-
-## Connector 框架与 Fake Fetch
-
-Step 6 增加了 connector 基类和通用 fetch pipeline。当前只提供 `FakeConnector`，用于测试和 smoke check，不会访问任何外部网络或真实 API。
-
-Connector 合约：
-
-- `fetch_raw()`：返回 `RawSourceItem` 列表。
-- `normalize()`：把单个 `RawSourceItem` 转成 `IntelligenceItem`。
-- `fetch_and_normalize()`：统一执行抓取与归一化，并记录 counts、errors 和 timestamps。
-
-Fetch pipeline 会按顺序运行 connectors。默认情况下，一个 source 失败不会中断整个 pipeline；使用 `strict=True` 时，如果某个 connector 产生错误则会抛出异常。
-
-Smoke 命令：
-
-```bash
-airi fetch fake
-airi fetch fake --limit 5 --no-save
-```
-
-当保存开启时，pipeline 会写入小型状态文件：`latest_items.jsonl`、`source_health.json` 和 `last_run.json`。当前仍不实现 arXiv、GitHub、Hacker News、OpenReview、RSS、company blogs 或 Devpost 等真实连接器。
-
-## arXiv 连接器
-
-Step 7 增加了第一个真实外部来源连接器：`ArxivConnector`。它只读取 arXiv API 的论文元数据，不下载 PDF，不做全文解析。
-
-特点：
-
-- **metadata-only**：只获取标题、摘要、作者、分类、发布时间、更新时间和链接。
-- **配置驱动**：queries、categories、max_results、freshness_days 来自 `configs/sources.yml`。
-- **低成本**：默认小批量请求，按 submittedDate 降序，并在多查询之间加入礼貌延迟。
-- **可追踪**：每个 item 都包含 `SourceMetadata`、connector 名称/版本和 raw payload hash。
-- **确定性归一化**：arXiv PDF/abs URL 会统一成 `https://arxiv.org/abs/<id>`。
-
-命令：
-
-```bash
-airi fetch arxiv --limit 2 --no-save
-```
-
-当前仍不实现 GitHub、Hacker News、OpenReview、RSS/company blogs、Devpost、评分、趋势、LLM、报告或邮件发送。
-
-## GitHub 连接器
-
-Step 8 增加了 `GitHubConnector`，用于通过 GitHub Search Repositories API 获取公开仓库元数据。
-
-特点：
-
-- **metadata-first**：只获取仓库元数据，不 clone 仓库、不读取 file tree、不下载 archive。
-- **配置驱动**：queries、min_stars、freshness_days、max_results 来自 `configs/sources.yml`。
-- **低成本**：默认小批量请求，按 updated 降序，支持 `--limit` 控制数量。
-- **可选 token**：如果环境变量 `GH_TOKEN` 或 `GITHUB_TOKEN` 存在，会自动使用 Bearer token 获取更高 rate limit；没有 token 也可匿名请求。
-- **公开仓库追踪**：只面向 GitHub 公开 repository metadata。
-- **确定性归一化**：issue/blob/tree 等 URL 会统一成 `https://github.com/owner/repo`。
-
-命令：
-
-```bash
-airi fetch github --limit 2 --no-save
-```
-
-当前仍不实现 Hacker News、OpenReview、RSS/company blogs、Devpost、评分、趋势、LLM、报告或邮件发送。
-
-## Hacker News 与 Company RSS 连接器
-
-Step 9 增加了两个生态信号来源：`HackerNewsConnector` 和 `CompanyBlogsConnector`。
-
-Hacker News 连接器用于捕捉社区关注度：
-
-- 使用官方 Firebase API 的 `topstories` / `newstories` / `item` 元数据。
-- 只读取 story 元数据，不抓取评论，不抓取外链页面。
-- 根据 `keywords`、`min_score`、`freshness_days` 和 `max_results` 过滤。
-- 将 score 和 comments 映射到 `CommunitySignals`。
-
-Company RSS/blog 连接器用于捕捉公司和实验室官方动态：
-
-- 读取 `configs/sources.yml` 中的公开 RSS/Atom feeds。
-- 只读取 feed entry 元数据，不抓取全文页面。
-- 根据关键词和 freshness window 过滤。
-- 将 feed/company name 映射到 `CompanySignals`，并标记为 official announcement。
-
-命令：
-
-```bash
-airi fetch hn --limit 2 --no-save
-airi fetch company --limit 2 --no-save
-```
-
-当前仍不实现 OpenReview、Devpost、评分、去重、主题/实体抽取、趋势算法、LLM、报告、邮件或数据库。
-
-## OpenReview 与 Devpost 连接器
-
-PR 10 增加了两个默认关闭的可选来源：`OpenReviewConnector` 和 `DevpostConnector`。
-
-OpenReview 连接器用于获取公开 research-review metadata：
-
-- 读取公开 note/submission 元数据。
-- 不需要登录。
-- 不下载 PDF。
-- 不假设所有 venue 使用同一 schema。
-- 根据 venues、queries、freshness_days 和 max_results 配置运行。
-
-Devpost 连接器用于获取 hackathon/opportunity metadata：
-
-- 读取配置的 listing/search 页面并做 best-effort metadata 解析。
-- 不激进爬取，不抓取无关页面。
-- 根据 keywords、days_ahead、listing_urls 和 max_results 配置运行。
-- Devpost 页面结构可能变化，因此该连接器默认关闭。
-
-OpenReview 和 Devpost 都默认 `enabled: false`，因为它们属于可选且更不稳定的外部来源。需要使用时请在本地配置中显式启用。
-
-命令：
-
-```bash
-airi fetch openreview --limit 2 --no-save
-airi fetch devpost --limit 2 --no-save
-```
-
-## License
-
-本项目使用 MIT License，详见 `LICENSE`。
-
-MIT 只覆盖公开仓库中的代码与文档，不覆盖你的私人笔记、本地配置、secrets、Obsidian vault 或任何未提交到公开仓库的私人数据。
-
-## Intelligence Layer：去重、新颖性与规则抽取
-
-PR 11 启动了 Intelligence Layer 的第一阶段，增加确定性的本地处理能力：
-
-- `DedupeEngine`：按 ID、canonical URL、source-specific key、content fingerprint 和 near-title 规则去重。
-- `NoveltyTracker`：基于 `seen_items.json` 判断 item 是否见过，并在显式 `--update-seen` 时更新状态。
-- `TopicExtractor`：基于 `configs/topics.yml` 的主题关键词做规则抽取。
-- `EntityExtractor`：基于内置实体表和 watchlists 做规则实体抽取。
-
-该层不使用 LLM、不使用 embeddings、不需要数据库或向量数据库。所有结果都是确定性的，并会通过 `ExtractionMetadata` 记录抽取方法、抽取器名称、版本和置信度。
-
-命令：
-
-```bash
-airi intelligence dedupe
-airi intelligence novelty
-airi intelligence novelty --update-seen
-airi intelligence extract
-```
-
-去重会保留代表 item，并通过 duplicate groups 保留被移除 duplicate 的 ID、原因和置信度，避免丢失证据链。
-
-## Scoring 与 Ranking Layer
-
-PR 12 增加了确定性、可解释的评分与排序层：
-
-- `ItemScorer`：按 topic relevance、quality、freshness、popularity、novelty、momentum、personal relevance、cross-source correlation 生成 `ScoreBundle`。
-- `ItemRanker`：按 final score、quality、freshness、时间和标题进行稳定排序。
-- `explain_score()`：输出每个维度的 `ScoreBreakdown` 原因。
-
-评分权重来自 `configs/scoring.yml` 的 ranking profiles。PR 13.5 提供三个明确策略：
-
-- `item_baseline`：适合只有 item-level 信号时使用，强调主题相关性、质量和新鲜度。
-- `intelligence`：默认公开 research intelligence 排序，强调 momentum 和 cross-source correlation。
-- `personal`：适合本地用户偏好重排，提高 personal relevance 权重。
-
-`active_profile` 默认是 `intelligence`。Popularity 权重被刻意压低，避免 GitHub stars、HN score 等流行度信号压过早期但重要的新趋势。
-
-命令：
-
-```bash
-airi rank --top 10
-airi rank --profile item_baseline --top 5
-airi rank --profile intelligence --top 5
-airi rank --profile personal --top 5
-airi rank explain <item_id>
-```
-
-该层不使用 LLM、不调用外部 API、不使用 embeddings、数据库或向量数据库。
-
-## Trend、跨源关联与 Paper-Repo Linking
-
-PR 13 将系统从单条 item 排序推进到基础 research intelligence：
-
-- `TrendEngine`：基于 `latest_items.jsonl` 和 `topic_timeseries.json` 计算 topic 趋势。
-- `CrossSourceAnalyzer`：识别同一 topic 是否同时出现在论文、代码仓库、社区讨论、公司动态或 hackathon 中。
-- `PaperRepoLinker`：用确定性启发式规则连接论文与可能相关的 GitHub repo。
-
-该阶段仍然不使用 LLM、不使用 embeddings、不调用外部 API，也不会下载论文、抓取 README 或生成最终报告。每个 `TrendClaim` 都带有 `EvidenceRef`，便于追溯到支撑该判断的 item。
-
-命令：
-
-```bash
-airi trends
-airi trends --update-timeseries
-airi correlate
-airi correlate --apply
-airi link paper-repos
-```
-
-`topic_timeseries.json` 会保存每日 topic 计数，用于后续周报和趋势报告。Paper-repo linking 是低成本启发式结果，只输出候选关联，不默认写入状态。
-
-## Markdown Report Layer
-
-PR 14-A 增加确定性的 Markdown 报告生成层。报告只读取本地 `latest_items.jsonl` 和已有 intelligence 分析结果，不调用 LLM、不发送邮件、不访问外部 API，也不需要数据库。
-
-支持三类报告：
-
-- `weekly`：完整周报，包含 executive summary、top ranked items、papers、repos、company/lab updates、community signals、hackathons、emerging trends、cross-source signals、paper-repo links 和 recommended actions。
-- `ecosystem`：更短的生态报告，聚焦 GitHub / DevTools、HN/community、company updates、hackathons 和 cross-source signals。
-- `alerts`：高信号提醒，包含高分 item、强 cross-source signal 和临近截止的 hackathon；没有提醒时输出 `No high-signal alerts.`。
-
-命令：
-
-```bash
-airi report weekly
-airi report weekly --profile intelligence --top 10
-airi report ecosystem
-airi report alerts
-```
-
-默认输出到 `data/reports/<type>/<YYYY-MM-DD>.md`。也可以用 `--output` 指定路径。邮件发送会在后续 PR 中实现，本 PR 不包含 email、GitHub Actions schedule、dashboard 或 eval。
-
-## Personal Automation Loop
-
-PR 14-B 完成低成本个人自动化闭环：Markdown 报告可以预览邮件、通过 SMTP 发送，并由 GitHub Actions 定时运行。
-
-本地常用命令：
-
-```bash
-airi report weekly
-airi email preview data/reports/weekly/<YYYY-MM-DD>.md
-airi email send data/reports/weekly/<YYYY-MM-DD>.md --dry-run
-airi eval ranking
-python scripts/run_weekly.py --dry-run --no-email
-```
-
-GitHub Actions 使用 GitHub Secrets 注入 SMTP 和可选 GitHub token，不会把密码、API key 或收件人信息写入仓库。必需 secrets：
-
-- `SMTP_HOST`
-- `SMTP_PORT`
-- `SMTP_USER`
-- `SMTP_PASS`
-- `REPORT_FROM_EMAIL`
-- `REPORT_TO_EMAIL`
-
-可选 secrets：
-
-- `GH_TOKEN` 或 `GITHUB_TOKEN`，用于 GitHub API 更高 rate limit。
-
-当前项目已经可以作为个人 AI research radar 使用：定时抓取公开来源、生成本地状态、产出 Markdown 报告、发送邮件，并生成轻量 eval 报告。仍不包含 LLM、数据库、dashboard、Slack/飞书/Telegram 或 web app。
-
-## v0.1 完整本地闭环
-
-v0.1 已经可以作为个人 AI Research Intelligence Radar 使用：从公开来源抓取 metadata，做确定性清洗、去重、抽取、排序、趋势分析、报告生成、邮件预览/发送和轻量 eval。
-
-推荐真实使用时优先使用 `fetch all`，因为它会在一个 `FetchPipeline` 中合并多个 enabled sources，并且只写一次 `latest_items.jsonl`、`source_health.json` 和 `last_run.json`。单来源命令如 `airi fetch arxiv`、`airi fetch github` 仍然保留，但它们会覆盖 `latest_items.jsonl`，更适合调试单个 connector。
-
-完整本地流程：
-
-```bash
 airi fetch all --limit-per-source 10
 airi intelligence dedupe
 airi intelligence extract
@@ -428,16 +88,98 @@ airi report alerts
 airi eval ranking
 ```
 
-如果只想 smoke test 且不写状态：
+真实使用推荐 `airi fetch all`，它会把多个 enabled sources 放进同一个 `FetchPipeline`，并只写一次 `latest_items.jsonl`、`source_health.json` 和 `last_run.json`。单来源命令如 `airi fetch arxiv`、`airi fetch github` 仍然保留，但会覆盖 `latest_items.jsonl`，更适合调试 connector。
+
+## 推荐自用方式
+
+- 本地开发：用 `pip install -e ".[dev]"` 安装，手动跑完整 pipeline。
+- 自动运行：用 GitHub Actions 定时执行 scripts。
+- 通知渠道：Email 是唯一通知渠道，避免引入 Slack / 飞书 / Telegram 复杂度。
+- 私人数据边界：私人笔记、Obsidian vault、private configs 不进入公开仓库。
+
+## GitHub Actions 自动化
+
+需要在 GitHub Secrets 中配置：
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `REPORT_FROM_EMAIL`
+- `REPORT_TO_EMAIL`
+
+可选：
+
+- `GH_TOKEN` 或 `GITHUB_TOKEN`：用于 GitHub API 更高 rate limit。
+
+工作流位于 `.github/workflows/`：
+
+- `weekly_research.yml`：每周 AI 技术情报周报。
+- `ecosystem_radar.yml`：每两天生态雷达。
+- `urgent_alerts.yml`：每日 / 多次提醒检查。
+- `eval_weekly.yml`：每周轻量 eval。
+
+## 报告示例
+
+示例周报：`docs/examples/weekly_report_example.md`
+
+生成报告命令：
 
 ```bash
-airi fetch all --limit-per-source 2 --no-save
+airi report weekly
+airi report ecosystem
+airi report alerts
+airi email preview data/reports/weekly/<YYYY-MM-DD>.md
+airi email send data/reports/weekly/<YYYY-MM-DD>.md --dry-run
 ```
 
-示例周报见 `docs/examples/weekly_report_example.md`。
+## 隐私边界
 
-### v0.1 状态摘要
+公开仓库可以保存：
 
-- 已完成：多来源 metadata ingestion、deterministic intelligence layer、ranking profiles、trend/correlation/linking、Markdown reports、SMTP email、GitHub Actions、lightweight eval。
-- 仍未包含：LLM、数据库、向量数据库、图数据库、dashboard、web app、新通知渠道。
-- OpenReview 和 Devpost 默认关闭，属于 best-effort optional sources。
+- 代码、默认配置、示例配置。
+- 公开来源 metadata 生成的 state / reports。
+- sample eval labels 和示例报告。
+
+公开仓库不应该保存：
+
+- `.env`、SMTP 密码、API key。
+- `*.local.yml`、`configs/*.local.yml`。
+- 私人笔记、Obsidian vault、private docs。
+- 任何无法公开的 recipient / credential 信息。
+
+Secrets 只通过环境变量或 GitHub Secrets 注入。Email report 可能暴露你的研究兴趣和关注主题，请谨慎选择收件人。
+
+## 设计取舍
+
+- Deterministic rules first：v0.1 优先使用可测试、可解释的规则。
+- No LLM in v0.1：不做 LLM 总结，避免成本、漂移和证据幻觉。
+- No database：使用 JSON / JSONL，便于 GitHub Actions 和个人维护。
+- No dashboard：报告优先用 Markdown + Email。
+- GitHub Actions-first：不需要服务器，低成本定时运行。
+
+## Roadmap
+
+v0.1 已完成：
+
+- multi-source connectors
+- fetch pipeline
+- dedupe / novelty / extraction
+- scoring / ranking profiles
+- trend / correlation / paper-repo linking
+- markdown reports
+- email delivery
+- GitHub Actions automation
+- lightweight eval
+
+v0.2 可能方向：
+
+- 更好的 eval gold set 和 ranking regression。
+- 可选 LLM summary，但必须 evidence-grounded。
+- 更稳健的 arXiv / OpenReview 解析和 backoff。
+- GitHub Pages report index。
+- 可选 dashboard（后置，不作为默认路径）。
+
+## License
+
+MIT License，详见 `LICENSE`。

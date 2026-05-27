@@ -33,26 +33,26 @@ class EcosystemReportGenerator:
         date = (self.generated_at or datetime.now(timezone.utc)).date().isoformat()
         ranked = _ranked(items)
         return self.renderer.render_ecosystem(
-            f"AI Research Ecosystem Report - {date}",
+            f"AI 生态雷达 - {date}",
             [
                 (
-                    "GitHub / DevTools",
+                    "GitHub / DevTools 项目",
                     _items_section(_type(ranked, ItemType.REPO, self.top)),
                 ),
                 (
-                    "Community Signals",
+                    "社区信号",
                     _items_section(_type(ranked, ItemType.DISCUSSION, self.top)),
                 ),
                 (
-                    "Company / Lab Updates",
+                    "公司 / 实验室动态",
                     _items_section(_type(ranked, ItemType.COMPANY_UPDATE, self.top)),
                 ),
                 (
-                    "Hackathons / Opportunities",
+                    "黑客松 / 机会",
                     _items_section(_type(ranked, ItemType.HACKATHON, self.top)),
                 ),
-                ("Cross-source Signals", _correlation_section(correlations)),
-                ("Paper-Repo Links", _link_section(paper_repo_links)),
+                ("跨源信号", _correlation_section(correlations)),
+                ("Paper-Repo 关联", _link_section(paper_repo_links)),
             ],
         )
 

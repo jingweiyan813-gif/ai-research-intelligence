@@ -2,35 +2,35 @@
 
 ## v0.1.0
 
-v0.1.0 completes the first usable personal AI Research Intelligence loop.
+v0.1.0 完成第一个可用的个人 AI Research Intelligence loop。
 
-### Completed Capabilities
+### 已完成能力
 
-- Multi-source metadata connectors: arXiv, GitHub, Hacker News, company RSS/blogs, OpenReview, and Devpost.
-- Sequential fetch pipeline with source health and JSON/JSONL state.
-- Deterministic normalization, fingerprinting, and safe cache keys.
-- Dedupe, novelty tracking, rule-based topic extraction, and rule-based entity extraction.
-- Explainable scoring/ranking with ranking profiles.
-- Trend engine, cross-source correlation, and heuristic paper-repo linking.
-- Deterministic Markdown reports: weekly, ecosystem, and alerts.
-- SMTP email preview/send support with environment-variable secrets.
-- GitHub Actions schedules for weekly radar, ecosystem radar, urgent alerts, and eval.
-- Lightweight eval metrics and sample gold labels.
+- 多源 metadata connectors：arXiv、GitHub、Hacker News、Company RSS、OpenReview、Devpost。
+- Fetch pipeline：source health、JSON/JSONL state、combined `fetch all`。
+- Deterministic normalization、fingerprinting、safe cache keys。
+- Dedupe、novelty tracking、rule-based topic/entity extraction。
+- Explainable scoring/ranking 和 ranking profiles。
+- Trend engine、cross-source correlation、paper-repo linking。
+- 中文默认 Markdown reports：weekly、ecosystem、alerts。
+- SMTP email preview/send，credentials 仅来自环境变量或 GitHub Secrets。
+- GitHub Actions schedules：weekly radar、ecosystem radar、urgent alerts、eval。
+- Lightweight eval metrics 和 sample gold labels。
 
-### Known Limitations
+### 已知限制
 
-- No LLM summarization yet.
-- No dashboard or web app.
-- No database, vector database, or graph database.
-- Eval gold set is sample-only and should be customized for real measurement.
-- Devpost and OpenReview are best-effort optional sources and may be less stable.
-- Scoring is a deterministic baseline, not a learned ranking model.
-- Connectors are metadata-first and intentionally avoid PDF downloads, repo cloning, and full-page scraping.
+- 暂无 LLM summarization。
+- 暂无 dashboard / web app。
+- 暂无 database、vector database、graph database。
+- Eval gold set 只是 sample，需要按个人偏好扩展。
+- Devpost / OpenReview 是 best-effort optional sources，默认关闭。
+- Scoring 是 deterministic baseline，不是 learned ranking model。
+- Connectors 只抓 metadata，不下载 PDF、不 clone repo、不抓全文网页。
 
-### Next Roadmap
+### 下一步 Roadmap
 
-- Optional LLM-assisted summaries with strict evidence grounding.
-- Better eval datasets and regression checks for ranking quality.
-- More robust source-specific parsing and connector backoff.
-- Optional report templates for different research interests.
-- Better trend history visual summaries in Markdown.
+- 更好的 eval gold set 和 ranking regression checks。
+- 可选 LLM summary，但必须 evidence-grounded。
+- 更稳健的 arXiv / OpenReview parsing 和 backoff。
+- GitHub Pages report index。
+- 可选 dashboard（后置，不作为默认路线）。

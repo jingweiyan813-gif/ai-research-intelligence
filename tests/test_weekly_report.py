@@ -35,16 +35,16 @@ def test_weekly_report_contains_required_sections(tmp_path) -> None:  # type: ig
         generated_at=datetime(2026, 5, 27, tzinfo=timezone.utc)
     ).generate(items, trends, correlations, links)
 
-    assert "# AI Research Intelligence Weekly Report - 2026-05-27" in report
+    assert "# AI 技术情报周报 - 2026-05-27" in report
     for section in [
-        "Executive Summary",
-        "Top Ranked Items",
-        "Papers",
-        "GitHub / DevTools",
-        "Emerging Trends",
-        "Cross-source Signals",
-        "Paper-Repo Links",
-        "Recommended Actions",
+        "执行摘要",
+        "本周高价值条目",
+        "论文",
+        "GitHub / DevTools 项目",
+        "新兴趋势",
+        "跨源信号",
+        "Paper-Repo 关联",
+        "建议行动",
     ]:
         assert f"## {section}" in report
 
@@ -77,5 +77,5 @@ def test_weekly_report_includes_top_ranked_items_and_evidence(tmp_path) -> None:
     ).generate(items, trends, [], [])
 
     assert "1. score=" in report
-    assert "Evidence:" in report
+    assert "证据：" in report
     assert "`p1`" in report or "`p2`" in report

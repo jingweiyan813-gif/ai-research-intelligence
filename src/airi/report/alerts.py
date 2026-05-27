@@ -32,8 +32,8 @@ class AlertsReportGenerator:
         date = self.generated_at.date().isoformat()
         body = self._alerts_body(items, correlations)
         return self.renderer.render_alerts(
-            f"AI Research Intelligence Alerts - {date}",
-            [("Alerts", body)],
+            f"AI 技术情报提醒 - {date}",
+            [("提醒", body)],
         )
 
     def _alerts_body(
@@ -49,7 +49,7 @@ class AlertsReportGenerator:
             and item.scores.final_score >= self.alert_threshold
         ]
         if high_score:
-            lines = ["### High-scoring Items"]
+            lines = ["### 高分条目"]
             lines.extend(format_item_line(item) for item in _rank(high_score))
             sections.append("\n".join(lines))
 
@@ -57,7 +57,7 @@ class AlertsReportGenerator:
             signal for signal in correlations if signal.strength >= self.alert_threshold
         ]
         if strong_signals:
-            lines = ["### Strong Cross-source Signals"]
+            lines = ["### 强跨源信号"]
             for signal in sorted(
                 strong_signals,
                 key=lambda item: (-item.strength, item.topic),
@@ -65,17 +65,17 @@ class AlertsReportGenerator:
                 sources = ", ".join(signal.sources)
                 lines.append(
                     f"- {safe_markdown_text(signal.topic)} "
-                    f"strength={signal.strength:.2f}; sources={sources}"
+                    f"强度={signal.strength:.2f}; 来源={sources}"
                 )
             sections.append("\n".join(lines))
 
         deadline_items = [item for item in items if self._deadline_soon(item)]
         if deadline_items:
-            lines = ["### Upcoming Hackathon Deadlines"]
+            lines = ["### 即将截止的黑客松"]
             lines.extend(format_item_line(item) for item in _rank(deadline_items))
             sections.append("\n".join(lines))
 
-        return "\n\n".join(sections) if sections else "No high-signal alerts."
+        return "\n\n".join(sections) if sections else "暂无高信号提醒。"
 
     def _deadline_soon(self, item: IntelligenceItem) -> bool:
         if item.item_type != ItemType.HACKATHON or item.signals.hackathon is None:

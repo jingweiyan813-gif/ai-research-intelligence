@@ -61,3 +61,9 @@ PR 14-B uses GitHub Secrets or environment variables for SMTP credentials:
 These values must never be committed to the repository. The CLI and scripts do not print SMTP passwords, API keys, or secrets. Email preview mode writes local `.eml` preview files and does not require real SMTP credentials.
 
 Email delivery sends generated markdown report content to configured recipients. Treat emailed reports as potentially sensitive because they may reveal your interests, watched topics, or public-source reading habits. The public repository still must not read private notes, Obsidian vaults, private local configs, or secrets.
+
+## 中文报告与邮件
+
+PR 16 后，默认 Markdown reports 和 Email subjects 使用中文。报告正文仍包含公开来源的原始标题、URL、source name 和 item type，不会翻译 fetched titles。
+
+Email reports 可能暴露你的研究兴趣、关注 topic、watchlist 和公开来源阅读习惯。建议只发送到自己的邮箱或可信收件人。SMTP credentials 仍然只能来自环境变量或 GitHub Secrets，不应写入 README、配置文件或报告。

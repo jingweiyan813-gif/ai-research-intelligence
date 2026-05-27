@@ -39,9 +39,9 @@ def test_ecosystem_report_focuses_on_ecosystem_sections() -> None:
         PaperRepoLinker().link(items),
     )
 
-    assert "# AI Research Ecosystem Report - 2026-05-27" in report
-    assert "## GitHub / DevTools" in report
-    assert "## Community Signals" in report
-    assert "## Cross-source Signals" in report
-    assert "## Executive Summary" not in report
-    assert "## Papers" not in report
+    assert "# AI 生态雷达 - 2026-05-27" in report
+    assert "## GitHub / DevTools 项目" in report
+    assert "## 社区信号" in report
+    assert "## 跨源信号" in report
+    assert "## 执行摘要" not in report
+    assert "## 论文" not in report

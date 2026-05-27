@@ -135,7 +135,7 @@ def maybe_email_report(path: Path, *, no_email: bool, dry_run: bool) -> None:
         print("Email disabled by --no-email.")
         return
     body = path.read_text(encoding="utf-8")
-    subject = f"AI Research Intelligence Report: {path.stem}"
+    subject = default_email_subject(path)
     if dry_run:
         preview = preview_without_credentials(
             subject,
@@ -146,6 +146,20 @@ def maybe_email_report(path: Path, *, no_email: bool, dry_run: bool) -> None:
         return
     EmailDelivery.from_env().send(subject, body)
     print("Email sent.")
+
+
+def default_email_subject(path: Path) -> str:
+    report_type = path.parent.name
+    date = path.stem
+    if report_type == "weekly":
+        return f"[AI 技术情报] 周报 - {date}"
+    if report_type == "ecosystem":
+        return f"[AI 生态雷达] 更新 - {date}"
+    if report_type == "alerts":
+        return f"[AI 技术情报提醒] {date}"
+    if report_type == "eval":
+        return f"[AI Research Intelligence] Eval - {date}"
+    return f"[AI Research Intelligence] Report - {date}"
 
 
 def render_eval_report() -> Path:

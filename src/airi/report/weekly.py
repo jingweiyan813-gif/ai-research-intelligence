@@ -35,38 +35,38 @@ class WeeklyReportGenerator:
         ranked = _ranked(items)
         claims = _trend_claims(trends)
         date = (self.generated_at or datetime.now(timezone.utc)).date().isoformat()
-        title = f"AI Research Intelligence Weekly Report - {date}"
+        title = f"AI 技术情报周报 - {date}"
         return self.renderer.render_weekly(
             title,
             [
-                ("Executive Summary", _executive_summary(items, claims)),
-                ("Top Ranked Items", _items_section(ranked[: self.top], ranked=True)),
+                ("执行摘要", _executive_summary(items, claims)),
+                ("本周高价值条目", _items_section(ranked[: self.top], ranked=True)),
                 (
-                    "Papers",
+                    "论文",
                     _items_section(_by_type(ranked, ItemType.PAPER)[: self.top]),
                 ),
                 (
-                    "GitHub / DevTools",
+                    "GitHub / DevTools 项目",
                     _items_section(_by_type(ranked, ItemType.REPO)[: self.top]),
                 ),
                 (
-                    "Company / Lab Updates",
+                    "公司 / 实验室动态",
                     _items_section(
                         _by_type(ranked, ItemType.COMPANY_UPDATE)[: self.top]
                     ),
                 ),
                 (
-                    "Community Signals",
+                    "社区信号",
                     _items_section(_by_type(ranked, ItemType.DISCUSSION)[: self.top]),
                 ),
                 (
-                    "Hackathons / Opportunities",
+                    "黑客松 / 机会",
                     _items_section(_by_type(ranked, ItemType.HACKATHON)[: self.top]),
                 ),
-                ("Emerging Trends", _trend_section(claims)),
-                ("Cross-source Signals", _correlation_section(correlations)),
-                ("Paper-Repo Links", _link_section(paper_repo_links)),
-                ("Recommended Actions", _actions_section(ranked, claims)),
+                ("新兴趋势", _trend_section(claims)),
+                ("跨源信号", _correlation_section(correlations)),
+                ("Paper-Repo 关联", _link_section(paper_repo_links)),
+                ("建议行动", _actions_section(ranked, claims)),
             ],
         )
 
@@ -110,30 +110,30 @@ def _executive_summary(
     )[:3]
     return "\n".join(
         [
-            f"- Total items: {len(items)}",
-            f"- Top topics: {_counter_summary(topics)}",
-            f"- Top sources: {_counter_summary(sources)}",
-            "- Strongest trends: "
-            + (", ".join(claim.topic for claim in strongest) if strongest else "none"),
+            f"- 条目总数: {len(items)}",
+            f"- 高频主题: {_counter_summary(topics)}",
+            f"- 主要来源: {_counter_summary(sources)}",
+            "- 最强趋势: "
+            + (", ".join(claim.topic for claim in strongest) if strongest else "暂无"),
         ]
     )
 
 
 def _counter_summary(counter: Counter[str]) -> str:
     if not counter:
-        return "none"
+        return "暂无"
     return ", ".join(f"{key} ({count})" for key, count in counter.most_common(5))
 
 
 def _items_section(items: list[IntelligenceItem], *, ranked: bool = False) -> str:
     if not items:
-        return "No items."
+        return "暂无条目。"
     lines = []
     for index, item in enumerate(items, start=1):
         line = format_item_line(item, index if ranked else None)
         reason = _top_reason(item)
         if reason:
-            line += f" — why: {safe_markdown_text(reason)}"
+            line += f" — 原因：{safe_markdown_text(reason)}"
         lines.append(line)
     return "\n".join(lines)
 
@@ -153,40 +153,40 @@ def _top_reason(item: IntelligenceItem) -> str | None:
 
 def _trend_section(claims: list[TrendClaim]) -> str:
     if not claims:
-        return "No emerging trends."
+        return "暂无新兴趋势。"
     blocks = []
     for claim in sorted(claims, key=lambda item: (-item.confidence, item.topic)):
         blocks.append(
             f"- {safe_markdown_text(claim.claim)} "
-            f"(confidence={claim.confidence:.2f})\n"
-            f"  Evidence:\n{_indent(format_evidence_refs(claim.evidence_refs), 2)}"
+            f"(置信度={claim.confidence:.2f})\n"
+            f"  证据：\n{_indent(format_evidence_refs(claim.evidence_refs), 2)}"
         )
     return "\n".join(blocks)
 
 
 def _correlation_section(signals: list[CrossSourceSignal]) -> str:
     if not signals:
-        return "No cross-source signals."
+        return "暂无跨源信号。"
     lines = []
     for signal in sorted(signals, key=lambda item: (-item.strength, item.topic)):
         lines.append(
-            f"- {safe_markdown_text(signal.topic)}: strength={signal.strength:.2f}; "
-            f"sources={', '.join(signal.sources)}; items={len(signal.item_ids)}"
+            f"- {safe_markdown_text(signal.topic)}: 强度={signal.strength:.2f}; "
+            f"来源={', '.join(signal.sources)}; 条目数={len(signal.item_ids)}"
         )
     return "\n".join(lines)
 
 
 def _link_section(links: list[PaperRepoLink]) -> str:
     if not links:
-        return "No paper-repo links."
+        return "暂无 Paper-Repo 关联。"
     lines = []
     for link in links:
-        terms = ", ".join(link.matched_terms) if link.matched_terms else "none"
+        terms = ", ".join(link.matched_terms) if link.matched_terms else "暂无"
         lines.append(
             f"- `{link.paper_item_id}` -> `{link.repo_item_id}` "
-            f"confidence={link.confidence:.2f}; "
-            f"reason={safe_markdown_text(link.reason)}; "
-            f"matched={safe_markdown_text(terms)}"
+            f"置信度={link.confidence:.2f}; "
+            f"原因={safe_markdown_text(link.reason)}; "
+            f"匹配={safe_markdown_text(terms)}"
         )
     return "\n".join(lines)
 
@@ -197,16 +197,16 @@ def _actions_section(items: list[IntelligenceItem], claims: list[TrendClaim]) ->
     hackathons = _by_type(items, ItemType.HACKATHON)
     actions = []
     if papers:
-        actions.append(f"- Read top paper: {safe_markdown_text(papers[0].title)}")
+        actions.append(f"- 阅读高价值论文: {safe_markdown_text(papers[0].title)}")
     if repos:
-        actions.append(f"- Try top repo: {safe_markdown_text(repos[0].title)}")
+        actions.append(f"- 试用高价值 repo: {safe_markdown_text(repos[0].title)}")
     if claims:
-        actions.append(f"- Watch trend: {safe_markdown_text(claims[0].topic)}")
+        actions.append(f"- 关注趋势: {safe_markdown_text(claims[0].topic)}")
     if hackathons:
         actions.append(
-            f"- Bookmark hackathon: {safe_markdown_text(hackathons[0].title)}"
+            f"- 收藏黑客松: {safe_markdown_text(hackathons[0].title)}"
         )
-    return "\n".join(actions) if actions else "- No recommended actions."
+    return "\n".join(actions) if actions else "- 暂无建议行动。"
 
 
 def _indent(text: str, spaces: int) -> str:

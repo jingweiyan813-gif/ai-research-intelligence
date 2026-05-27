@@ -892,7 +892,17 @@ def _read_report(report_path: Path) -> str:
 
 
 def _default_email_subject(report_path: Path) -> str:
-    return f"AI Research Intelligence Report: {report_path.stem}"
+    report_type = report_path.parent.name
+    date = report_path.stem
+    if report_type == "weekly":
+        return f"[AI 技术情报] 周报 - {date}"
+    if report_type == "ecosystem":
+        return f"[AI 生态雷达] 更新 - {date}"
+    if report_type == "alerts":
+        return f"[AI 技术情报提醒] {date}"
+    if report_type == "eval":
+        return f"[AI Research Intelligence] Eval - {date}"
+    return f"[AI Research Intelligence] Report - {date}"
 
 
 def _dated_filename(prefix: str) -> str:

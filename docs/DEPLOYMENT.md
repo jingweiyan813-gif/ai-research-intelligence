@@ -1,10 +1,10 @@
-# Deployment
+# Deployment / 部署指南
 
-This project can run as a low-cost personal AI research radar on GitHub Actions.
+这个项目推荐作为低成本个人 AI Research Radar 运行在 GitHub Actions 上。
 
-## 1. Configure GitHub Secrets
+## 1. 配置 GitHub Secrets
 
-In your GitHub repository, open **Settings → Secrets and variables → Actions → New repository secret** and add:
+在 GitHub 仓库中打开 **Settings → Secrets and variables → Actions → New repository secret**，添加：
 
 - `SMTP_HOST`
 - `SMTP_PORT`
@@ -13,26 +13,24 @@ In your GitHub repository, open **Settings → Secrets and variables → Actions
 - `REPORT_FROM_EMAIL`
 - `REPORT_TO_EMAIL`
 
-Optional:
+可选：
 
-- `GH_TOKEN` or `GITHUB_TOKEN` for higher GitHub API rate limits.
+- `GH_TOKEN` 或 `GITHUB_TOKEN`，用于提高 GitHub API rate limit。
 
-Never commit `.env`, `*.local.yml`, SMTP passwords, API keys, or private note paths.
+不要提交 `.env`、`*.local.yml`、SMTP password、API key 或私人笔记路径。
 
-## 2. Enable Workflows
+## 2. 启用 Workflows
 
-The workflows are in `.github/workflows/`:
+工作流位于 `.github/workflows/`：
 
-- `weekly_research.yml`: weekly full radar report.
-- `ecosystem_radar.yml`: every-two-days ecosystem radar.
-- `urgent_alerts.yml`: twice-daily alert checks.
-- `eval_weekly.yml`: weekly lightweight eval report.
+- `weekly_research.yml`：每周完整技术情报周报。
+- `ecosystem_radar.yml`：每两天生态雷达。
+- `urgent_alerts.yml`：每日 / 多次提醒检查。
+- `eval_weekly.yml`：每周轻量 eval。
 
-Each workflow also supports `workflow_dispatch`, so you can run it manually from the GitHub Actions UI.
+这些 workflow 都支持 `workflow_dispatch`，可以在 GitHub Actions 页面手动触发。
 
-## 3. Local Dry Runs
-
-Run locally without sending email:
+## 3. 本地 Dry Run
 
 ```bash
 python scripts/run_weekly.py --dry-run --no-email
@@ -41,27 +39,16 @@ python scripts/run_alerts.py --dry-run --no-email
 python scripts/run_eval.py
 ```
 
-Preview email without SMTP credentials:
+Email preview 不需要 SMTP credentials：
 
 ```bash
 airi email preview data/reports/weekly/<YYYY-MM-DD>.md
 airi email send data/reports/weekly/<YYYY-MM-DD>.md --dry-run
 ```
 
-## 4. Cost Notes
+## 4. 推荐手动 Pipeline
 
-The system uses public metadata APIs, local JSON/JSONL state, Markdown files, and email. It does not require a server, database, vector database, dashboard, or LLM API. GitHub Actions free-tier limits and source API rate limits still apply.
-
-## 5. Safety Notes
-
-- Workflows use `contents: write` to commit generated reports and state.
-- Bot identity is fixed as `ai-research-radar-bot <bot@example.com>`.
-- Secrets are passed through environment variables and are not echoed.
-- Email reports may reveal your research interests, so choose recipients carefully.
-
-## 6. Recommended Manual Pipeline
-
-For real local or manual GitHub Actions runs, prefer `fetch all` so enabled sources are combined into one latest state file:
+真实本地运行或手动 Actions 运行时，推荐使用 `fetch all`，避免单来源 fetch 覆盖 `latest_items.jsonl`：
 
 ```bash
 airi fetch all --limit-per-source 10
@@ -74,4 +61,15 @@ airi correlate --apply
 airi report weekly
 ```
 
-Single-source fetch commands remain useful for debugging, but they overwrite `latest_items.jsonl`. The scheduled GitHub Actions workflows run the full pipeline scripts and commit generated reports/state when changes exist.
+GitHub Actions 会运行完整 pipeline scripts，并在有变化时提交 `data/reports` 和 `data/state`。
+
+## 5. 成本说明
+
+系统使用公开 metadata API、本地 JSON/JSONL state、Markdown reports 和 Email。不需要服务器、数据库、向量数据库、dashboard 或 LLM API。仍需注意 GitHub Actions 免费额度和公开来源 API rate limit。
+
+## 6. 安全说明
+
+- Workflows 使用最小化的 `contents: write` 权限提交报告和状态。
+- Bot identity 固定为 `ai-research-radar-bot <bot@example.com>`。
+- Secrets 通过环境变量注入，不在日志中 echo。
+- Email reports 可能暴露你的研究兴趣，请谨慎选择收件人。

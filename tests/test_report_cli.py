@@ -32,8 +32,8 @@ def test_report_weekly_cli_writes_report_file(monkeypatch) -> None:  # type: ign
         assert "Report written:" in result.output
         with open(output, encoding="utf-8") as file:
             text = file.read()
-        assert "AI Research Intelligence Weekly Report" in text
-        assert "## Top Ranked Items" in text
+        assert "AI 技术情报周报" in text
+        assert "## 本周高价值条目" in text
 
 
 def test_report_ecosystem_cli_writes_report_file(monkeypatch) -> None:  # type: ignore[no-untyped-def]
@@ -48,7 +48,7 @@ def test_report_ecosystem_cli_writes_report_file(monkeypatch) -> None:  # type: 
 
         assert result.exit_code == 0
         with open("eco.md", encoding="utf-8") as file:
-            assert "AI Research Ecosystem Report" in file.read()
+            assert "AI 生态雷达" in file.read()
 
 
 def test_report_alerts_cli_writes_report_file(monkeypatch) -> None:  # type: ignore[no-untyped-def]
@@ -63,7 +63,7 @@ def test_report_alerts_cli_writes_report_file(monkeypatch) -> None:  # type: ign
 
         assert result.exit_code == 0
         with open("alerts.md", encoding="utf-8") as file:
-            assert "AI Research Intelligence Alerts" in file.read()
+            assert "AI 技术情报提醒" in file.read()
 
 
 def _fake_app_config() -> SimpleNamespace:
