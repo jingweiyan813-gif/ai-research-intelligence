@@ -134,3 +134,27 @@ Cross-source correlation groups items by topic and measures whether that topic a
 Paper-repo linking uses local metadata only. It can link by exact repo mention, arXiv ID mention, strong distinctive token overlap, or shared distinctive entities. It intentionally ignores generic terms such as `agent`, `llm`, `rag`, `ai`, `benchmark`, and `framework` to reduce over-linking.
 
 This PR does not call LLMs, generate final reports, send email, schedule GitHub Actions, add a database, fetch GitHub README files, or download papers.
+
+## Markdown Report Generation Responsibilities
+
+PR 14-A turns existing local intelligence outputs into deterministic markdown artifacts.
+
+### Inputs
+
+Reports read only local state and in-memory analysis outputs:
+
+- `latest_items.jsonl`
+- ranked/scored `IntelligenceItem` objects
+- `TrendClaim` objects with evidence refs
+- `CrossSourceSignal` objects
+- `PaperRepoLink` objects
+
+### Report Types
+
+- Weekly reports provide the broadest view: summary, ranked items, source/category sections, trends, correlations, links, and recommended actions.
+- Ecosystem reports focus on repos, community discussions, company/lab updates, hackathons, and cross-source ecosystem signals.
+- Alerts reports select high-signal items above the configured alert threshold, strong cross-source signals, and soon-ending hackathons.
+
+### Constraints
+
+Report generation must be deterministic and evidence-aware. Trend claims included in reports must show evidence item IDs or titles. No LLM calls, email sending, GitHub Actions schedules, external APIs, databases, vector databases, graph databases, dashboards, or eval frameworks are part of PR 14-A.

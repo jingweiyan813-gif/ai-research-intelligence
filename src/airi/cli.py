@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 import platform
 import sys
+from datetime import datetime, timezone
+from pathlib import Path
 from typing import Optional
 
 import typer
@@ -30,6 +32,11 @@ from airi.intelligence import (
 from airi.models import IntelligenceItem
 from airi.pipeline import FetchPipeline
 from airi.rank import ItemRanker, ItemScorer, explain_score, summarize_top_items
+from airi.report import (
+    AlertsReportGenerator,
+    EcosystemReportGenerator,
+    WeeklyReportGenerator,
+)
 from airi.storage import StateStore, StoragePaths
 
 app = typer.Typer(help="AI Research Intelligence CLI")
@@ -39,12 +46,14 @@ fetch_app = typer.Typer(help="Run source fetch pipelines.")
 intelligence_app = typer.Typer(help="Run local intelligence processing.")
 rank_app = typer.Typer(help="Score and rank latest items.")
 link_app = typer.Typer(help="Link related intelligence items.")
+report_app = typer.Typer(help="Generate markdown intelligence reports.")
 app.add_typer(config_app, name="config")
 app.add_typer(storage_app, name="storage")
 app.add_typer(fetch_app, name="fetch")
 app.add_typer(intelligence_app, name="intelligence")
 app.add_typer(rank_app, name="rank")
 app.add_typer(link_app, name="link")
+app.add_typer(report_app, name="report")
 
 
 @app.callback(invoke_without_command=True)
@@ -640,3 +649,124 @@ def link_paper_repos() -> None:
             f"{link.paper_item_id} -> {link.repo_item_id} "
             f"confidence={link.confidence:.2f} reason={link.reason} terms={terms}"
         )
+
+
+@report_app.command("weekly")
+def report_weekly(
+    top: int | None = typer.Option(None, "--top", min=1),
+    output: Path | None = typer.Option(None, "--output"),
+    profile: str | None = typer.Option(
+        None,
+        "--profile",
+        help="Ranking profile: item_baseline, intelligence, or personal.",
+    ),
+) -> None:
+    """Generate a deterministic weekly markdown report."""
+    paths = StoragePaths.default()
+    state_store = StateStore(paths)
+    try:
+        app_config = load_app_config()
+        ranked = _scored_ranked_items(
+            state_store,
+            app_config.scoring,
+            app_config.profile,
+            profile=profile,
+        )
+    except (ConfigLoadError, ValueError) as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+
+    effective_top = top or app_config.scoring.limits.max_report_items
+    trend_result = TrendEngine(state_store).analyze(ranked)
+    correlations = CrossSourceAnalyzer(app_config.scoring).analyze(ranked)
+    links = PaperRepoLinker().link(ranked)
+    markdown = WeeklyReportGenerator(top=effective_top).generate(
+        ranked,
+        trend_result,
+        correlations,
+        links,
+    )
+    report_path = _write_report(paths, "weekly", markdown, output)
+    typer.echo(f"Report written: {report_path}")
+
+
+@report_app.command("ecosystem")
+def report_ecosystem(
+    top: int | None = typer.Option(None, "--top", min=1),
+    output: Path | None = typer.Option(None, "--output"),
+) -> None:
+    """Generate a deterministic ecosystem markdown report."""
+    paths = StoragePaths.default()
+    state_store = StateStore(paths)
+    try:
+        app_config = load_app_config()
+        ranked = _scored_ranked_items(
+            state_store,
+            app_config.scoring,
+            app_config.profile,
+        )
+    except (ConfigLoadError, ValueError) as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+
+    effective_top = top or app_config.scoring.limits.max_report_items
+    correlations = CrossSourceAnalyzer(app_config.scoring).analyze(ranked)
+    links = PaperRepoLinker().link(ranked)
+    markdown = EcosystemReportGenerator(top=effective_top).generate(
+        ranked,
+        correlations,
+        links,
+    )
+    report_path = _write_report(paths, "ecosystem", markdown, output)
+    typer.echo(f"Report written: {report_path}")
+
+
+@report_app.command("alerts")
+def report_alerts(
+    output: Path | None = typer.Option(None, "--output"),
+) -> None:
+    """Generate deterministic markdown alerts."""
+    paths = StoragePaths.default()
+    state_store = StateStore(paths)
+    try:
+        app_config = load_app_config()
+        ranked = _scored_ranked_items(
+            state_store,
+            app_config.scoring,
+            app_config.profile,
+        )
+    except (ConfigLoadError, ValueError) as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+
+    correlations = CrossSourceAnalyzer(app_config.scoring).analyze(ranked)
+    markdown = AlertsReportGenerator(
+        alert_threshold=app_config.scoring.thresholds.strong_signal,
+    ).generate(ranked, correlations)
+    report_path = _write_report(paths, "alerts", markdown, output)
+    typer.echo(f"Report written: {report_path}")
+
+
+def _scored_ranked_items(
+    state_store: StateStore,
+    scoring_config: object,
+    profile_config: object,
+    *,
+    profile: str | None = None,
+) -> list[IntelligenceItem]:
+    items = _load_latest_intelligence_items(state_store)
+    scorer = ItemScorer(scoring_config, profile_config, profile)
+    return ItemRanker(scorer, force=profile is not None).score_and_rank(items)
+
+
+def _write_report(
+    paths: StoragePaths,
+    report_type: str,
+    markdown: str,
+    output: Path | None,
+) -> Path:
+    date = datetime.now(timezone.utc).date().isoformat()
+    path = output or paths.reports_dir / report_type / f"{date}.md"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(markdown, encoding="utf-8")
+    return path

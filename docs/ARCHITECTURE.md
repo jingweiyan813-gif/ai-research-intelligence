@@ -179,3 +179,18 @@ PR 13 adds a deterministic intelligence layer above item-level scoring:
 This layer is evidence-grounded. Every non-noise `TrendClaim` includes `EvidenceRef` records pointing back to representative items. The trend engine stores simple daily topic counts so future reports can be generated incrementally without a database.
 
 The layer remains deterministic and low-cost: no LLM calls, no embeddings, no vector database, no graph database, and no external network access are required.
+
+## Report Layer
+
+PR 14-A adds deterministic markdown report generation under `src/airi/report/`.
+
+The report layer sits after fetch, normalization, intelligence extraction, scoring/ranking, trend analysis, cross-source correlation, and paper-repo linking. It does not fetch data itself and does not call external APIs.
+
+Report generators:
+
+- `WeeklyReportGenerator` creates a full research intelligence weekly report.
+- `EcosystemReportGenerator` creates a shorter ecosystem-focused report.
+- `AlertsReportGenerator` creates high-signal alerts from score thresholds, strong cross-source signals, and upcoming hackathon deadlines.
+- `MarkdownReportRenderer` provides deterministic markdown helpers and safe text formatting.
+
+Reports are written as markdown files under `data/reports/<type>/` by default. Email delivery, GitHub Actions schedules, evals, LLM summarization, databases, vector databases, graph databases, and dashboards remain out of scope.

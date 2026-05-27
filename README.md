@@ -354,3 +354,24 @@ airi link paper-repos
 ```
 
 `topic_timeseries.json` 会保存每日 topic 计数，用于后续周报和趋势报告。Paper-repo linking 是低成本启发式结果，只输出候选关联，不默认写入状态。
+
+## Markdown Report Layer
+
+PR 14-A 增加确定性的 Markdown 报告生成层。报告只读取本地 `latest_items.jsonl` 和已有 intelligence 分析结果，不调用 LLM、不发送邮件、不访问外部 API，也不需要数据库。
+
+支持三类报告：
+
+- `weekly`：完整周报，包含 executive summary、top ranked items、papers、repos、company/lab updates、community signals、hackathons、emerging trends、cross-source signals、paper-repo links 和 recommended actions。
+- `ecosystem`：更短的生态报告，聚焦 GitHub / DevTools、HN/community、company updates、hackathons 和 cross-source signals。
+- `alerts`：高信号提醒，包含高分 item、强 cross-source signal 和临近截止的 hackathon；没有提醒时输出 `No high-signal alerts.`。
+
+命令：
+
+```bash
+airi report weekly
+airi report weekly --profile intelligence --top 10
+airi report ecosystem
+airi report alerts
+```
+
+默认输出到 `data/reports/<type>/<YYYY-MM-DD>.md`。也可以用 `--output` 指定路径。邮件发送会在后续 PR 中实现，本 PR 不包含 email、GitHub Actions schedule、dashboard 或 eval。
