@@ -138,3 +138,18 @@ PR 10 completes the current ingestion layer with two optional metadata sources.
 `DevpostConnector` adds hackathon/opportunity metadata from configured listing URLs. It is intentionally best-effort and disabled by default because Devpost page structure may change. It does not aggressively crawl or scrape unrelated pages.
 
 Both connectors plug into the same `BaseConnector` and `FetchPipeline` contracts, preserving source health, raw payload hashes, source metadata, canonical URLs, and normalized `IntelligenceItem` outputs.
+
+## Intelligence Layer
+
+PR 11 introduces the first deterministic intelligence processing layer after ingestion.
+
+Components:
+
+- `DedupeEngine` removes duplicate `IntelligenceItem` objects using exact IDs, canonical URLs, source-specific keys, content fingerprints, and conservative near-title matching.
+- `NoveltyTracker` reads and updates `seen_items.json` through `StateStore`, separating read-only novelty computation from explicit state updates.
+- `TopicExtractor` uses configured topic keywords from `configs/topics.yml` and records `ExtractionMetadata` with method `RULE`.
+- `EntityExtractor` uses built-in known entities plus optional watchlists and records `ExtractionMetadata` with method `RULE`.
+
+This layer is deterministic and intentionally does not use LLMs, embeddings, vector databases, ranking models, trend detection, paper-repo linking, or cross-source correlation. Those capabilities remain deferred.
+
+Dedupe preserves evidence by returning duplicate groups with representative IDs, removed duplicate IDs, reasons, and confidence scores. Topic/entity extraction preserves existing item fields and appends extracted values rather than deleting prior metadata.

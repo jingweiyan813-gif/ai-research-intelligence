@@ -18,6 +18,13 @@ from airi.connectors import (
     HackerNewsConnector,
     OpenReviewConnector,
 )
+from airi.intelligence import (
+    DedupeEngine,
+    EntityExtractor,
+    NoveltyTracker,
+    TopicExtractor,
+)
+from airi.models import IntelligenceItem
 from airi.pipeline import FetchPipeline
 from airi.storage import StateStore, StoragePaths
 
@@ -25,9 +32,11 @@ app = typer.Typer(help="AI Research Intelligence CLI")
 config_app = typer.Typer(help="Validate and inspect configuration files.")
 storage_app = typer.Typer(help="Inspect and initialize local storage directories.")
 fetch_app = typer.Typer(help="Run source fetch pipelines.")
+intelligence_app = typer.Typer(help="Run local intelligence processing.")
 app.add_typer(config_app, name="config")
 app.add_typer(storage_app, name="storage")
 app.add_typer(fetch_app, name="fetch")
+app.add_typer(intelligence_app, name="intelligence")
 
 
 @app.callback(invoke_without_command=True)
@@ -393,3 +402,83 @@ def _run_configured_single_source(
             f"normalized={connector_result.normalized_count}, "
             f"errors={len(connector_result.errors)}"
         )
+
+
+@intelligence_app.command("dedupe")
+def intelligence_dedupe(
+    no_save: bool = typer.Option(False, "--no-save", help="Do not write latest_items."),
+    limit: int | None = typer.Option(None, "--limit", min=1, help="Limit input items."),
+) -> None:
+    """Deduplicate latest fetched items."""
+    state_store = StateStore(StoragePaths.default())
+    items = _load_latest_intelligence_items(state_store, limit=limit)
+    result = DedupeEngine().dedupe(items)
+    if not no_save:
+        state_store.save_latest_items(
+            item.model_dump(mode="json") for item in result.items
+        )
+    typer.echo(f"Removed duplicates: {result.removed_count}")
+    typer.echo(f"Duplicate groups: {len(result.duplicate_groups)}")
+
+
+@intelligence_app.command("novelty")
+def intelligence_novelty(
+    update_seen: bool = typer.Option(
+        False,
+        "--update-seen",
+        help="Update seen_items.json after computing novelty.",
+    ),
+    limit: int | None = typer.Option(None, "--limit", min=1, help="Limit input items."),
+) -> None:
+    """Compute novelty for latest fetched items."""
+    state_store = StateStore(StoragePaths.default())
+    items = _load_latest_intelligence_items(state_store, limit=limit)
+    tracker = NoveltyTracker(state_store)
+    results = tracker.compute(items)
+    new_count = sum(not result.seen_before for result in results.values())
+    seen_count = len(results) - new_count
+    if update_seen:
+        tracker.update_seen(items)
+    typer.echo(f"Items checked: {len(items)}")
+    typer.echo(f"New items: {new_count}")
+    typer.echo(f"Seen items: {seen_count}")
+    if update_seen:
+        typer.echo("Seen state updated: yes")
+
+
+@intelligence_app.command("extract")
+def intelligence_extract(
+    no_save: bool = typer.Option(False, "--no-save", help="Do not write latest_items."),
+    limit: int | None = typer.Option(None, "--limit", min=1, help="Limit input items."),
+) -> None:
+    """Apply rule-based topic and entity extraction to latest items."""
+    state_store = StateStore(StoragePaths.default())
+    items = _load_latest_intelligence_items(state_store, limit=limit)
+    try:
+        app_config = load_app_config()
+    except ConfigLoadError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+    extracted = TopicExtractor(app_config.topics).apply(items)
+    extracted = EntityExtractor(app_config.watchlists).apply(extracted)
+    updated_count = sum(
+        before.topics != after.topics or before.entities != after.entities
+        for before, after in zip(items, extracted, strict=True)
+    )
+    if not no_save:
+        state_store.save_latest_items(
+            item.model_dump(mode="json") for item in extracted
+        )
+    typer.echo(f"Items processed: {len(items)}")
+    typer.echo(f"Items updated: {updated_count}")
+
+
+def _load_latest_intelligence_items(
+    state_store: StateStore,
+    *,
+    limit: int | None = None,
+) -> list[IntelligenceItem]:
+    records = state_store.load_latest_items()
+    if limit is not None:
+        records = records[:limit]
+    return [IntelligenceItem.model_validate(record) for record in records]

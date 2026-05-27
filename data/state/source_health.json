@@ -1,0 +1,13 @@
+{
+  "arxiv": {
+    "source": "arxiv",
+    "raw_count": 0,
+    "normalized_count": 0,
+    "error_count": 1,
+    "errors": [
+      "fetch_raw failed: HTTP Error 429: Unknown Error"
+    ],
+    "started_at": "2026-05-27T03:09:58.750220+00:00",
+    "completed_at": "2026-05-27T03:10:03.131383+00:00"
+  }
+}

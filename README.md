@@ -282,3 +282,25 @@ airi fetch devpost --limit 2 --no-save
 本项目使用 MIT License，详见 `LICENSE`。
 
 MIT 只覆盖公开仓库中的代码与文档，不覆盖你的私人笔记、本地配置、secrets、Obsidian vault 或任何未提交到公开仓库的私人数据。
+
+## Intelligence Layer：去重、新颖性与规则抽取
+
+PR 11 启动了 Intelligence Layer 的第一阶段，增加确定性的本地处理能力：
+
+- `DedupeEngine`：按 ID、canonical URL、source-specific key、content fingerprint 和 near-title 规则去重。
+- `NoveltyTracker`：基于 `seen_items.json` 判断 item 是否见过，并在显式 `--update-seen` 时更新状态。
+- `TopicExtractor`：基于 `configs/topics.yml` 的主题关键词做规则抽取。
+- `EntityExtractor`：基于内置实体表和 watchlists 做规则实体抽取。
+
+该层不使用 LLM、不使用 embeddings、不需要数据库或向量数据库。所有结果都是确定性的，并会通过 `ExtractionMetadata` 记录抽取方法、抽取器名称、版本和置信度。
+
+命令：
+
+```bash
+airi intelligence dedupe
+airi intelligence novelty
+airi intelligence novelty --update-seen
+airi intelligence extract
+```
+
+去重会保留代表 item，并通过 duplicate groups 保留被移除 duplicate 的 ID、原因和置信度，避免丢失证据链。

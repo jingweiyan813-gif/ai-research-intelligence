@@ -63,3 +63,48 @@ The normalization layer provides deterministic utilities shared by future pipeli
 - Safe slugs and cache keys avoid path separators, path traversal markers, and unsafe filename characters.
 
 Connectors should produce raw data, then call normalization utilities before building `IntelligenceItem` contracts. Dedupe, stable IDs, `seen_items`, cache keys, and future novelty detection should use canonical URLs and fingerprints from this layer.
+
+## Dedupe, Novelty, And Rule Extraction
+
+PR 11 adds deterministic intelligence utilities that operate on `IntelligenceItem` models after fetch.
+
+### Dedupe
+
+Dedupe responsibilities:
+
+- Remove exact ID duplicates.
+- Remove canonical URL duplicates.
+- Apply source-specific dedupe for arXiv, GitHub, Hacker News, OpenReview, and Devpost.
+- Remove matching content fingerprints.
+- Apply conservative near-title matching only for same source or same canonical domain.
+- Select a representative item by preferring scores, richer source signals, newer fetch time, then original order.
+- Return duplicate groups with explainable reasons and confidence.
+
+### Novelty
+
+Novelty responsibilities:
+
+- Read `seen_items.json` without mutating it during `compute()`.
+- Compare incoming items by item ID, canonical URL, and content fingerprint.
+- Return deterministic novelty scores: new items are high novelty, exact seen items are low novelty, and fingerprint repeats are low novelty.
+- Update `seen_items.json` only when explicitly requested.
+
+### Rule-Based Topic Extraction
+
+Topic extraction responsibilities:
+
+- Read configured primary and negative topics.
+- Match title, abstract, snippet, keywords, and entities with normalized deterministic text.
+- Preserve existing topics and append extracted topics.
+- Record `ExtractionMetadata` with `method=RULE`, extractor name, version, timestamp, and confidence.
+
+### Rule-Based Entity Extraction
+
+Entity extraction responsibilities:
+
+- Use built-in company/lab, benchmark, protocol, and tool names.
+- Optionally extend known entities from watchlists.
+- Preserve existing entities and append extracted entities.
+- Record `ExtractionMetadata` with `method=RULE`, extractor name, version, timestamp, and confidence.
+
+No LLM, embeddings, vector database, scoring, trend engine, report generation, or external API calls are part of this layer.
