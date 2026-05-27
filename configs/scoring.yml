@@ -1,11 +1,32 @@
-weights:
-  topic_relevance: 0.24
-  quality: 0.18
-  momentum: 0.14
-  novelty: 0.14
-  freshness: 0.10
-  popularity: 0.08
-  personal_relevance: 0.12
+active_profile: intelligence
+ranking_profiles:
+  item_baseline:
+    topic_relevance: 0.30
+    quality: 0.25
+    freshness: 0.15
+    novelty: 0.10
+    popularity: 0.10
+    personal_relevance: 0.10
+    momentum: 0.00
+    cross_source_correlation: 0.00
+  intelligence:
+    topic_relevance: 0.22
+    quality: 0.20
+    momentum: 0.16
+    cross_source_correlation: 0.16
+    freshness: 0.10
+    novelty: 0.08
+    popularity: 0.04
+    personal_relevance: 0.04
+  personal:
+    topic_relevance: 0.24
+    quality: 0.18
+    personal_relevance: 0.18
+    momentum: 0.14
+    cross_source_correlation: 0.12
+    freshness: 0.08
+    novelty: 0.04
+    popularity: 0.02
 thresholds:
   minimum_score: 0.35
   strong_signal: 0.70

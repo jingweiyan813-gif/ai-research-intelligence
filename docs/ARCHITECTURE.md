@@ -153,3 +153,29 @@ Components:
 This layer is deterministic and intentionally does not use LLMs, embeddings, vector databases, ranking models, trend detection, paper-repo linking, or cross-source correlation. Those capabilities remain deferred.
 
 Dedupe preserves evidence by returning duplicate groups with representative IDs, removed duplicate IDs, reasons, and confidence scores. Topic/entity extraction preserves existing item fields and appends extracted values rather than deleting prior metadata.
+
+## Ranking Layer
+
+PR 12 adds the deterministic ranking layer under `src/airi/rank/`.
+
+Components:
+
+- `ItemScorer` computes `ScoreBundle` values for each `IntelligenceItem`.
+- `ItemRanker` scores missing items and sorts by final score with stable tie-breakers.
+- `explanations.py` renders plain text score explanations and compact top-item summaries.
+
+The scoring layer is config-driven through `configs/scoring.yml` and explainable through `ScoreBreakdown` records. It does not call LLMs, use embeddings, query external APIs, or use a database.
+
+Momentum and cross-source correlation are explicit placeholders in this PR. They return `0.0` with explanation text until the trend engine and correlation layer are implemented later.
+
+## Trend And Cross-Source Intelligence
+
+PR 13 adds a deterministic intelligence layer above item-level scoring:
+
+- `TrendEngine` builds `TopicTrend` and `TrendClaim` objects from recent `IntelligenceItem` records and stored `topic_timeseries.json` history.
+- `CrossSourceAnalyzer` identifies when a topic spans multiple ecosystem categories such as papers, repos, community discussion, company updates, and hackathons.
+- `PaperRepoLinker` produces heuristic paper-repo candidates without fetching README files, source code, PDFs, or external APIs.
+
+This layer is evidence-grounded. Every non-noise `TrendClaim` includes `EvidenceRef` records pointing back to representative items. The trend engine stores simple daily topic counts so future reports can be generated incrementally without a database.
+
+The layer remains deterministic and low-cost: no LLM calls, no embeddings, no vector database, no graph database, and no external network access are required.

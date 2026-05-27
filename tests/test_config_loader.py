@@ -22,6 +22,7 @@ def test_default_configs_load_successfully() -> None:
 
     assert config.sources.sources
     assert config.topics.primary_topics
+    assert config.scoring.active_profile == "intelligence"
     assert config.scoring.weights.topic_relevance > 0
 
 

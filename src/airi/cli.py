@@ -19,13 +19,17 @@ from airi.connectors import (
     OpenReviewConnector,
 )
 from airi.intelligence import (
+    CrossSourceAnalyzer,
     DedupeEngine,
     EntityExtractor,
     NoveltyTracker,
+    PaperRepoLinker,
     TopicExtractor,
+    TrendEngine,
 )
 from airi.models import IntelligenceItem
 from airi.pipeline import FetchPipeline
+from airi.rank import ItemRanker, ItemScorer, explain_score, summarize_top_items
 from airi.storage import StateStore, StoragePaths
 
 app = typer.Typer(help="AI Research Intelligence CLI")
@@ -33,10 +37,14 @@ config_app = typer.Typer(help="Validate and inspect configuration files.")
 storage_app = typer.Typer(help="Inspect and initialize local storage directories.")
 fetch_app = typer.Typer(help="Run source fetch pipelines.")
 intelligence_app = typer.Typer(help="Run local intelligence processing.")
+rank_app = typer.Typer(help="Score and rank latest items.")
+link_app = typer.Typer(help="Link related intelligence items.")
 app.add_typer(config_app, name="config")
 app.add_typer(storage_app, name="storage")
 app.add_typer(fetch_app, name="fetch")
 app.add_typer(intelligence_app, name="intelligence")
+app.add_typer(rank_app, name="rank")
+app.add_typer(link_app, name="link")
 
 
 @app.callback(invoke_without_command=True)
@@ -482,3 +490,153 @@ def _load_latest_intelligence_items(
     if limit is not None:
         records = records[:limit]
     return [IntelligenceItem.model_validate(record) for record in records]
+
+
+@rank_app.callback(invoke_without_command=True)
+def rank_items(
+    ctx: typer.Context,
+    top: int | None = typer.Option(None, "--top", min=1, help="Number of items."),
+    profile: str | None = typer.Option(
+        None,
+        "--profile",
+        help="Ranking profile: item_baseline, intelligence, or personal.",
+    ),
+    no_save: bool = typer.Option(False, "--no-save", help="Do not write latest_items."),
+    force: bool = typer.Option(
+        False,
+        "--force",
+        help="Re-score existing scored items.",
+    ),
+    min_score: float | None = typer.Option(None, "--min-score", min=0.0, max=1.0),
+) -> None:
+    """Score and rank latest items."""
+    if ctx.invoked_subcommand is not None:
+        return
+    state_store = StateStore(StoragePaths.default())
+    items = _load_latest_intelligence_items(state_store)
+    try:
+        app_config = load_app_config()
+    except ConfigLoadError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+    effective_top = top or app_config.scoring.limits.max_report_items
+    try:
+        scorer = ItemScorer(app_config.scoring, app_config.profile, profile)
+    except ValueError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+    ranked = ItemRanker(scorer, force=force).score_and_rank(items)
+    if min_score is not None:
+        ranked = [
+            item
+            for item in ranked
+            if item.scores and item.scores.final_score >= min_score
+        ]
+    shown = ranked[:effective_top]
+    typer.echo(summarize_top_items(shown, top=effective_top))
+    if not no_save:
+        state_store.save_latest_items(item.model_dump(mode="json") for item in ranked)
+
+
+@rank_app.command("explain")
+def rank_explain(item_id: str) -> None:
+    """Explain score breakdown for one item."""
+    state_store = StateStore(StoragePaths.default())
+    items = _load_latest_intelligence_items(state_store)
+    for item in items:
+        if item.id == item_id:
+            typer.echo(explain_score(item))
+            return
+    typer.echo(f"Item not found: {item_id}", err=True)
+    raise typer.Exit(code=1)
+
+
+@app.command("trends")
+def trends_command(
+    window_days: int = typer.Option(30, "--window-days", min=1),
+    update_timeseries: bool = typer.Option(
+        False,
+        "--update-timeseries",
+        help="Update topic_timeseries.json with current topic counts.",
+    ),
+    no_save: bool = typer.Option(False, "--no-save", help="Do not write state files."),
+) -> None:
+    """Analyze deterministic topic trends from latest items."""
+    state_store = StateStore(StoragePaths.default())
+    items = _load_latest_intelligence_items(state_store)
+    engine = TrendEngine(state_store)
+    result = engine.analyze(items, window_days=window_days)
+    typer.echo(f"Analyzed items: {result.analyzed_item_count}")
+    if not result.trends:
+        typer.echo("No topic trends found.")
+    for trend in result.trends:
+        typer.echo(
+            f"{trend.topic}: {trend.trend_type.value} "
+            f"items={trend.item_count} sources={trend.source_count} "
+            f"growth={trend.growth_rate:.2f} momentum={trend.momentum_score:.2f}"
+        )
+    if result.claims:
+        typer.echo("Claims:")
+        for claim in result.claims:
+            typer.echo(
+                f"- {claim.claim} confidence={claim.confidence:.2f} "
+                f"evidence={len(claim.evidence_refs)}"
+            )
+    if update_timeseries and not no_save:
+        engine.update_timeseries(items)
+        typer.echo("Topic timeseries updated: yes")
+    elif update_timeseries:
+        typer.echo("Topic timeseries updated: no (--no-save)")
+
+
+@app.command("correlate")
+def correlate_command(
+    apply: bool = typer.Option(
+        False,
+        "--apply",
+        help="Apply cross-source correlation to existing item scores.",
+    ),
+    no_save: bool = typer.Option(False, "--no-save", help="Do not write latest_items."),
+) -> None:
+    """Analyze deterministic cross-source topic signals."""
+    state_store = StateStore(StoragePaths.default())
+    items = _load_latest_intelligence_items(state_store)
+    scoring_config = None
+    if apply:
+        try:
+            scoring_config = load_app_config().scoring
+        except ConfigLoadError as exc:
+            typer.echo(str(exc), err=True)
+            raise typer.Exit(code=1) from exc
+    analyzer = CrossSourceAnalyzer(scoring_config)
+    signals = analyzer.analyze(items)
+    typer.echo(f"Cross-source signals: {len(signals)}")
+    for signal in signals:
+        typer.echo(
+            f"{signal.topic}: strength={signal.strength:.2f} "
+            f"sources={','.join(signal.sources)} items={len(signal.item_ids)}"
+        )
+    if apply:
+        updated = analyzer.apply_to_scores(items)
+        if not no_save:
+            state_store.save_latest_items(
+                item.model_dump(mode="json") for item in updated
+            )
+            typer.echo("Scores updated: yes")
+        else:
+            typer.echo("Scores updated: no (--no-save)")
+
+
+@link_app.command("paper-repos")
+def link_paper_repos() -> None:
+    """Print deterministic paper-repository link candidates."""
+    state_store = StateStore(StoragePaths.default())
+    items = _load_latest_intelligence_items(state_store)
+    links = PaperRepoLinker().link(items)
+    typer.echo(f"Paper-repo links: {len(links)}")
+    for link in links:
+        terms = ", ".join(link.matched_terms)
+        typer.echo(
+            f"{link.paper_item_id} -> {link.repo_item_id} "
+            f"confidence={link.confidence:.2f} reason={link.reason} terms={terms}"
+        )

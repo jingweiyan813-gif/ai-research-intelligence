@@ -108,3 +108,29 @@ Entity extraction responsibilities:
 - Record `ExtractionMetadata` with `method=RULE`, extractor name, version, timestamp, and confidence.
 
 No LLM, embeddings, vector database, scoring, trend engine, report generation, or external API calls are part of this layer.
+
+## Trend Engine And Cross-Source Responsibilities
+
+PR 13 adds basic research-intelligence responsibilities after scoring/ranking.
+
+### Trend Engine
+
+The trend engine reads normalized/scored items and computes topic-level metrics over a recent window:
+
+- current item count and source count
+- paper, repo, Hacker News/community, and company counts
+- previous-window count from `topic_timeseries.json`
+- growth rate, bounded momentum score, novelty score, and trend type
+- representative item IDs ordered by score and recency
+
+Non-noise trends produce deterministic `TrendClaim` objects. Each claim must include evidence references, confidence, and numeric metrics. This makes future reports evidence-grounded instead of free-form assertions.
+
+### Cross-Source Correlation
+
+Cross-source correlation groups items by topic and measures whether that topic appears across multiple source categories. A topic seen in papers plus repos plus community/company updates receives a stronger signal than a topic seen in only one source. Applying correlation updates existing `ScoreBundle.cross_source_correlation`; final score recomputation only happens when scoring weights are available.
+
+### Paper-Repo Linking
+
+Paper-repo linking uses local metadata only. It can link by exact repo mention, arXiv ID mention, strong distinctive token overlap, or shared distinctive entities. It intentionally ignores generic terms such as `agent`, `llm`, `rag`, `ai`, `benchmark`, and `framework` to reduce over-linking.
+
+This PR does not call LLMs, generate final reports, send email, schedule GitHub Actions, add a database, fetch GitHub README files, or download papers.

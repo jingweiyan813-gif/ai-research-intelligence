@@ -304,3 +304,53 @@ airi intelligence extract
 ```
 
 去重会保留代表 item，并通过 duplicate groups 保留被移除 duplicate 的 ID、原因和置信度，避免丢失证据链。
+
+## Scoring 与 Ranking Layer
+
+PR 12 增加了确定性、可解释的评分与排序层：
+
+- `ItemScorer`：按 topic relevance、quality、freshness、popularity、novelty、momentum、personal relevance、cross-source correlation 生成 `ScoreBundle`。
+- `ItemRanker`：按 final score、quality、freshness、时间和标题进行稳定排序。
+- `explain_score()`：输出每个维度的 `ScoreBreakdown` 原因。
+
+评分权重来自 `configs/scoring.yml` 的 ranking profiles。PR 13.5 提供三个明确策略：
+
+- `item_baseline`：适合只有 item-level 信号时使用，强调主题相关性、质量和新鲜度。
+- `intelligence`：默认公开 research intelligence 排序，强调 momentum 和 cross-source correlation。
+- `personal`：适合本地用户偏好重排，提高 personal relevance 权重。
+
+`active_profile` 默认是 `intelligence`。Popularity 权重被刻意压低，避免 GitHub stars、HN score 等流行度信号压过早期但重要的新趋势。
+
+命令：
+
+```bash
+airi rank --top 10
+airi rank --profile item_baseline --top 5
+airi rank --profile intelligence --top 5
+airi rank --profile personal --top 5
+airi rank explain <item_id>
+```
+
+该层不使用 LLM、不调用外部 API、不使用 embeddings、数据库或向量数据库。
+
+## Trend、跨源关联与 Paper-Repo Linking
+
+PR 13 将系统从单条 item 排序推进到基础 research intelligence：
+
+- `TrendEngine`：基于 `latest_items.jsonl` 和 `topic_timeseries.json` 计算 topic 趋势。
+- `CrossSourceAnalyzer`：识别同一 topic 是否同时出现在论文、代码仓库、社区讨论、公司动态或 hackathon 中。
+- `PaperRepoLinker`：用确定性启发式规则连接论文与可能相关的 GitHub repo。
+
+该阶段仍然不使用 LLM、不使用 embeddings、不调用外部 API，也不会下载论文、抓取 README 或生成最终报告。每个 `TrendClaim` 都带有 `EvidenceRef`，便于追溯到支撑该判断的 item。
+
+命令：
+
+```bash
+airi trends
+airi trends --update-timeseries
+airi correlate
+airi correlate --apply
+airi link paper-repos
+```
+
+`topic_timeseries.json` 会保存每日 topic 计数，用于后续周报和趋势报告。Paper-repo linking 是低成本启发式结果，只输出候选关联，不默认写入状态。

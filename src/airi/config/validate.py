@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 
-from airi.config.schema import EmailExampleConfig, ScoringWeights
+from airi.config.schema import EmailExampleConfig, RankingProfile
 
 _SECRET_PLACEHOLDERS = (
     "",
@@ -18,7 +18,7 @@ _SECRET_PLACEHOLDERS = (
 )
 
 
-def validate_scoring_weights_sum(weights: ScoringWeights) -> None:
+def validate_scoring_weights_sum(weights: RankingProfile) -> None:
     total = sum(weights.model_dump().values())
     if abs(total - 1.0) > 0.000001:
         raise ValueError("scoring weights must sum to 1.0")

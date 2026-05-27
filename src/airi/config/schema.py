@@ -62,6 +62,7 @@ class ScoringWeights(StrictConfigModel):
     topic_relevance: float = Field(ge=0.0, le=1.0)
     quality: float = Field(ge=0.0, le=1.0)
     momentum: float = Field(ge=0.0, le=1.0)
+    cross_source_correlation: float = Field(default=0.0, ge=0.0, le=1.0)
     novelty: float = Field(ge=0.0, le=1.0)
     freshness: float = Field(ge=0.0, le=1.0)
     popularity: float = Field(ge=0.0, le=1.0)
@@ -73,6 +74,10 @@ class ScoringWeights(StrictConfigModel):
         if abs(total - 1.0) > 0.000001:
             raise ValueError("scoring weights must sum to 1.0")
         return self
+
+
+class RankingProfile(ScoringWeights):
+    pass
 
 
 class ScoringThresholds(StrictConfigModel):
@@ -88,9 +93,43 @@ class ScoringLimits(StrictConfigModel):
 
 
 class ScoringConfig(StrictConfigModel):
-    weights: ScoringWeights
+    active_profile: str = Field(min_length=1)
+    ranking_profiles: dict[str, RankingProfile]
     thresholds: ScoringThresholds
     limits: ScoringLimits
+
+    @model_validator(mode="before")
+    @classmethod
+    def migrate_flat_weights(cls, data: Any) -> Any:
+        if not isinstance(data, dict):
+            return data
+        if "ranking_profiles" not in data and "weights" in data:
+            migrated = dict(data)
+            migrated["active_profile"] = migrated.get("active_profile", "item_baseline")
+            migrated["ranking_profiles"] = {
+                migrated["active_profile"]: migrated.pop("weights")
+            }
+            return migrated
+        return data
+
+    @model_validator(mode="after")
+    def require_active_profile(self) -> ScoringConfig:
+        if not self.ranking_profiles:
+            raise ValueError("scoring.yml must define at least one ranking profile")
+        if self.active_profile not in self.ranking_profiles:
+            raise ValueError("active_profile must reference a ranking profile")
+        return self
+
+    @property
+    def weights(self) -> RankingProfile:
+        return self.ranking_profiles[self.active_profile]
+
+    def profile_weights(self, profile_name: str | None = None) -> RankingProfile:
+        selected = profile_name or self.active_profile
+        try:
+            return self.ranking_profiles[selected]
+        except KeyError as exc:
+            raise ValueError(f"Unknown ranking profile: {selected}") from exc
 
 
 class ProfileBody(StrictConfigModel):
@@ -147,6 +186,10 @@ class AppConfig(StrictConfigModel):
                 source.id for source in self.sources.sources if source.enabled
             ],
             "primary_topics": [topic.id for topic in self.topics.primary_topics],
-            "scoring_weights": self.scoring.weights.model_dump(),
+            "active_ranking_profile": self.scoring.active_profile,
+            "ranking_profiles": {
+                name: profile.model_dump()
+                for name, profile in self.scoring.ranking_profiles.items()
+            },
             "local_overrides": self.local_overrides,
         }
