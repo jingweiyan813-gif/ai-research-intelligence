@@ -40,3 +40,9 @@ Step 4 separates public state from private raw/cache data:
 - `data/raw` is private and gitignored.
 
 Do not store private Obsidian vault content, personal notes, credentials, cookies, raw private exports, or private API responses in public directories. If future local workflows need raw payloads or temporary API responses, they should use `data/raw` or `data/cache`, which are excluded from version control by default.
+
+## License And Private Data
+
+The MIT License applies to the public code and documentation in this repository only. It does not grant rights over private notes, local configs, secrets, Obsidian vaults, unpublished datasets, or any personal files that are not part of the public repository.
+
+The public repository must never read private notes, Obsidian vaults, local secret configs, or credentials by default. Local-only files such as `.env`, `*.local.yml`, `configs/*.local.yml`, `personal/`, `private/`, `vault/`, `data/raw/`, `data/cache/`, and `.cache/` remain protected by `.gitignore`.

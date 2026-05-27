@@ -12,9 +12,11 @@ from airi.config import ConfigLoadError, load_app_config
 from airi.connectors import (
     ArxivConnector,
     CompanyBlogsConnector,
+    DevpostConnector,
     FakeConnector,
     GitHubConnector,
     HackerNewsConnector,
+    OpenReviewConnector,
 )
 from airi.pipeline import FetchPipeline
 from airi.storage import StateStore, StoragePaths
@@ -272,6 +274,75 @@ def fetch_company(
         strict=strict,
         days=days,
     )
+
+
+@fetch_app.command("openreview")
+def fetch_openreview(
+    limit: int | None = typer.Option(None, "--limit", min=1, help="Max notes."),
+    no_save: bool = typer.Option(False, "--no-save", help="Do not write state files."),
+    strict: bool = typer.Option(False, "--strict", help="Fail on connector errors."),
+    days: int | None = typer.Option(None, "--days", min=1, help="Freshness window."),
+) -> None:
+    """Run the metadata-only OpenReview fetch pipeline."""
+    _run_configured_single_source(
+        source_id="openreview",
+        connector_factory=OpenReviewConnector,
+        limit=limit,
+        no_save=no_save,
+        strict=strict,
+        days=days,
+    )
+
+
+@fetch_app.command("devpost")
+def fetch_devpost(
+    limit: int | None = typer.Option(None, "--limit", min=1, help="Max hackathons."),
+    no_save: bool = typer.Option(False, "--no-save", help="Do not write state files."),
+    strict: bool = typer.Option(False, "--strict", help="Fail on connector errors."),
+    days: int | None = typer.Option(None, "--days", min=1, help="Days ahead."),
+) -> None:
+    """Run the metadata-only Devpost fetch pipeline."""
+    try:
+        app_config = load_app_config()
+    except ConfigLoadError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+
+    devpost_config = next(
+        (
+            candidate
+            for candidate in app_config.sources.sources
+            if candidate.id == "devpost"
+        ),
+        None,
+    )
+    if devpost_config is None:
+        typer.echo("devpost source config not found", err=True)
+        raise typer.Exit(code=1)
+    if days is not None:
+        devpost_config = devpost_config.model_copy(update={"days_ahead": days})
+
+    paths = StoragePaths.default()
+    pipeline = FetchPipeline(
+        connectors=[DevpostConnector(devpost_config)],
+        state_store=StateStore(paths),
+    )
+    try:
+        result = pipeline.run(limit_per_source=limit, strict=strict, save=not no_save)
+    except RuntimeError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
+
+    typer.echo(f"Total items: {result.total_items}")
+    typer.echo(f"Total errors: {result.total_errors}")
+    for connector_result in result.connector_results:
+        typer.echo(
+            "Source "
+            f"{connector_result.source.value}: "
+            f"raw={connector_result.raw_count}, "
+            f"normalized={connector_result.normalized_count}, "
+            f"errors={len(connector_result.errors)}"
+        )
 
 
 def _run_configured_single_source(

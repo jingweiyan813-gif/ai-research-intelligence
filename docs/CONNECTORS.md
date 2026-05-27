@@ -176,3 +176,57 @@ Normalization behavior:
 - Feed/company name maps to `CompanySignals.company_name`.
 - `CompanySignals.is_official_announcement` is true.
 - Bad feeds are captured as connector errors without failing all feeds.
+
+## OpenReview Connector
+
+`OpenReviewConnector` is implemented in `src/airi/connectors/openreview.py`.
+
+Scope:
+
+- Fetches public OpenReview note/submission metadata where available.
+- Does not require login.
+- Does not download PDFs.
+- Does not assume one fixed schema across venues.
+- Does not score, dedupe, summarize, or classify papers.
+
+Config fields from `configs/sources.yml`:
+
+- `venues`: venue invitation/group identifiers where supported.
+- `queries`: keyword search terms used as API query fallback.
+- `freshness_days`: recency filter based on `cdate` / `mdate` when available.
+- `max_results`: result cap.
+- `enabled`: false by default because OpenReview schemas vary by venue.
+
+Normalization behavior:
+
+- Notes become `ItemType.PAPER` items.
+- Content fields are read defensively from either plain values or `{value: ...}` objects.
+- Venue and keywords map to `PaperSignals`.
+- Missing abstract/authors do not crash normalization.
+
+## Devpost Connector
+
+`DevpostConnector` is implemented in `src/airi/connectors/devpost.py`.
+
+Scope:
+
+- Fetches metadata from configured Devpost listing/search URLs.
+- Does not aggressively crawl.
+- Does not fetch unrelated pages.
+- Does not scrape full project contents.
+- Does not score, dedupe, or classify hackathons.
+
+Config fields from `configs/sources.yml`:
+
+- `keywords`: title/tag/snippet filters.
+- `days_ahead`: deadline window.
+- `listing_urls`: configured listing/search pages.
+- `max_results`: result cap.
+- `enabled`: false by default because page structure may change.
+
+Normalization behavior:
+
+- Entries become `ItemType.HACKATHON` items.
+- Deadline, prize, and remote/online flag map to `HackathonSignals`.
+- Tags and matched keywords become item keywords.
+- Malformed cards are skipped.

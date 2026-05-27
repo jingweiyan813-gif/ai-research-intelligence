@@ -23,6 +23,16 @@ sources:
     url: https://openreview.net
     description: Conference submissions and reviews where public access is available.
     tags: [research, conferences]
+    venues:
+      - ICLR.cc/2025/Conference
+      - NeurIPS.cc/2025/Conference
+    queries:
+      - agent
+      - coding agent
+      - tool use
+      - retrieval augmented generation
+    max_results: 50
+    freshness_days: 180
   - id: github
     name: GitHub
     enabled: true
@@ -81,3 +91,13 @@ sources:
     url: https://devpost.com
     description: Public hackathon projects and prototypes.
     tags: [projects, prototypes]
+    keywords:
+      - ai agent
+      - llm
+      - developer tools
+      - hackathon
+      - machine learning
+    max_results: 30
+    days_ahead: 120
+    listing_urls:
+      - https://devpost.com/hackathons

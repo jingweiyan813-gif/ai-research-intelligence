@@ -25,6 +25,9 @@ class SourceConfig(StrictConfigModel):
     keywords: list[str] = Field(default_factory=list)
     min_score: int | None = Field(default=None, ge=0)
     feeds: list[dict[str, str]] = Field(default_factory=list)
+    venues: list[str] = Field(default_factory=list)
+    days_ahead: int | None = Field(default=None, gt=0)
+    listing_urls: list[str] = Field(default_factory=list)
 
 
 class SourcesConfig(StrictConfigModel):

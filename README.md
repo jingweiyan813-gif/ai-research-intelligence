@@ -1,5 +1,9 @@
 # ai-research-intelligence
 
+[![CI](https://github.com/jingweiyan813-gif/ai-research-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/jingweiyan813-gif/ai-research-intelligence/actions)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+
 ## 一句话定位
 
 ai-research-intelligence（简称 AIRI）是一个面向 AI 研究与产品动态的本地优先情报流水线骨架，用于后续把公开来源的信息整理成可追踪、可去重、可评分、可报告的研究线索。
@@ -244,3 +248,37 @@ airi fetch company --limit 2 --no-save
 ```
 
 当前仍不实现 OpenReview、Devpost、评分、去重、主题/实体抽取、趋势算法、LLM、报告、邮件或数据库。
+
+## OpenReview 与 Devpost 连接器
+
+PR 10 增加了两个默认关闭的可选来源：`OpenReviewConnector` 和 `DevpostConnector`。
+
+OpenReview 连接器用于获取公开 research-review metadata：
+
+- 读取公开 note/submission 元数据。
+- 不需要登录。
+- 不下载 PDF。
+- 不假设所有 venue 使用同一 schema。
+- 根据 venues、queries、freshness_days 和 max_results 配置运行。
+
+Devpost 连接器用于获取 hackathon/opportunity metadata：
+
+- 读取配置的 listing/search 页面并做 best-effort metadata 解析。
+- 不激进爬取，不抓取无关页面。
+- 根据 keywords、days_ahead、listing_urls 和 max_results 配置运行。
+- Devpost 页面结构可能变化，因此该连接器默认关闭。
+
+OpenReview 和 Devpost 都默认 `enabled: false`，因为它们属于可选且更不稳定的外部来源。需要使用时请在本地配置中显式启用。
+
+命令：
+
+```bash
+airi fetch openreview --limit 2 --no-save
+airi fetch devpost --limit 2 --no-save
+```
+
+## License
+
+本项目使用 MIT License，详见 `LICENSE`。
+
+MIT 只覆盖公开仓库中的代码与文档，不覆盖你的私人笔记、本地配置、secrets、Obsidian vault 或任何未提交到公开仓库的私人数据。

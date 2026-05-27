@@ -128,3 +128,13 @@ Step 9 adds two metadata-only ecosystem signal sources.
 `CompanyBlogsConnector` captures official company and lab movement from configured RSS/Atom feeds. It reads feed entry metadata only and does not scrape full article pages.
 
 Both connectors are config-driven, low-cost, and source-isolated by the fetch pipeline. Their outputs feed the same `RawSourceItem` and `IntelligenceItem` contracts as arXiv and GitHub, preserving payload hashes, source metadata, canonical URLs, source-specific signals, and content fingerprints.
+
+## Research Review And Opportunity Sources
+
+PR 10 completes the current ingestion layer with two optional metadata sources.
+
+`OpenReviewConnector` adds public research-review metadata from configurable venues and query terms. It is defensive because OpenReview content schemas differ across venues, and it never downloads PDFs.
+
+`DevpostConnector` adds hackathon/opportunity metadata from configured listing URLs. It is intentionally best-effort and disabled by default because Devpost page structure may change. It does not aggressively crawl or scrape unrelated pages.
+
+Both connectors plug into the same `BaseConnector` and `FetchPipeline` contracts, preserving source health, raw payload hashes, source metadata, canonical URLs, and normalized `IntelligenceItem` outputs.
