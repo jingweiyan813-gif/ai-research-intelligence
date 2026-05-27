@@ -1,11 +1,11 @@
 {
-  "unknown": {
-    "source": "unknown",
-    "raw_count": 3,
-    "normalized_count": 3,
+  "company_blogs": {
+    "source": "company_blogs",
+    "raw_count": 10,
+    "normalized_count": 10,
     "error_count": 0,
     "errors": [],
-    "started_at": "2026-05-27T11:34:11.440355+00:00",
-    "completed_at": "2026-05-27T11:34:11.440603+00:00"
+    "started_at": "2026-05-27T11:42:16.034492+00:00",
+    "completed_at": "2026-05-27T11:42:16.353745+00:00"
   }
 }
