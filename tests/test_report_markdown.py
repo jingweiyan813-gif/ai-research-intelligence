@@ -19,7 +19,7 @@ def test_format_item_line_contains_score_source_title_and_url() -> None:
 
     line = format_item_line(item, rank=1)
 
-    assert line.startswith("1. score=n/a [arxiv/paper]")
+    assert line.startswith("1. 分数=n/a [arxiv/paper]")
     assert "[Test Item](https://example.com/item/1)" in line
 
 

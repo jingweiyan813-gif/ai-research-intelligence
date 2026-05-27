@@ -43,14 +43,14 @@ class ItemScorer:
             item,
             breakdowns,
             "momentum",
-            "Trend engine not yet enabled; momentum is placeholder 0.0.",
+            "趋势引擎尚未参与该条目评分，动量分暂为 0。",
         )
         personal_relevance = self._personal_relevance(item, breakdowns)
         cross_source_correlation = self._placeholder(
             item,
             breakdowns,
             "cross_source_correlation",
-            "Cross-source correlation not yet enabled; score is placeholder 0.0.",
+            "跨源关联尚未参与该条目评分，关联分暂为 0。",
         )
         weighted_sum = (
             self.weights.get("topic_relevance", 0.0) * topic_relevance
@@ -68,7 +68,7 @@ class ItemScorer:
             ScoreBreakdown(
                 dimension="final_score",
                 score=final_score,
-                reason="Weighted sum from configured scoring weights.",
+                reason="根据当前排序策略的配置权重加权计算。",
                 evidence_item_ids=[item.id],
             )
         )
@@ -101,8 +101,8 @@ class ItemScorer:
             score -= 0.2
         score = _clamp(score)
         reason = (
-            f"{len(item.topics)} topics; "
-            f"{len(matching_interests)} profile matches."
+            f"命中 {len(item.topics)} 个主题，"
+            f"匹配 {len(matching_interests)} 个个人兴趣。"
         )
         breakdowns.append(_breakdown(item, "topic_relevance", score, reason))
         return score
@@ -116,17 +116,17 @@ class ItemScorer:
         reasons = []
         if item.title:
             score += 0.1
-            reasons.append("title present")
+            reasons.append("标题信息完整")
         if item.abstract or item.content_snippet:
             score += 0.15
-            reasons.append("description present")
+            reasons.append("描述信息完整")
         if item.item_type == ItemType.PAPER and item.signals.paper is not None:
             if item.signals.paper.paper_categories:
                 score += 0.2
-                reasons.append("paper categories present")
+                reasons.append("包含论文分类信息")
             if item.signals.paper.venue:
                 score += 0.2
-                reasons.append("venue present")
+                reasons.append("包含 venue 信息")
         elif item.item_type == ItemType.REPO and item.signals.github is not None:
             stars = item.signals.github.stars or 0
             forks = item.signals.github.forks or 0
@@ -134,14 +134,14 @@ class ItemScorer:
             score += min(0.15, math.log10(forks + 1) / 15)
             if item.signals.github.last_pushed_at is not None:
                 score += 0.1
-            reasons.append("GitHub repository metadata")
+            reasons.append("包含 GitHub repository metadata")
         elif (
             item.item_type == ItemType.DISCUSSION
             and item.signals.community is not None
         ):
             score += min(0.35, (item.signals.community.hn_score or 0) / 500)
             score += min(0.15, (item.signals.community.hn_comments or 0) / 300)
-            reasons.append("Hacker News engagement")
+            reasons.append("包含 Hacker News 互动信号")
         elif (
             item.item_type == ItemType.COMPANY_UPDATE
             and item.signals.company is not None
@@ -150,7 +150,7 @@ class ItemScorer:
                 score += 0.35
             if item.signals.company.company_name:
                 score += 0.15
-            reasons.append("official company update")
+            reasons.append("官方公司 / 实验室动态")
         elif (
             item.item_type == ItemType.HACKATHON
             and item.signals.hackathon is not None
@@ -161,10 +161,15 @@ class ItemScorer:
                 score += 0.1
             if item.signals.hackathon.prize_amount:
                 score += 0.15
-            reasons.append("hackathon metadata")
+            reasons.append("包含黑客松 metadata")
         score = _clamp(score)
         breakdowns.append(
-            _breakdown(item, "quality", score, "; ".join(reasons) or "basic metadata")
+            _breakdown(
+                item,
+                "quality",
+                score,
+                "；".join(reasons) or "基础 metadata 完整",
+            )
         )
         return score
 
@@ -185,7 +190,7 @@ class ItemScorer:
         )
         score = _clamp(0.5 ** (age_days / float(half_life)))
         breakdowns.append(
-            _breakdown(item, "freshness", score, f"Age is {age_days:.1f} days.")
+            _breakdown(item, "freshness", score, f"距今约 {age_days:.1f} 天。")
         )
         return score
 
@@ -195,24 +200,24 @@ class ItemScorer:
         breakdowns: list[ScoreBreakdown],
     ) -> float:
         score = 0.2
-        reason = "No strong popularity signal; low neutral score."
+        reason = "暂无明显热度信号，使用较低的中性热度分。"
         if item.signals.github is not None:
             stars = item.signals.github.stars or 0
             forks = item.signals.github.forks or 0
             score = _clamp(math.log10(stars + 1) / 5 + math.log10(forks + 1) / 10)
-            reason = f"GitHub stars={stars}, forks={forks}."
+            reason = f"GitHub 星标数={stars}，fork 数={forks}。"
         elif item.signals.community is not None:
             hn_score = item.signals.community.hn_score or 0
             comments = item.signals.community.hn_comments or 0
             score = _clamp(hn_score / 500 + comments / 500)
-            reason = f"HN score={hn_score}, comments={comments}."
+            reason = f"HN 分数={hn_score}，评论数={comments}。"
         elif (
             item.signals.paper is not None
             and item.signals.paper.citation_count is not None
         ):
             citations = item.signals.paper.citation_count
             score = _clamp(math.log10(citations + 1) / 4)
-            reason = f"Citation count={citations}."
+            reason = f"引用数={citations}。"
         breakdowns.append(_breakdown(item, "popularity", score, reason))
         return score
 
@@ -228,7 +233,7 @@ class ItemScorer:
                 item,
                 "novelty",
                 score,
-                "Existing novelty score or default new-item score.",
+                "该条目暂无历史记录，按新条目处理。",
             )
         )
         return score
@@ -255,12 +260,17 @@ class ItemScorer:
             if normalize_for_matching(interest) in text
         ]
         score = _clamp(0.2 + 0.25 * len(matches)) if self.profile_interests else 0.3
+        reason = (
+            "未命中个人兴趣配置。"
+            if not matches
+            else f"命中个人兴趣配置：{', '.join(matches)}。"
+        )
         breakdowns.append(
             _breakdown(
                 item,
                 "personal_relevance",
                 score,
-                f"Profile interest matches: {matches}.",
+                reason,
             )
         )
         return score

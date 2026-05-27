@@ -169,6 +169,29 @@ def test_personal_relevance_matches_profile_interests() -> None:
     assert scores.personal_relevance > 0.2
 
 
+def test_score_breakdown_reasons_are_chinese() -> None:
+    item = make_item(topics=["ai_agents"])
+
+    scores = scorer({"profile": {"interests": []}}).score(item)
+    reasons = "\n".join(breakdown.reason for breakdown in scores.breakdowns)
+
+    assert "该条目暂无历史记录，按新条目处理。" in reasons
+    assert "暂无明显热度信号，使用较低的中性热度分。" in reasons
+    assert "根据当前排序策略的配置权重加权计算。" in reasons
+    assert "未命中个人兴趣配置。" in reasons
+    assert "趋势引擎尚未参与该条目评分" in reasons
+    assert "跨源关联尚未参与该条目评分" in reasons
+    for english_reason in [
+        "Existing novelty score",
+        "No strong popularity signal",
+        "Weighted sum from configured scoring weights",
+        "Profile interest matches",
+        "Trend engine not yet enabled",
+        "Cross-source correlation not yet enabled",
+    ]:
+        assert english_reason not in reasons
+
+
 def test_scorer_can_use_named_ranking_profile() -> None:
     item = make_item(topics=["ai_agents"])
 

@@ -90,7 +90,7 @@ def _update_correlation_score(
         ScoreBreakdown(
             dimension="cross_source_correlation",
             score=strength,
-            reason=f"Deterministic cross-source topic signal strength {strength:.2f}.",
+            reason=f"确定性跨源 topic 信号强度为 {strength:.2f}。",
             evidence_item_ids=[item.id],
         )
     )
@@ -101,7 +101,7 @@ def _update_correlation_score(
             ScoreBreakdown(
                 dimension="final_score",
                 score=final_score,
-                reason="Weighted sum after cross-source correlation update.",
+                reason="结合跨源关联分后按当前排序策略权重重新加权计算。",
                 evidence_item_ids=[item.id],
             )
         )

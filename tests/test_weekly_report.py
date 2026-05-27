@@ -76,6 +76,25 @@ def test_weekly_report_includes_top_ranked_items_and_evidence(tmp_path) -> None:
         generated_at=datetime(2026, 5, 27, tzinfo=timezone.utc)
     ).generate(items, trends, [], [])
 
-    assert "1. score=" in report
+    assert "1. 分数=" in report
     assert "证据：" in report
     assert "`p1`" in report or "`p2`" in report
+
+
+def test_weekly_report_uses_chinese_score_reasons(tmp_path) -> None:  # type: ignore[no-untyped-def]
+    state = StateStore(StoragePaths.default(tmp_path))
+    items = [_scored("p1", topics=["agents"])]
+    trends = TrendEngine(state).analyze(items)
+
+    report = WeeklyReportGenerator(
+        generated_at=datetime(2026, 5, 27, tzinfo=timezone.utc)
+    ).generate(items, trends, [], [])
+
+    assert "该条目暂无历史记录，按新条目处理。" in report
+    for english_reason in [
+        "Existing novelty score",
+        "No strong popularity signal",
+        "Weighted sum from configured scoring weights",
+        "Profile interest matches",
+    ]:
+        assert english_reason not in report

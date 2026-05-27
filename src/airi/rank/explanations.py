@@ -5,8 +5,8 @@ from airi.models import IntelligenceItem
 
 def explain_score(item: IntelligenceItem) -> str:
     if item.scores is None:
-        return f"{item.id}: no score available"
-    lines = [f"{item.title}", f"Final score: {item.scores.final_score:.3f}"]
+        return f"{item.id}: 暂无评分"
+    lines = [f"{item.title}", f"最终分数: {item.scores.final_score:.3f}"]
     for breakdown in item.scores.breakdowns:
         lines.append(
             f"- {breakdown.dimension}: {breakdown.score:.3f} — {breakdown.reason}"

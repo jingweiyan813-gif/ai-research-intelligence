@@ -41,7 +41,9 @@ def test_cli_airi_rank_explain_works(monkeypatch, isolated_cwd) -> None:  # type
     result = runner.invoke(app, ["rank", "explain", "a"])
 
     assert result.exit_code == 0
-    assert "Final score" in result.output
+    assert "最终分数" in result.output
+    assert "根据当前排序策略的配置权重加权计算" in result.output
+    assert "Weighted sum from configured scoring weights" not in result.output
 
 
 def test_cli_airi_rank_profile_override_works(monkeypatch, isolated_cwd) -> None:  # type: ignore[no-untyped-def]

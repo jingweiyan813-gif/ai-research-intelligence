@@ -11,12 +11,13 @@ def test_explain_score_lists_breakdowns() -> None:
 
     explanation = explain_score(item)
 
-    assert "Final score" in explanation
+    assert "最终分数" in explanation
+    assert "根据当前排序策略的配置权重加权计算" in explanation
     assert "topic_relevance" in explanation
 
 
 def test_explain_score_handles_unscored_item() -> None:
-    assert "no score" in explain_score(make_item())
+    assert "暂无评分" in explain_score(make_item())
 
 
 def test_summarize_top_items_plain_text() -> None:

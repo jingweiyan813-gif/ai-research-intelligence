@@ -40,8 +40,8 @@ def format_item_line(item: IntelligenceItem, rank: int | None = None) -> str:
 
 def format_score(item: IntelligenceItem) -> str:
     if item.scores is None:
-        return "score=n/a"
-    return f"score={item.scores.final_score:.3f}"
+        return "分数=n/a"
+    return f"分数={item.scores.final_score:.3f}"
 
 
 def format_evidence_refs(refs: Iterable[EvidenceRef]) -> str:
@@ -71,6 +71,6 @@ def safe_markdown_text(text: Any) -> str:
 def _render(title: str, sections: Iterable[tuple[str, str]]) -> str:
     parts = [f"# {safe_markdown_text(title)}"]
     for heading, body in sections:
-        cleaned = body.strip() or "No items."
+        cleaned = body.strip() or "暂无内容。"
         parts.append(f"## {safe_markdown_text(heading)}\n{cleaned}")
     return "\n\n".join(parts).rstrip() + "\n"

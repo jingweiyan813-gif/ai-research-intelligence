@@ -15,7 +15,7 @@ def main() -> None:
     report = generate_alerts_report()
     print(f"Alerts report: {report}")
     text = report.read_text(encoding="utf-8")
-    no_alerts = "No high-signal alerts." in text
+    no_alerts = "暂无高信号提醒。" in text
     maybe_email_report(
         report,
         no_email=args.no_email or no_alerts,
