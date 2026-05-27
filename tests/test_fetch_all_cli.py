@@ -61,62 +61,60 @@ class FixedConnector(BaseConnector):
         )
 
 
-def test_fetch_all_aggregates_multiple_enabled_sources(monkeypatch) -> None:  # type: ignore[no-untyped-def]
+def test_fetch_all_aggregates_multiple_enabled_sources(  # type: ignore[no-untyped-def]
+    monkeypatch,
+    isolated_cwd,
+) -> None:
     _patch_config_and_connectors(monkeypatch)
-    with runner.isolated_filesystem():
-        result = runner.invoke(app, ["fetch", "all", "--limit-per-source", "2"])
-        state = StateStore(StoragePaths.default())
+    result = runner.invoke(app, ["fetch", "all", "--limit-per-source", "2"])
+    state = StateStore(StoragePaths.default())
 
-        assert result.exit_code == 0
-        assert "Total items: 4" in result.output
-        assert "Source arxiv: raw=2, normalized=2, errors=0" in result.output
-        assert "Source github: raw=2, normalized=2, errors=0" in result.output
-        assert len(state.load_latest_items()) == 4
-        assert set(state.load_source_health()) == {"arxiv", "github"}
+    assert result.exit_code == 0
+    assert "Total items: 4" in result.output
+    assert "Source arxiv: raw=2, normalized=2, errors=0" in result.output
+    assert "Source github: raw=2, normalized=2, errors=0" in result.output
+    assert len(state.load_latest_items()) == 4
+    assert set(state.load_source_health()) == {"arxiv", "github"}
 
 
-def test_fetch_all_no_save_does_not_write(monkeypatch) -> None:  # type: ignore[no-untyped-def]
+def test_fetch_all_no_save_does_not_write(monkeypatch, isolated_cwd) -> None:  # type: ignore[no-untyped-def]
     _patch_config_and_connectors(monkeypatch)
-    with runner.isolated_filesystem():
-        result = runner.invoke(
-            app,
-            ["fetch", "all", "--limit-per-source", "1", "--no-save"],
-        )
-        state = StateStore(StoragePaths.default())
+    result = runner.invoke(
+        app,
+        ["fetch", "all", "--limit-per-source", "1", "--no-save"],
+    )
+    state = StateStore(StoragePaths.default())
 
-        assert result.exit_code == 0
-        assert "Total items: 2" in result.output
-        assert state.load_latest_items() == []
+    assert result.exit_code == 0
+    assert "Total items: 2" in result.output
+    assert state.load_latest_items() == []
 
 
-def test_fetch_all_skips_disabled_sources(monkeypatch) -> None:  # type: ignore[no-untyped-def]
+def test_fetch_all_skips_disabled_sources(monkeypatch, isolated_cwd) -> None:  # type: ignore[no-untyped-def]
     _patch_config_and_connectors(monkeypatch, include_openreview=True)
-    with runner.isolated_filesystem():
-        result = runner.invoke(app, ["fetch", "all", "--limit-per-source", "1"])
+    result = runner.invoke(app, ["fetch", "all", "--limit-per-source", "1"])
 
-        assert result.exit_code == 0
-        assert "Source openreview" not in result.output
+    assert result.exit_code == 0
+    assert "Source openreview" not in result.output
 
 
-def test_fetch_all_non_strict_continues_on_error(monkeypatch) -> None:  # type: ignore[no-untyped-def]
+def test_fetch_all_non_strict_continues_on_error(monkeypatch, isolated_cwd) -> None:  # type: ignore[no-untyped-def]
     _patch_config_and_connectors(monkeypatch, fail_github=True)
-    with runner.isolated_filesystem():
-        result = runner.invoke(app, ["fetch", "all", "--limit-per-source", "1"])
-        state = StateStore(StoragePaths.default())
+    result = runner.invoke(app, ["fetch", "all", "--limit-per-source", "1"])
+    state = StateStore(StoragePaths.default())
 
-        assert result.exit_code == 0
-        assert "Total items: 1" in result.output
-        assert "Total errors: 1" in result.output
-        assert len(state.load_latest_items()) == 1
+    assert result.exit_code == 0
+    assert "Total items: 1" in result.output
+    assert "Total errors: 1" in result.output
+    assert len(state.load_latest_items()) == 1
 
 
-def test_fetch_all_strict_fails_on_error(monkeypatch) -> None:  # type: ignore[no-untyped-def]
+def test_fetch_all_strict_fails_on_error(monkeypatch, isolated_cwd) -> None:  # type: ignore[no-untyped-def]
     _patch_config_and_connectors(monkeypatch, fail_github=True)
-    with runner.isolated_filesystem():
-        result = runner.invoke(app, ["fetch", "all", "--strict"])
+    result = runner.invoke(app, ["fetch", "all", "--strict"])
 
-        assert result.exit_code == 1
-        assert "Connector fixed failed" in result.output
+    assert result.exit_code == 1
+    assert "Connector fixed failed" in result.output
 
 
 def _patch_config_and_connectors(

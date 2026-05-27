@@ -11,74 +11,70 @@ from tests.factories import make_item
 runner = CliRunner()
 
 
-def test_cli_airi_rank_works_on_latest_items(monkeypatch) -> None:  # type: ignore[no-untyped-def]
+def test_cli_airi_rank_works_on_latest_items(monkeypatch, isolated_cwd) -> None:  # type: ignore[no-untyped-def]
     import airi.cli as cli_module
 
     monkeypatch.setattr(cli_module, "load_app_config", _fake_app_config)
-    with runner.isolated_filesystem():
-        state = StateStore(StoragePaths.default())
-        state.save_latest_items(
-            [make_item(item_id="a", topics=["ai_agents"]).model_dump(mode="json")]
-        )
+    state = StateStore(StoragePaths.default())
+    state.save_latest_items(
+        [make_item(item_id="a", topics=["ai_agents"]).model_dump(mode="json")]
+    )
 
-        result = runner.invoke(app, ["rank", "--top", "10"])
+    result = runner.invoke(app, ["rank", "--top", "10"])
 
-        assert result.exit_code == 0
-        assert "AI Agent Paper" in result.output
-        saved = state.load_latest_items()[0]
-        assert saved["scores"]["final_score"] >= 0
+    assert result.exit_code == 0
+    assert "AI Agent Paper" in result.output
+    saved = state.load_latest_items()[0]
+    assert saved["scores"]["final_score"] >= 0
 
 
-def test_cli_airi_rank_explain_works(monkeypatch) -> None:  # type: ignore[no-untyped-def]
+def test_cli_airi_rank_explain_works(monkeypatch, isolated_cwd) -> None:  # type: ignore[no-untyped-def]
     import airi.cli as cli_module
 
     monkeypatch.setattr(cli_module, "load_app_config", _fake_app_config)
-    with runner.isolated_filesystem():
-        state = StateStore(StoragePaths.default())
-        state.save_latest_items(
-            [make_item(item_id="a", topics=["ai_agents"]).model_dump(mode="json")]
-        )
-        runner.invoke(app, ["rank"])
+    state = StateStore(StoragePaths.default())
+    state.save_latest_items(
+        [make_item(item_id="a", topics=["ai_agents"]).model_dump(mode="json")]
+    )
+    runner.invoke(app, ["rank"])
 
-        result = runner.invoke(app, ["rank", "explain", "a"])
+    result = runner.invoke(app, ["rank", "explain", "a"])
 
-        assert result.exit_code == 0
-        assert "Final score" in result.output
+    assert result.exit_code == 0
+    assert "Final score" in result.output
 
 
-def test_cli_airi_rank_profile_override_works(monkeypatch) -> None:  # type: ignore[no-untyped-def]
+def test_cli_airi_rank_profile_override_works(monkeypatch, isolated_cwd) -> None:  # type: ignore[no-untyped-def]
     import airi.cli as cli_module
 
     monkeypatch.setattr(cli_module, "load_app_config", _fake_app_config)
-    with runner.isolated_filesystem():
-        state = StateStore(StoragePaths.default())
-        state.save_latest_items(
-            [make_item(item_id="a", topics=["ai_agents"]).model_dump(mode="json")]
-        )
+    state = StateStore(StoragePaths.default())
+    state.save_latest_items(
+        [make_item(item_id="a", topics=["ai_agents"]).model_dump(mode="json")]
+    )
 
-        result = runner.invoke(
-            app,
-            ["rank", "--profile", "item_baseline", "--top", "5"],
-        )
+    result = runner.invoke(
+        app,
+        ["rank", "--profile", "item_baseline", "--top", "5"],
+    )
 
-        assert result.exit_code == 0
-        assert "AI Agent Paper" in result.output
+    assert result.exit_code == 0
+    assert "AI Agent Paper" in result.output
 
 
-def test_cli_airi_rank_invalid_profile_fails(monkeypatch) -> None:  # type: ignore[no-untyped-def]
+def test_cli_airi_rank_invalid_profile_fails(monkeypatch, isolated_cwd) -> None:  # type: ignore[no-untyped-def]
     import airi.cli as cli_module
 
     monkeypatch.setattr(cli_module, "load_app_config", _fake_app_config)
-    with runner.isolated_filesystem():
-        state = StateStore(StoragePaths.default())
-        state.save_latest_items(
-            [make_item(item_id="a", topics=["ai_agents"]).model_dump(mode="json")]
-        )
+    state = StateStore(StoragePaths.default())
+    state.save_latest_items(
+        [make_item(item_id="a", topics=["ai_agents"]).model_dump(mode="json")]
+    )
 
-        result = runner.invoke(app, ["rank", "--profile", "missing"])
+    result = runner.invoke(app, ["rank", "--profile", "missing"])
 
-        assert result.exit_code == 1
-        assert "Unknown ranking profile" in result.output
+    assert result.exit_code == 1
+    assert "Unknown ranking profile" in result.output
 
 
 def _fake_app_config() -> SimpleNamespace:
