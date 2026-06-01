@@ -26,8 +26,8 @@
     "title": "OpenAI named a Leader in enterprise coding agents by Gartner",
     "source": "company_blogs",
     "first_seen_at": "2026-05-27T08:04:49.430254+00:00",
-    "last_seen_at": "2026-05-27T11:42:16.405323+00:00",
-    "seen_count": 3
+    "last_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "seen_count": 4
   },
   "item_213b46320a98": {
     "item_id": "item_213b46320a98",
@@ -36,8 +36,8 @@
     "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
     "source": "company_blogs",
     "first_seen_at": "2026-05-27T08:04:49.430254+00:00",
-    "last_seen_at": "2026-05-27T11:42:16.405323+00:00",
-    "seen_count": 3
+    "last_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "seen_count": 4
   },
   "item_98f5251dde82": {
     "item_id": "item_98f5251dde82",
@@ -46,8 +46,8 @@
     "title": "OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments",
     "source": "company_blogs",
     "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
-    "last_seen_at": "2026-05-27T11:42:16.405323+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "seen_count": 3
   },
   "item_7a7dc2d2a32c": {
     "item_id": "item_7a7dc2d2a32c",
@@ -56,8 +56,8 @@
     "title": "Databricks brings GPT-5.5 to enterprise agent workflows",
     "source": "company_blogs",
     "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
-    "last_seen_at": "2026-05-27T11:42:16.405323+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "seen_count": 3
   },
   "item_142289eaf243": {
     "item_id": "item_142289eaf243",
@@ -66,8 +66,8 @@
     "title": "Sea's View on the Future of Agentic Software Development with Codex",
     "source": "company_blogs",
     "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
-    "last_seen_at": "2026-05-27T11:42:16.405323+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "seen_count": 3
   },
   "item_49c5d7937dbc": {
     "item_id": "item_49c5d7937dbc",
@@ -118,5 +118,55 @@
     "first_seen_at": "2026-05-27T11:22:58.334318+00:00",
     "last_seen_at": "2026-05-27T11:42:16.405323+00:00",
     "seen_count": 2
+  },
+  "item_e4e86c4b3108": {
+    "item_id": "item_e4e86c4b3108",
+    "canonical_url": "https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense",
+    "content_fingerprint": "26851d8ab6eaec641754399eca206f233d1c4456ce7a2d967d6b316959e49474",
+    "title": "Strengthening societal resilience with Rosalind Biodefense",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "last_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "seen_count": 1
+  },
+  "item_258586b1322b": {
+    "item_id": "item_258586b1322b",
+    "canonical_url": "https://openai.com/index/trustworthy-third-party-evaluations-foundations",
+    "content_fingerprint": "a3af7a5cc2519867e310ad3fb85db5ab57be711da5c25ef768e979a17aa077e6",
+    "title": "A shared playbook for trustworthy third party evaluations",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "last_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "seen_count": 1
+  },
+  "item_fcf99ba97837": {
+    "item_id": "item_fcf99ba97837",
+    "canonical_url": "https://openai.com/index/endava",
+    "content_fingerprint": "ca00c7695985442688a4611f43f7a7e5e948c2cf23c43bff36fb4b8a188c1bc8",
+    "title": "How Endava builds an agentic organization with Codex",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "last_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "seen_count": 1
+  },
+  "item_112cdc516513": {
+    "item_id": "item_112cdc516513",
+    "canonical_url": "https://openai.com/index/building-self-improving-tax-agents-with-codex",
+    "content_fingerprint": "c30d02eaade31c4f8e580fd9d6910a8c7ca9a61e931c788dfc5d71eede9260dd",
+    "title": "Building self-improving tax agents with Codex",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "last_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "seen_count": 1
+  },
+  "item_030e8334c866": {
+    "item_id": "item_030e8334c866",
+    "canonical_url": "https://openai.com/index/warp",
+    "content_fingerprint": "22a7c5f56eace8e6044d70093695b9778af3753e743937c92b180062c7feceac",
+    "title": "Warp’s big bet on building open source with GPT-5.5",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "last_seen_at": "2026-06-01T13:30:07.193255+00:00",
+    "seen_count": 1
   }
 }
