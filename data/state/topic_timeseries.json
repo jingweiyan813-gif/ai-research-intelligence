@@ -286,5 +286,23 @@
       "company_count": 2,
       "source_count": 1
     }
+  },
+  "2026-06-12": {
+    "ai_agents": {
+      "item_count": 6,
+      "paper_count": 0,
+      "repo_count": 0,
+      "hn_count": 0,
+      "company_count": 6,
+      "source_count": 1
+    },
+    "coding_agents": {
+      "item_count": 2,
+      "paper_count": 0,
+      "repo_count": 0,
+      "hn_count": 0,
+      "company_count": 2,
+      "source_count": 1
+    }
   }
 }
