@@ -307,19 +307,19 @@
   },
   "2026-06-13": {
     "ai_agents": {
-      "item_count": 6,
+      "item_count": 7,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 6,
+      "company_count": 7,
       "source_count": 1
     },
     "coding_agents": {
-      "item_count": 2,
+      "item_count": 1,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 2,
+      "company_count": 1,
       "source_count": 1
     }
   }
