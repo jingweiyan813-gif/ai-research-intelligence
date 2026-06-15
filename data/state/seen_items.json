@@ -126,8 +126,8 @@
     "title": "Strengthening societal resilience with Rosalind Biodefense",
     "source": "company_blogs",
     "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
-    "last_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "seen_count": 3
   },
   "item_258586b1322b": {
     "item_id": "item_258586b1322b",
@@ -136,8 +136,8 @@
     "title": "A shared playbook for trustworthy third party evaluations",
     "source": "company_blogs",
     "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
-    "last_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "seen_count": 3
   },
   "item_fcf99ba97837": {
     "item_id": "item_fcf99ba97837",
@@ -146,8 +146,8 @@
     "title": "How Endava builds an agentic organization with Codex",
     "source": "company_blogs",
     "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
-    "last_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "seen_count": 3
   },
   "item_112cdc516513": {
     "item_id": "item_112cdc516513",
@@ -156,8 +156,8 @@
     "title": "Building self-improving tax agents with Codex",
     "source": "company_blogs",
     "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
-    "last_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "seen_count": 3
   },
   "item_030e8334c866": {
     "item_id": "item_030e8334c866",
@@ -166,8 +166,8 @@
     "title": "Warp’s big bet on building open source with GPT-5.5",
     "source": "company_blogs",
     "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
-    "last_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "seen_count": 3
   },
   "item_b6a2e10f5a01": {
     "item_id": "item_b6a2e10f5a01",
@@ -176,8 +176,8 @@
     "title": "How Endava is redesigning software delivery around AI agents",
     "source": "company_blogs",
     "first_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "last_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "seen_count": 2
   },
   "item_20e79b4f50de": {
     "item_id": "item_20e79b4f50de",
@@ -186,7 +186,37 @@
     "title": "OpenAI frontier models and Codex are now available on AWS",
     "source": "company_blogs",
     "first_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "last_seen_at": "2026-06-08T12:25:50.069350+00:00",
+    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "seen_count": 2
+  },
+  "item_06689daf2d89": {
+    "item_id": "item_06689daf2d89",
+    "canonical_url": "https://openai.com/index/academy-courses-applying-ai-at-work",
+    "content_fingerprint": "c49dd4692e30dc08b506e7b2e98a59417e9fb43a4d5174459c41d5fd3168104a",
+    "title": "New OpenAI Academy courses for the next era of work",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "seen_count": 1
+  },
+  "item_62aecd7bd5c2": {
+    "item_id": "item_62aecd7bd5c2",
+    "canonical_url": "https://openai.com/index/openai-to-acquire-ona",
+    "content_fingerprint": "e50a8c5cdc748c2131deb1103247bce9ee98c109ff9c84442a831046fd348e7a",
+    "title": "OpenAI to acquire Ona",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "seen_count": 1
+  },
+  "item_832daeeef81d": {
+    "item_id": "item_832daeeef81d",
+    "canonical_url": "https://openai.com/index/openai-on-oracle-cloud",
+    "content_fingerprint": "f9211836b433a3c14ca4127fcd215ba480189b8fde7eb36fa12441b85200cfa0",
+    "title": "Access OpenAI models and Codex through your Oracle cloud commitment",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
     "seen_count": 1
   }
 }
