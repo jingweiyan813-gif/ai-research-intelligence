@@ -126,8 +126,8 @@
     "title": "Strengthening societal resilience with Rosalind Biodefense",
     "source": "company_blogs",
     "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
-    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "seen_count": 3
+    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "seen_count": 4
   },
   "item_258586b1322b": {
     "item_id": "item_258586b1322b",
@@ -136,8 +136,8 @@
     "title": "A shared playbook for trustworthy third party evaluations",
     "source": "company_blogs",
     "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
-    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "seen_count": 3
+    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "seen_count": 4
   },
   "item_fcf99ba97837": {
     "item_id": "item_fcf99ba97837",
@@ -146,8 +146,8 @@
     "title": "How Endava builds an agentic organization with Codex",
     "source": "company_blogs",
     "first_seen_at": "2026-06-01T13:30:07.193255+00:00",
-    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "seen_count": 3
+    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "seen_count": 4
   },
   "item_112cdc516513": {
     "item_id": "item_112cdc516513",
@@ -176,8 +176,8 @@
     "title": "How Endava is redesigning software delivery around AI agents",
     "source": "company_blogs",
     "first_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "seen_count": 3
   },
   "item_20e79b4f50de": {
     "item_id": "item_20e79b4f50de",
@@ -186,8 +186,8 @@
     "title": "OpenAI frontier models and Codex are now available on AWS",
     "source": "company_blogs",
     "first_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "seen_count": 3
   },
   "item_06689daf2d89": {
     "item_id": "item_06689daf2d89",
@@ -196,8 +196,8 @@
     "title": "New OpenAI Academy courses for the next era of work",
     "source": "company_blogs",
     "first_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "seen_count": 2
   },
   "item_62aecd7bd5c2": {
     "item_id": "item_62aecd7bd5c2",
@@ -206,8 +206,8 @@
     "title": "OpenAI to acquire Ona",
     "source": "company_blogs",
     "first_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "seen_count": 2
   },
   "item_832daeeef81d": {
     "item_id": "item_832daeeef81d",
@@ -216,7 +216,27 @@
     "title": "Access OpenAI models and Codex through your Oracle cloud commitment",
     "source": "company_blogs",
     "first_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "last_seen_at": "2026-06-15T13:47:58.795641+00:00",
+    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "seen_count": 2
+  },
+  "item_424b2a22230e": {
+    "item_id": "item_424b2a22230e",
+    "canonical_url": "https://openai.com/index/diagnose-rare-childhood-diseases",
+    "content_fingerprint": "dc9cecf661ceb6e9fa9c59458cc0c70430106e0a8f65dc61266853047fbeb51c",
+    "title": "Using AI to help physicians diagnose rare genetic diseases affecting children",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "seen_count": 1
+  },
+  "item_0d56880dd7d6": {
+    "item_id": "item_0d56880dd7d6",
+    "canonical_url": "https://openai.com/index/deployment-simulation",
+    "content_fingerprint": "f7a3ac5d64377dc44a7d15b0bf09097e8f04ecd1847e5692d8c809f77e520f16",
+    "title": "Predicting model behavior before release by simulating deployment",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
     "seen_count": 1
   }
 }
