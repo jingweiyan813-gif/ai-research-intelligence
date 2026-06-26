@@ -530,5 +530,31 @@
       "company_count": 1,
       "source_count": 1
     }
+  },
+  "2026-06-26": {
+    "ai_agents": {
+      "item_count": 5,
+      "paper_count": 0,
+      "repo_count": 0,
+      "hn_count": 0,
+      "company_count": 5,
+      "source_count": 1
+    },
+    "devtools": {
+      "item_count": 1,
+      "paper_count": 0,
+      "repo_count": 0,
+      "hn_count": 0,
+      "company_count": 1,
+      "source_count": 1
+    },
+    "llm_infra": {
+      "item_count": 1,
+      "paper_count": 0,
+      "repo_count": 0,
+      "hn_count": 0,
+      "company_count": 1,
+      "source_count": 1
+    }
   }
 }
