@@ -176,8 +176,8 @@
     "title": "How Endava is redesigning software delivery around AI agents",
     "source": "company_blogs",
     "first_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
-    "seen_count": 3
+    "last_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "seen_count": 4
   },
   "item_20e79b4f50de": {
     "item_id": "item_20e79b4f50de",
@@ -186,8 +186,8 @@
     "title": "OpenAI frontier models and Codex are now available on AWS",
     "source": "company_blogs",
     "first_seen_at": "2026-06-08T12:25:50.069350+00:00",
-    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
-    "seen_count": 3
+    "last_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "seen_count": 4
   },
   "item_06689daf2d89": {
     "item_id": "item_06689daf2d89",
@@ -196,8 +196,8 @@
     "title": "New OpenAI Academy courses for the next era of work",
     "source": "company_blogs",
     "first_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "seen_count": 3
   },
   "item_62aecd7bd5c2": {
     "item_id": "item_62aecd7bd5c2",
@@ -206,8 +206,8 @@
     "title": "OpenAI to acquire Ona",
     "source": "company_blogs",
     "first_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "seen_count": 3
   },
   "item_832daeeef81d": {
     "item_id": "item_832daeeef81d",
@@ -216,8 +216,8 @@
     "title": "Access OpenAI models and Codex through your Oracle cloud commitment",
     "source": "company_blogs",
     "first_seen_at": "2026-06-15T13:47:58.795641+00:00",
-    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "seen_count": 3
   },
   "item_424b2a22230e": {
     "item_id": "item_424b2a22230e",
@@ -226,8 +226,8 @@
     "title": "Using AI to help physicians diagnose rare genetic diseases affecting children",
     "source": "company_blogs",
     "first_seen_at": "2026-06-22T13:28:08.082563+00:00",
-    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "seen_count": 2
   },
   "item_0d56880dd7d6": {
     "item_id": "item_0d56880dd7d6",
@@ -236,7 +236,37 @@
     "title": "Predicting model behavior before release by simulating deployment",
     "source": "company_blogs",
     "first_seen_at": "2026-06-22T13:28:08.082563+00:00",
-    "last_seen_at": "2026-06-22T13:28:08.082563+00:00",
+    "last_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "seen_count": 2
+  },
+  "item_b1712afe3104": {
+    "item_id": "item_b1712afe3104",
+    "canonical_url": "https://openai.com/index/previewing-gpt-5-6-sol",
+    "content_fingerprint": "82c39081f3bcf6e7e4d048d5684a45f1ad6bbc882a902b69b608645fc5580c4a",
+    "title": "Previewing GPT-5.6 Sol: a next-generation model",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "last_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "seen_count": 1
+  },
+  "item_feea601d68a9": {
+    "item_id": "item_feea601d68a9",
+    "canonical_url": "https://openai.com/index/how-agents-are-transforming-work",
+    "content_fingerprint": "15871e074b735275ca7bb65639e22a412c8a18c91ce499ed0196b209a4bd8736",
+    "title": "How agents are transforming work",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "last_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "seen_count": 1
+  },
+  "item_bbaa07daff4f": {
+    "item_id": "item_bbaa07daff4f",
+    "canonical_url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip",
+    "content_fingerprint": "c62e57ac6817c8ebd42d29ea12a329481113f377695dd6fa9c84fe0aaecca604",
+    "title": "OpenAI and Broadcom unveil LLM-optimized inference chip",
+    "source": "company_blogs",
+    "first_seen_at": "2026-06-29T12:24:20.776490+00:00",
+    "last_seen_at": "2026-06-29T12:24:20.776490+00:00",
     "seen_count": 1
   }
 }
