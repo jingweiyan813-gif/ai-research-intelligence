@@ -1,14 +1,14 @@
 {
   "company_blogs": {
     "source": "company_blogs",
-    "raw_count": 9,
-    "normalized_count": 9,
+    "raw_count": 8,
+    "normalized_count": 8,
     "error_count": 2,
     "errors": [
       "feed Anthropic News failed: HTTP Error 404: Not Found",
       "feed Google DeepMind Blog failed: HTTP Error 404: Not Found"
     ],
-    "started_at": "2026-07-03T10:34:18.713108+00:00",
-    "completed_at": "2026-07-03T10:34:20.078237+00:00"
+    "started_at": "2026-07-05T10:11:44.660405+00:00",
+    "completed_at": "2026-07-05T10:11:51.610288+00:00"
   }
 }
