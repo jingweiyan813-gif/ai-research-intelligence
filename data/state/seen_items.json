@@ -246,8 +246,8 @@
     "title": "Previewing GPT-5.6 Sol: a next-generation model",
     "source": "company_blogs",
     "first_seen_at": "2026-06-29T12:24:20.776490+00:00",
-    "last_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "seen_count": 3
+    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "seen_count": 4
   },
   "item_feea601d68a9": {
     "item_id": "item_feea601d68a9",
@@ -256,8 +256,8 @@
     "title": "How agents are transforming work",
     "source": "company_blogs",
     "first_seen_at": "2026-06-29T12:24:20.776490+00:00",
-    "last_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "seen_count": 3
+    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "seen_count": 4
   },
   "item_bbaa07daff4f": {
     "item_id": "item_bbaa07daff4f",
@@ -266,8 +266,8 @@
     "title": "OpenAI and Broadcom unveil LLM-optimized inference chip",
     "source": "company_blogs",
     "first_seen_at": "2026-06-29T12:24:20.776490+00:00",
-    "last_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "seen_count": 3
+    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "seen_count": 4
   },
   "item_b6c84daaa2d8": {
     "item_id": "item_b6c84daaa2d8",
@@ -276,8 +276,8 @@
     "title": "GPT-5.6 is now the preferred model in Microsoft 365 Copilot",
     "source": "company_blogs",
     "first_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "last_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "seen_count": 2
   },
   "item_9cadabc00120": {
     "item_id": "item_9cadabc00120",
@@ -286,8 +286,8 @@
     "title": "ChatGPT is now a partner for your most ambitious work",
     "source": "company_blogs",
     "first_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "last_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "seen_count": 2
   },
   "item_196b623bdf98": {
     "item_id": "item_196b623bdf98",
@@ -296,8 +296,8 @@
     "title": "Separating signal from noise in coding evaluations",
     "source": "company_blogs",
     "first_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "last_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "seen_count": 2
   },
   "item_e6b1839c6396": {
     "item_id": "item_e6b1839c6396",
@@ -306,7 +306,27 @@
     "title": "Introducing GPT-Live",
     "source": "company_blogs",
     "first_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "last_seen_at": "2026-07-13T10:51:13.307475+00:00",
+    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "seen_count": 2
+  },
+  "item_446344d7bd8b": {
+    "item_id": "item_446344d7bd8b",
+    "canonical_url": "https://openai.com/index/cars24",
+    "content_fingerprint": "5dbe7850e48110291a0d947b07d9140cb3eadd45b86d256fb9a545d0c20c5b4e",
+    "title": "How Cars24 scales conversations and builds faster with OpenAI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "seen_count": 1
+  },
+  "item_10792904a555": {
+    "item_id": "item_10792904a555",
+    "canonical_url": "https://openai.com/index/managing-ai-investments-in-agentic-era",
+    "content_fingerprint": "6b47c897fa01df4d1800cfdf60bfbe5850e37db4c9208699f7007ccd2cdc1e85",
+    "title": "How to manage AI investments in the agentic era",
+    "source": "company_blogs",
+    "first_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
     "seen_count": 1
   }
 }
