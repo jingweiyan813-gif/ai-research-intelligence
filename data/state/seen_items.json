@@ -276,8 +276,8 @@
     "title": "GPT-5.6 is now the preferred model in Microsoft 365 Copilot",
     "source": "company_blogs",
     "first_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "seen_count": 3
   },
   "item_9cadabc00120": {
     "item_id": "item_9cadabc00120",
@@ -286,8 +286,8 @@
     "title": "ChatGPT is now a partner for your most ambitious work",
     "source": "company_blogs",
     "first_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "seen_count": 3
   },
   "item_196b623bdf98": {
     "item_id": "item_196b623bdf98",
@@ -296,8 +296,8 @@
     "title": "Separating signal from noise in coding evaluations",
     "source": "company_blogs",
     "first_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "seen_count": 3
   },
   "item_e6b1839c6396": {
     "item_id": "item_e6b1839c6396",
@@ -306,8 +306,8 @@
     "title": "Introducing GPT-Live",
     "source": "company_blogs",
     "first_seen_at": "2026-07-13T10:51:13.307475+00:00",
-    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "seen_count": 3
   },
   "item_446344d7bd8b": {
     "item_id": "item_446344d7bd8b",
@@ -316,8 +316,8 @@
     "title": "How Cars24 scales conversations and builds faster with OpenAI",
     "source": "company_blogs",
     "first_seen_at": "2026-07-20T10:42:30.931849+00:00",
-    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "seen_count": 2
   },
   "item_10792904a555": {
     "item_id": "item_10792904a555",
@@ -326,7 +326,37 @@
     "title": "How to manage AI investments in the agentic era",
     "source": "company_blogs",
     "first_seen_at": "2026-07-20T10:42:30.931849+00:00",
-    "last_seen_at": "2026-07-20T10:42:30.931849+00:00",
+    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "seen_count": 2
+  },
+  "item_e2a8883a33cd": {
+    "item_id": "item_e2a8883a33cd",
+    "canonical_url": "https://openai.com/index/introducing-openai-presence",
+    "content_fingerprint": "6dad8e586e82df7d9dbfb7c369059ab257d931eaba9d013227f57f739d79d04f",
+    "title": "Introducing OpenAI Presence",
+    "source": "company_blogs",
+    "first_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "seen_count": 1
+  },
+  "item_708367f9d83a": {
+    "item_id": "item_708367f9d83a",
+    "canonical_url": "https://openai.com/index/hugging-face-model-evaluation-security-incident",
+    "content_fingerprint": "e37d854037623a4052651805592527b10de08c867b4174be07ecf8d683480f8a",
+    "title": "OpenAI and Hugging Face partner to address security incident during model evaluation",
+    "source": "company_blogs",
+    "first_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "seen_count": 1
+  },
+  "item_cc89062e70ec": {
+    "item_id": "item_cc89062e70ec",
+    "canonical_url": "https://openai.com/index/safety-alignment-long-horizon-models",
+    "content_fingerprint": "907e34ff0a195cdb120362cf75a40e5a0990157bac64e332efed5141331ba4b4",
+    "title": "Safety and alignment in an era of long-horizon models",
+    "source": "company_blogs",
+    "first_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
     "seen_count": 1
   }
 }
