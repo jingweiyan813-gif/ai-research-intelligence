@@ -316,8 +316,8 @@
     "title": "How Cars24 scales conversations and builds faster with OpenAI",
     "source": "company_blogs",
     "first_seen_at": "2026-07-20T10:42:30.931849+00:00",
-    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "seen_count": 3
   },
   "item_10792904a555": {
     "item_id": "item_10792904a555",
@@ -326,8 +326,8 @@
     "title": "How to manage AI investments in the agentic era",
     "source": "company_blogs",
     "first_seen_at": "2026-07-20T10:42:30.931849+00:00",
-    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "seen_count": 3
   },
   "item_e2a8883a33cd": {
     "item_id": "item_e2a8883a33cd",
@@ -336,8 +336,8 @@
     "title": "Introducing OpenAI Presence",
     "source": "company_blogs",
     "first_seen_at": "2026-07-27T11:11:21.586978+00:00",
-    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "seen_count": 2
   },
   "item_708367f9d83a": {
     "item_id": "item_708367f9d83a",
@@ -346,8 +346,8 @@
     "title": "OpenAI and Hugging Face partner to address security incident during model evaluation",
     "source": "company_blogs",
     "first_seen_at": "2026-07-27T11:11:21.586978+00:00",
-    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "seen_count": 2
   },
   "item_cc89062e70ec": {
     "item_id": "item_cc89062e70ec",
@@ -356,7 +356,57 @@
     "title": "Safety and alignment in an era of long-horizon models",
     "source": "company_blogs",
     "first_seen_at": "2026-07-27T11:11:21.586978+00:00",
-    "last_seen_at": "2026-07-27T11:11:21.586978+00:00",
+    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "seen_count": 2
+  },
+  "item_f5547df89bd6": {
+    "item_id": "item_f5547df89bd6",
+    "canonical_url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6",
+    "content_fingerprint": "d506608ed3b3c801d591345de1d03e31916432b3a419886f9a1402533beed9a3",
+    "title": "Advancing the price-performance frontier with GPT-5.6",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "seen_count": 1
+  },
+  "item_3f18540749fd": {
+    "item_id": "item_3f18540749fd",
+    "canonical_url": "https://openai.com/index/avatarin",
+    "content_fingerprint": "9d4b298aa1cf8e51d37b9096dbb229b56b54d63caedf3c740f4556b092c636c8",
+    "title": "How avatarin built a 24/7 retail agent with GPT-Realtime",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "seen_count": 1
+  },
+  "item_19b957986e30": {
+    "item_id": "item_19b957986e30",
+    "canonical_url": "https://openai.com/index/chatgpt-for-academic-researchers",
+    "content_fingerprint": "bc98276bd21fec705da6e675d0c168ec4eefbb81d91972520bb175cd70372c5f",
+    "title": "Accelerating scientific discovery with ChatGPT for Academic Researchers",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "seen_count": 1
+  },
+  "item_00aaf97f4a35": {
+    "item_id": "item_00aaf97f4a35",
+    "canonical_url": "https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency",
+    "content_fingerprint": "475cca11141ac3de4b134e83c681a246f597318a039d8ea2a49190febe349761",
+    "title": "How GPT-5.6 fuses frontier intelligence with frontier efficiency",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "seen_count": 1
+  },
+  "item_f60f8142b1ac": {
+    "item_id": "item_f60f8142b1ac",
+    "canonical_url": "https://openai.com/index/scientific-computing-agentic-ai",
+    "content_fingerprint": "1b5c01ed2982be3a1ec08cc3767fb461cbe1ceb553dcbc210337977c865ec705",
+    "title": "Scientific computing in the age of agentic AI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
     "seen_count": 1
   }
 }
