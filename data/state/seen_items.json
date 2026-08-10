@@ -336,8 +336,8 @@
     "title": "Introducing OpenAI Presence",
     "source": "company_blogs",
     "first_seen_at": "2026-07-27T11:11:21.586978+00:00",
-    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "seen_count": 3
   },
   "item_708367f9d83a": {
     "item_id": "item_708367f9d83a",
@@ -346,8 +346,8 @@
     "title": "OpenAI and Hugging Face partner to address security incident during model evaluation",
     "source": "company_blogs",
     "first_seen_at": "2026-07-27T11:11:21.586978+00:00",
-    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "seen_count": 3
   },
   "item_cc89062e70ec": {
     "item_id": "item_cc89062e70ec",
@@ -356,8 +356,8 @@
     "title": "Safety and alignment in an era of long-horizon models",
     "source": "company_blogs",
     "first_seen_at": "2026-07-27T11:11:21.586978+00:00",
-    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "seen_count": 3
   },
   "item_f5547df89bd6": {
     "item_id": "item_f5547df89bd6",
@@ -366,8 +366,8 @@
     "title": "Advancing the price-performance frontier with GPT-5.6",
     "source": "company_blogs",
     "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "seen_count": 2
   },
   "item_3f18540749fd": {
     "item_id": "item_3f18540749fd",
@@ -376,8 +376,8 @@
     "title": "How avatarin built a 24/7 retail agent with GPT-Realtime",
     "source": "company_blogs",
     "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "seen_count": 2
   },
   "item_19b957986e30": {
     "item_id": "item_19b957986e30",
@@ -386,8 +386,8 @@
     "title": "Accelerating scientific discovery with ChatGPT for Academic Researchers",
     "source": "company_blogs",
     "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "seen_count": 2
   },
   "item_00aaf97f4a35": {
     "item_id": "item_00aaf97f4a35",
@@ -396,8 +396,8 @@
     "title": "How GPT-5.6 fuses frontier intelligence with frontier efficiency",
     "source": "company_blogs",
     "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "seen_count": 2
   },
   "item_f60f8142b1ac": {
     "item_id": "item_f60f8142b1ac",
@@ -406,7 +406,27 @@
     "title": "Scientific computing in the age of agentic AI",
     "source": "company_blogs",
     "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "last_seen_at": "2026-08-03T11:13:35.360013+00:00",
+    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "seen_count": 2
+  },
+  "item_a1c35c8b6402": {
+    "item_id": "item_a1c35c8b6402",
+    "canonical_url": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models",
+    "content_fingerprint": "132389a9cd8eef0da9f075db225f6856e6738b019463f7a93dbf1887870e021f",
+    "title": "Third-party cyber evaluations involving OpenAI models",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "seen_count": 1
+  },
+  "item_e896802b1466": {
+    "item_id": "item_e896802b1466",
+    "canonical_url": "https://openai.com/index/continuous-voice-interaction-with-gpt-live",
+    "content_fingerprint": "4f2a9fd2d7d8e91b9b7787be20ff95ba8e5ebd9881b8fb234c4f1b91add931f7",
+    "title": "How we built a realtime system for responsive voice AI in six months",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
     "seen_count": 1
   }
 }
