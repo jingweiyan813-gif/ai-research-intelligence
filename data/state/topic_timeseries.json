@@ -1825,11 +1825,11 @@
   },
   "2026-08-11": {
     "ai_agents": {
-      "item_count": 5,
+      "item_count": 4,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 5,
+      "company_count": 4,
       "source_count": 1
     },
     "coding_agents": {
@@ -1841,11 +1841,11 @@
       "source_count": 1
     },
     "devtools": {
-      "item_count": 2,
+      "item_count": 1,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 2,
+      "company_count": 1,
       "source_count": 1
     },
     "llm_infra": {
