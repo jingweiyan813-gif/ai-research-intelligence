@@ -1945,19 +1945,19 @@
   },
   "2026-08-15": {
     "ai_agents": {
-      "item_count": 4,
+      "item_count": 5,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 4,
+      "company_count": 5,
       "source_count": 1
     },
     "devtools": {
-      "item_count": 1,
+      "item_count": 2,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 1,
+      "company_count": 2,
       "source_count": 1
     }
   }
