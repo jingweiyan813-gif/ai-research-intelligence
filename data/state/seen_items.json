@@ -366,8 +366,8 @@
     "title": "Advancing the price-performance frontier with GPT-5.6",
     "source": "company_blogs",
     "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "seen_count": 3
   },
   "item_3f18540749fd": {
     "item_id": "item_3f18540749fd",
@@ -376,8 +376,8 @@
     "title": "How avatarin built a 24/7 retail agent with GPT-Realtime",
     "source": "company_blogs",
     "first_seen_at": "2026-08-03T11:13:35.360013+00:00",
-    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "seen_count": 3
   },
   "item_19b957986e30": {
     "item_id": "item_19b957986e30",
@@ -416,8 +416,8 @@
     "title": "Third-party cyber evaluations involving OpenAI models",
     "source": "company_blogs",
     "first_seen_at": "2026-08-10T09:08:26.830751+00:00",
-    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "seen_count": 2
   },
   "item_e896802b1466": {
     "item_id": "item_e896802b1466",
@@ -426,7 +426,67 @@
     "title": "How we built a realtime system for responsive voice AI in six months",
     "source": "company_blogs",
     "first_seen_at": "2026-08-10T09:08:26.830751+00:00",
-    "last_seen_at": "2026-08-10T09:08:26.830751+00:00",
+    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "seen_count": 2
+  },
+  "item_7ef31d647a87": {
+    "item_id": "item_7ef31d647a87",
+    "canonical_url": "https://openai.com/index/builders-guide-to-gpt-5-6",
+    "content_fingerprint": "e0afff102aee66af6b088b3b9bb38a873c22554da50054ca6200f492727972cf",
+    "title": "The builder’s guide to GPT‑5.6",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "seen_count": 1
+  },
+  "item_30dcc79c06b4": {
+    "item_id": "item_30dcc79c06b4",
+    "canonical_url": "https://openai.com/index/how-enterprises-put-ai-to-work",
+    "content_fingerprint": "3464583bcc4cf0e0731364ecda60170e8a97ae2fdaa9fa2d8aa7c4887c6323e9",
+    "title": "From assistance to execution: How enterprises put AI to work",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "seen_count": 1
+  },
+  "item_76af9fe37788": {
+    "item_id": "item_76af9fe37788",
+    "canonical_url": "https://openai.com/index/daybreak-models-are-now-available-on-aws",
+    "content_fingerprint": "dc89c79b84d080cbca0e80382b0e63f8d4e9a7953062f3e5ca1f85e873b750b1",
+    "title": "Daybreak models are now available on AWS",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "seen_count": 1
+  },
+  "item_0697aa0187ed": {
+    "item_id": "item_0697aa0187ed",
+    "canonical_url": "https://openai.com/index/model-ml",
+    "content_fingerprint": "7f794f983dea25841041cd4877b4e48c092ef5ec286582ac70e1645116bd88b7",
+    "title": "Model ML completes finance work more efficiently with GPT-5.6 Sol",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "seen_count": 1
+  },
+  "item_00eae080ed78": {
+    "item_id": "item_00eae080ed78",
+    "canonical_url": "https://openai.com/index/putting-frontier-cyber-models-in-more-trusted-hands",
+    "content_fingerprint": "0b57fec99a29d8c225f0db557ebc2516a2ffb906e30ba849caf8462bec61f911",
+    "title": "Putting frontier cyber models in more trusted hands",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "seen_count": 1
+  },
+  "item_3f90d37743ce": {
+    "item_id": "item_3f90d37743ce",
+    "canonical_url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows",
+    "content_fingerprint": "007bca266afa61efa10a75ac9c3ee1046dedf1334b24e38c29c94b867e0c4ec3",
+    "title": "Expanding Daybreak as the Cyber Defense Window Narrows",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
     "seen_count": 1
   }
 }
