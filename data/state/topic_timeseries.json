@@ -1978,5 +1978,23 @@
       "company_count": 2,
       "source_count": 1
     }
+  },
+  "2026-08-17": {
+    "ai_agents": {
+      "item_count": 5,
+      "paper_count": 0,
+      "repo_count": 0,
+      "hn_count": 0,
+      "company_count": 5,
+      "source_count": 1
+    },
+    "devtools": {
+      "item_count": 2,
+      "paper_count": 0,
+      "repo_count": 0,
+      "hn_count": 0,
+      "company_count": 2,
+      "source_count": 1
+    }
   }
 }
