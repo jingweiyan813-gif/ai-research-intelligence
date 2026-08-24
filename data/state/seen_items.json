@@ -416,8 +416,8 @@
     "title": "Third-party cyber evaluations involving OpenAI models",
     "source": "company_blogs",
     "first_seen_at": "2026-08-10T09:08:26.830751+00:00",
-    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "seen_count": 3
   },
   "item_e896802b1466": {
     "item_id": "item_e896802b1466",
@@ -426,8 +426,8 @@
     "title": "How we built a realtime system for responsive voice AI in six months",
     "source": "company_blogs",
     "first_seen_at": "2026-08-10T09:08:26.830751+00:00",
-    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "seen_count": 3
   },
   "item_7ef31d647a87": {
     "item_id": "item_7ef31d647a87",
@@ -436,8 +436,8 @@
     "title": "The builder’s guide to GPT‑5.6",
     "source": "company_blogs",
     "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "seen_count": 2
   },
   "item_30dcc79c06b4": {
     "item_id": "item_30dcc79c06b4",
@@ -446,8 +446,8 @@
     "title": "From assistance to execution: How enterprises put AI to work",
     "source": "company_blogs",
     "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "seen_count": 2
   },
   "item_76af9fe37788": {
     "item_id": "item_76af9fe37788",
@@ -456,8 +456,8 @@
     "title": "Daybreak models are now available on AWS",
     "source": "company_blogs",
     "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "seen_count": 2
   },
   "item_0697aa0187ed": {
     "item_id": "item_0697aa0187ed",
@@ -466,8 +466,8 @@
     "title": "Model ML completes finance work more efficiently with GPT-5.6 Sol",
     "source": "company_blogs",
     "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "seen_count": 2
   },
   "item_00eae080ed78": {
     "item_id": "item_00eae080ed78",
@@ -476,8 +476,8 @@
     "title": "Putting frontier cyber models in more trusted hands",
     "source": "company_blogs",
     "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "seen_count": 2
   },
   "item_3f90d37743ce": {
     "item_id": "item_3f90d37743ce",
@@ -486,7 +486,27 @@
     "title": "Expanding Daybreak as the Cyber Defense Window Narrows",
     "source": "company_blogs",
     "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "last_seen_at": "2026-08-17T08:32:51.394905+00:00",
+    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "seen_count": 2
+  },
+  "item_3e930e954a4d": {
+    "item_id": "item_3e930e954a4d",
+    "canonical_url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models",
+    "content_fingerprint": "129206e2fbfd586b98b856d43a1694ee7360a19d04f4dd088229efda187335c7",
+    "title": "Offering Zero Data Retention for frontier models",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "seen_count": 1
+  },
+  "item_4889ceaf29df": {
+    "item_id": "item_4889ceaf29df",
+    "canonical_url": "https://openai.com/index/pacing-model-development-cyber-capabilities",
+    "content_fingerprint": "a3d73a9c8459df444f6491d94812e50e69307be57870b35d8d730a05a59acd75",
+    "title": "Pacing model development in an era of cyber-critical capabilities",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
     "seen_count": 1
   }
 }
