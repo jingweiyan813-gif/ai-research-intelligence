@@ -436,8 +436,8 @@
     "title": "The builder’s guide to GPT‑5.6",
     "source": "company_blogs",
     "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "seen_count": 3
   },
   "item_30dcc79c06b4": {
     "item_id": "item_30dcc79c06b4",
@@ -446,8 +446,8 @@
     "title": "From assistance to execution: How enterprises put AI to work",
     "source": "company_blogs",
     "first_seen_at": "2026-08-17T08:32:51.394905+00:00",
-    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "seen_count": 3
   },
   "item_76af9fe37788": {
     "item_id": "item_76af9fe37788",
@@ -496,8 +496,8 @@
     "title": "Offering Zero Data Retention for frontier models",
     "source": "company_blogs",
     "first_seen_at": "2026-08-24T08:37:18.479405+00:00",
-    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "seen_count": 2
   },
   "item_4889ceaf29df": {
     "item_id": "item_4889ceaf29df",
@@ -506,7 +506,67 @@
     "title": "Pacing model development in an era of cyber-critical capabilities",
     "source": "company_blogs",
     "first_seen_at": "2026-08-24T08:37:18.479405+00:00",
-    "last_seen_at": "2026-08-24T08:37:18.479405+00:00",
+    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "seen_count": 2
+  },
+  "item_8a76abb919a9": {
+    "item_id": "item_8a76abb919a9",
+    "canonical_url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex",
+    "content_fingerprint": "3aabb7171a43dab49be6fb8a589fa44b6ee750f049a62374673aa575f7201323",
+    "title": "Our decision on Cursor following its acquisition by SpaceX",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "seen_count": 1
+  },
+  "item_0408a1a1f735": {
+    "item_id": "item_0408a1a1f735",
+    "canonical_url": "https://openai.com/index/expanding-our-presence-in-brazil",
+    "content_fingerprint": "d2fa10e28f14930b86c0476b192be46f98c2de4dcd4e2eb7665f01e90acc559e",
+    "title": "Expanding OpenAI’s presence in Brazil",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "seen_count": 1
+  },
+  "item_5a27e0a88242": {
+    "item_id": "item_5a27e0a88242",
+    "canonical_url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead",
+    "content_fingerprint": "8b998a2203e6ff64fcbd3dec0378e92dc617142a675e4a2bb0bce6145c0196b0",
+    "title": "The Hugging Face incident and the road ahead",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "seen_count": 1
+  },
+  "item_b7d9cf1d5b05": {
+    "item_id": "item_b7d9cf1d5b05",
+    "canonical_url": "https://openai.com/index/the-full-stack-behind-abundant-intelligence",
+    "content_fingerprint": "544c3af848f427c087e18b483aa58afad3450c7b63b5699c511f0cb1e5a8c9a6",
+    "title": "The full stack behind abundant intelligence",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "seen_count": 1
+  },
+  "item_ca5d5c7e1401": {
+    "item_id": "item_ca5d5c7e1401",
+    "canonical_url": "https://openai.com/index/jalapeno-first-results",
+    "content_fingerprint": "6b651a1c0f5416d4094dba67dbcd875213505a67e66287c8a592d3ebcebb03e2",
+    "title": "Jalapeño’s first results show industry-leading speed and efficiency in AI inference",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "seen_count": 1
+  },
+  "item_d0b9bac7ff62": {
+    "item_id": "item_d0b9bac7ff62",
+    "canonical_url": "https://openai.com/index/gpt-5-6-in-kiro",
+    "content_fingerprint": "4d826c68f442db9c39fc95a55c52557a27ad5c7d31e7ad2a8cdc7cf1e4433b9a",
+    "title": "Advancing price-performance for developers with GPT‑5.6 in Kiro",
+    "source": "company_blogs",
+    "first_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
     "seen_count": 1
   }
 }
