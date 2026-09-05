@@ -2482,20 +2482,12 @@
       "company_count": 1,
       "source_count": 1
     },
-    "llm_infra": {
-      "item_count": 1,
-      "paper_count": 0,
-      "repo_count": 0,
-      "hn_count": 0,
-      "company_count": 1,
-      "source_count": 1
-    },
     "research_automation": {
-      "item_count": 1,
+      "item_count": 2,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 1,
+      "company_count": 2,
       "source_count": 1
     }
   }
