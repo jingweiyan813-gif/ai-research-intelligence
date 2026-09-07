@@ -516,8 +516,8 @@
     "title": "Our decision on Cursor following its acquisition by SpaceX",
     "source": "company_blogs",
     "first_seen_at": "2026-08-31T15:41:34.317582+00:00",
-    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "seen_count": 2
   },
   "item_0408a1a1f735": {
     "item_id": "item_0408a1a1f735",
@@ -526,8 +526,8 @@
     "title": "Expanding OpenAI’s presence in Brazil",
     "source": "company_blogs",
     "first_seen_at": "2026-08-31T15:41:34.317582+00:00",
-    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "seen_count": 2
   },
   "item_5a27e0a88242": {
     "item_id": "item_5a27e0a88242",
@@ -536,8 +536,8 @@
     "title": "The Hugging Face incident and the road ahead",
     "source": "company_blogs",
     "first_seen_at": "2026-08-31T15:41:34.317582+00:00",
-    "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "seen_count": 2
   },
   "item_b7d9cf1d5b05": {
     "item_id": "item_b7d9cf1d5b05",
@@ -567,6 +567,76 @@
     "source": "company_blogs",
     "first_seen_at": "2026-08-31T15:41:34.317582+00:00",
     "last_seen_at": "2026-08-31T15:41:34.317582+00:00",
+    "seen_count": 1
+  },
+  "item_db69426829bc": {
+    "item_id": "item_db69426829bc",
+    "canonical_url": "https://openai.com/index/research-acceleration-view-inside-openai",
+    "content_fingerprint": "98e8c565728f332e02dba816839dace47384e9b95e3e581b657feec4343e5d35",
+    "title": "Research acceleration: The view inside OpenAI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "last_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "seen_count": 1
+  },
+  "item_117f1bd663a2": {
+    "item_id": "item_117f1bd663a2",
+    "canonical_url": "https://openai.com/index/playco-game-prototyping-with-astra",
+    "content_fingerprint": "46be4af7e81c35740504daa9ba78e632b2945286c866c54f89572bfd633660fe",
+    "title": "Playco cut manual fixes 50% prototyping games with GPT-6 Astra",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "last_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "seen_count": 1
+  },
+  "item_d4007a002f7c": {
+    "item_id": "item_d4007a002f7c",
+    "canonical_url": "https://openai.com/index/gpt-6-astra",
+    "content_fingerprint": "0fdccdcf525821dc9b15837a8574897ef3ee47e3594bca545bc4ba40d52dddaa",
+    "title": "GPT-6 Astra: A new generation of intelligence",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "last_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "seen_count": 1
+  },
+  "item_2f7cd69eade4": {
+    "item_id": "item_2f7cd69eade4",
+    "canonical_url": "https://openai.com/index/safety-overview-gpt-6-astra",
+    "content_fingerprint": "2e6d7fdd314d7da5be31e9196451393a4ce46137d78ab26bfb76459b64183010",
+    "title": "Safety overview: GPT-6 Astra",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "last_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "seen_count": 1
+  },
+  "item_993108ef5733": {
+    "item_id": "item_993108ef5733",
+    "canonical_url": "https://openai.com/index/ai-native-company-workflows",
+    "content_fingerprint": "3010cab5f91a8a9a6497eb7f9fe5159eb5faa7fea919006b06fec66402f4258a",
+    "title": "How AI-native companies turn workflows into operating capability",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "last_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "seen_count": 1
+  },
+  "item_504ba5bf25b4": {
+    "item_id": "item_504ba5bf25b4",
+    "canonical_url": "https://openai.com/index/path-to-astra",
+    "content_fingerprint": "b88627bf4181b2968ffd8cdeff9bb1a8ea18b5a0f9c319d3b89eadb36d281491",
+    "title": "Path to Astra: critical capabilities and frontier safeguards",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "last_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "seen_count": 1
+  },
+  "item_ff6856e1fad3": {
+    "item_id": "item_ff6856e1fad3",
+    "canonical_url": "https://openai.com/index/polimill",
+    "content_fingerprint": "504682e012dccee5ed561cbda4d20f634eb88ec656b1c0bda5a4557777b74240",
+    "title": "Polimill builds Japan's next-generation public AI infrastructure",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-07T13:49:12.161089+00:00",
+    "last_seen_at": "2026-09-07T13:49:12.161089+00:00",
     "seen_count": 1
   }
 }
