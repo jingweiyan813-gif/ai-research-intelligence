@@ -646,8 +646,8 @@
     "title": "Perplexity trusts GPT-6 Astra with end-to-end systems",
     "source": "company_blogs",
     "first_seen_at": "2026-09-14T14:35:43.764269+00:00",
-    "last_seen_at": "2026-09-14T14:35:43.764269+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "seen_count": 2
   },
   "item_c6dd8446a0f0": {
     "item_id": "item_c6dd8446a0f0",
@@ -656,8 +656,8 @@
     "title": "Now everyone can put data to work",
     "source": "company_blogs",
     "first_seen_at": "2026-09-14T14:35:43.764269+00:00",
-    "last_seen_at": "2026-09-14T14:35:43.764269+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "seen_count": 2
   },
   "item_8ab2e6cf75b6": {
     "item_id": "item_8ab2e6cf75b6",
@@ -666,8 +666,8 @@
     "title": "Introducing ChatGPT for Financial Services",
     "source": "company_blogs",
     "first_seen_at": "2026-09-14T14:35:43.764269+00:00",
-    "last_seen_at": "2026-09-14T14:35:43.764269+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "seen_count": 2
   },
   "item_63b58cf13130": {
     "item_id": "item_63b58cf13130",
@@ -676,8 +676,8 @@
     "title": "Introducing the Agents API",
     "source": "company_blogs",
     "first_seen_at": "2026-09-14T14:35:43.764269+00:00",
-    "last_seen_at": "2026-09-14T14:35:43.764269+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "seen_count": 2
   },
   "item_2437f5a1ec3b": {
     "item_id": "item_2437f5a1ec3b",
@@ -686,7 +686,57 @@
     "title": "GPT-6 Astra: The next generation in intelligence for work",
     "source": "company_blogs",
     "first_seen_at": "2026-09-14T14:35:43.764269+00:00",
-    "last_seen_at": "2026-09-14T14:35:43.764269+00:00",
+    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "seen_count": 2
+  },
+  "item_67e1ccd0b997": {
+    "item_id": "item_67e1ccd0b997",
+    "canonical_url": "https://openai.com/index/v7",
+    "content_fingerprint": "f9ca912ceded2e44558df0843e811eb4a3c58b1a6845886a6d0d17dd23c5ce60",
+    "title": "How V7 gives AI agents institutional memory",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "seen_count": 1
+  },
+  "item_877b3da1946f": {
+    "item_id": "item_877b3da1946f",
+    "canonical_url": "https://openai.com/index/reimagining-advertising-with-ai",
+    "content_fingerprint": "7f6618dff4816654e37bf112f6bd45a4f0f43793b290628541a751d57b972175",
+    "title": "Reimagining advertising with AI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "seen_count": 1
+  },
+  "item_99e5c08fb612": {
+    "item_id": "item_99e5c08fb612",
+    "canonical_url": "https://openai.com/index/hex-gpt-6-astra",
+    "content_fingerprint": "e07a8d0cf88f7c38fe3ce38f2a0e5bd6a2a5200a7cadf9642ebecc1fe17cdf5a",
+    "title": "Hex turns complex analysis into visual reports with GPT‑6 Astra",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "seen_count": 1
+  },
+  "item_5f354dd4b7b2": {
+    "item_id": "item_5f354dd4b7b2",
+    "canonical_url": "https://openai.com/index/model-misalignment-reporting-framework",
+    "content_fingerprint": "3d72d608a93f19517da922e23f2bb8fd8cac1e09ebf603ed56ebd5b123fa8b56",
+    "title": "Our framework for reporting model misalignment",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "seen_count": 1
+  },
+  "item_6c5e88a173bb": {
+    "item_id": "item_6c5e88a173bb",
+    "canonical_url": "https://openai.com/index/fyxer",
+    "content_fingerprint": "b3c3e4b39584f034395fbeaad3c935e2d485af8aa1e378e90808702df0ac9635",
+    "title": "How Fyxer built an AI executive assistant people trust",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
     "seen_count": 1
   }
 }
