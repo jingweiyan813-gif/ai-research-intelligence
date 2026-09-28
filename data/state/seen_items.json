@@ -692,12 +692,12 @@
   "item_67e1ccd0b997": {
     "item_id": "item_67e1ccd0b997",
     "canonical_url": "https://openai.com/index/v7",
-    "content_fingerprint": "f9ca912ceded2e44558df0843e811eb4a3c58b1a6845886a6d0d17dd23c5ce60",
-    "title": "How V7 gives AI agents institutional memory",
+    "content_fingerprint": "b43a97f2c39c1c86bd969993e41bb1cccca1abfadd41528e7102ad82182f8b34",
+    "title": "V7 cuts costs 78% while boosting accuracy with GPT-5.6 Luna",
     "source": "company_blogs",
     "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
-    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "seen_count": 2
   },
   "item_877b3da1946f": {
     "item_id": "item_877b3da1946f",
@@ -706,8 +706,8 @@
     "title": "Reimagining advertising with AI",
     "source": "company_blogs",
     "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
-    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "seen_count": 2
   },
   "item_99e5c08fb612": {
     "item_id": "item_99e5c08fb612",
@@ -716,8 +716,8 @@
     "title": "Hex turns complex analysis into visual reports with GPT‑6 Astra",
     "source": "company_blogs",
     "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
-    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "seen_count": 2
   },
   "item_5f354dd4b7b2": {
     "item_id": "item_5f354dd4b7b2",
@@ -726,8 +726,8 @@
     "title": "Our framework for reporting model misalignment",
     "source": "company_blogs",
     "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
-    "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "seen_count": 2
   },
   "item_6c5e88a173bb": {
     "item_id": "item_6c5e88a173bb",
@@ -737,6 +737,66 @@
     "source": "company_blogs",
     "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
     "last_seen_at": "2026-09-21T14:42:22.578101+00:00",
+    "seen_count": 1
+  },
+  "item_4fe4c98f0ab7": {
+    "item_id": "item_4fe4c98f0ab7",
+    "canonical_url": "https://openai.com/index/ringg",
+    "content_fingerprint": "4f045228dd7535b980fa6ccc7d574babc267083dd300a5baed4913959cee31b1",
+    "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "seen_count": 1
+  },
+  "item_4b5ac1a1aed8": {
+    "item_id": "item_4b5ac1a1aed8",
+    "canonical_url": "https://openai.com/index/airbnb-gpt-6-astra",
+    "content_fingerprint": "95e6a07433c2c4ee3b93bfcb3c0120b49677a86657548b42c5fb9d3e5569c02e",
+    "title": "Airbnb widens access to GPT-6 Astra and OpenAI frontier models",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "seen_count": 1
+  },
+  "item_796f8768eace": {
+    "item_id": "item_796f8768eace",
+    "canonical_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna",
+    "content_fingerprint": "0876298a4557e1fc9329d8d88c155cb9348ba09973e6630281a142e3be4b471b",
+    "title": "Introducing GPT-6 Sol and Luna",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "seen_count": 1
+  },
+  "item_c3918e0b03fa": {
+    "item_id": "item_c3918e0b03fa",
+    "canonical_url": "https://openai.com/index/parallel-cuts-time-and-cost-with-astra",
+    "content_fingerprint": "567f98046f8acd6fb0401492851b5c4503a276e699ad02a9298c248da7f4f6c5",
+    "title": "Parallel cut research time and cost in half with GPT‑6 Astra",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "seen_count": 1
+  },
+  "item_defb6058247b": {
+    "item_id": "item_defb6058247b",
+    "canonical_url": "https://openai.com/index/priorities-principles-third-party-assessments",
+    "content_fingerprint": "554e4b176a3e1780bf22aabb5035729e47fd1fc6a730a544f156f1ad1220c284",
+    "title": "Priorities and principles for effective third party assessments",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "seen_count": 1
+  },
+  "item_6cad5cd321bd": {
+    "item_id": "item_6cad5cd321bd",
+    "canonical_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths",
+    "content_fingerprint": "4da257b6bfbdc55ad2ad497f5e9b226b9ad4d3e0f33d64ceaf4ea3513854309b",
+    "title": "Expanding OpenAI Academy with new learning paths",
+    "source": "company_blogs",
+    "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
     "seen_count": 1
   }
 }
