@@ -696,8 +696,8 @@
     "title": "V7 cuts costs 78% while boosting accuracy with GPT-5.6 Luna",
     "source": "company_blogs",
     "first_seen_at": "2026-09-21T14:42:22.578101+00:00",
-    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "seen_count": 3
   },
   "item_877b3da1946f": {
     "item_id": "item_877b3da1946f",
@@ -746,8 +746,8 @@
     "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
     "source": "company_blogs",
     "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "seen_count": 2
   },
   "item_4b5ac1a1aed8": {
     "item_id": "item_4b5ac1a1aed8",
@@ -756,8 +756,8 @@
     "title": "Airbnb widens access to GPT-6 Astra and OpenAI frontier models",
     "source": "company_blogs",
     "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "seen_count": 2
   },
   "item_796f8768eace": {
     "item_id": "item_796f8768eace",
@@ -766,8 +766,8 @@
     "title": "Introducing GPT-6 Sol and Luna",
     "source": "company_blogs",
     "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "seen_count": 2
   },
   "item_c3918e0b03fa": {
     "item_id": "item_c3918e0b03fa",
@@ -776,8 +776,8 @@
     "title": "Parallel cut research time and cost in half with GPT‑6 Astra",
     "source": "company_blogs",
     "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "seen_count": 2
   },
   "item_defb6058247b": {
     "item_id": "item_defb6058247b",
@@ -786,8 +786,8 @@
     "title": "Priorities and principles for effective third party assessments",
     "source": "company_blogs",
     "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "seen_count": 2
   },
   "item_6cad5cd321bd": {
     "item_id": "item_6cad5cd321bd",
@@ -796,7 +796,37 @@
     "title": "Expanding OpenAI Academy with new learning paths",
     "source": "company_blogs",
     "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "last_seen_at": "2026-09-28T16:16:59.386812+00:00",
+    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "seen_count": 2
+  },
+  "item_89c71402272c": {
+    "item_id": "item_89c71402272c",
+    "canonical_url": "https://openai.com/index/practical-guide-building-gpt-6",
+    "content_fingerprint": "6ec39ec4e708916f33fbdc82929ee38b6733ba3d28e1f1e2525115c4e3242c10",
+    "title": "A model guide for the GPT-6 family",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "seen_count": 1
+  },
+  "item_b969fa439bb8": {
+    "item_id": "item_b969fa439bb8",
+    "canonical_url": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign",
+    "content_fingerprint": "ea521c9550e439b9f9106ab1f0853bc3fd817d5f34dbaed79e1210a8b3149407",
+    "title": "Disrupting a coordinated model-distillation campaign",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "seen_count": 1
+  },
+  "item_21390ceb3e7c": {
+    "item_id": "item_21390ceb3e7c",
+    "canonical_url": "https://openai.com/index/introducing-gpt-6-1-sol",
+    "content_fingerprint": "40cfc811088d698c92f986f83ca58ea76adafc2dd49368c3f9595146aee78843",
+    "title": "Introducing GPT-6.1 Sol",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
     "seen_count": 1
   }
 }
