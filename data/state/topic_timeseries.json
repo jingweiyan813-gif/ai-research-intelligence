@@ -3842,20 +3842,12 @@
     }
   },
   "2026-10-07": {
-    "agent_memory": {
-      "item_count": 1,
-      "paper_count": 0,
-      "repo_count": 0,
-      "hn_count": 0,
-      "company_count": 1,
-      "source_count": 1
-    },
     "ai_agents": {
-      "item_count": 4,
+      "item_count": 3,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 4,
+      "company_count": 3,
       "source_count": 1
     },
     "devtools": {
