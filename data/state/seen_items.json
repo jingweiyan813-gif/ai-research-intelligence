@@ -746,8 +746,8 @@
     "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
     "source": "company_blogs",
     "first_seen_at": "2026-09-28T16:16:59.386812+00:00",
-    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "seen_count": 3
   },
   "item_4b5ac1a1aed8": {
     "item_id": "item_4b5ac1a1aed8",
@@ -806,8 +806,8 @@
     "title": "A model guide for the GPT-6 family",
     "source": "company_blogs",
     "first_seen_at": "2026-10-05T16:37:53.459237+00:00",
-    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "seen_count": 2
   },
   "item_b969fa439bb8": {
     "item_id": "item_b969fa439bb8",
@@ -816,8 +816,8 @@
     "title": "Disrupting a coordinated model-distillation campaign",
     "source": "company_blogs",
     "first_seen_at": "2026-10-05T16:37:53.459237+00:00",
-    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "seen_count": 2
   },
   "item_21390ceb3e7c": {
     "item_id": "item_21390ceb3e7c",
@@ -826,7 +826,67 @@
     "title": "Introducing GPT-6.1 Sol",
     "source": "company_blogs",
     "first_seen_at": "2026-10-05T16:37:53.459237+00:00",
-    "last_seen_at": "2026-10-05T16:37:53.459237+00:00",
+    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "seen_count": 2
+  },
+  "item_81cb6905f9b7": {
+    "item_id": "item_81cb6905f9b7",
+    "canonical_url": "https://openai.com/index/asana-browser-agent",
+    "content_fingerprint": "60c8764cb629829f0ca98ec57cf2045eea9f6d91797f6de2a26ad4001d7e2b93",
+    "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "seen_count": 1
+  },
+  "item_e7d83dbfc9b8": {
+    "item_id": "item_e7d83dbfc9b8",
+    "canonical_url": "https://openai.com/index/sharing-ai-progress-in-mathematics",
+    "content_fingerprint": "3f9fc61bba0f9dcc67211e81ed98164629e7cc7c56caba2c698dd9356161bced",
+    "title": "Sharing AI progress in mathematics",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "seen_count": 1
+  },
+  "item_141c6040ed4e": {
+    "item_id": "item_141c6040ed4e",
+    "canonical_url": "https://openai.com/index/advancing-computer-use-with-ironclad",
+    "content_fingerprint": "0f1decbef061aefec9d94fa230489c27991a4a24d74495124cff78512729ba13",
+    "title": "Advancing computer use with Ironclad",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "seen_count": 1
+  },
+  "item_0a963c657551": {
+    "item_id": "item_0a963c657551",
+    "canonical_url": "https://openai.com/index/atlassian-partnership",
+    "content_fingerprint": "fe4995665a1175e457dd4114377bdebd7284b1e8f452f46ae416597a6d3fb37d",
+    "title": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "seen_count": 1
+  },
+  "item_7d028e2fd506": {
+    "item_id": "item_7d028e2fd506",
+    "canonical_url": "https://openai.com/index/lowes",
+    "content_fingerprint": "ab1e4f73012157795b1a3d50f57733400fe51531c0d6faf2b09d9ad338fc79da",
+    "title": "Lowe’s answers millions of home improvement questions with OpenAI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "seen_count": 1
+  },
+  "item_b612bf0d73ab": {
+    "item_id": "item_b612bf0d73ab",
+    "canonical_url": "https://openai.com/index/wayfair",
+    "content_fingerprint": "24da6706817a71748ff8b767c52cb8826853ec8955b6ddb113c0e9eb3efdbf1d",
+    "title": "Wayfair boosts catalog accuracy and support speed with OpenAI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
     "seen_count": 1
   }
 }
