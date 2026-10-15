@@ -4115,11 +4115,11 @@
   },
   "2026-10-15": {
     "ai_agents": {
-      "item_count": 4,
+      "item_count": 6,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 4,
+      "company_count": 6,
       "source_count": 1
     },
     "devtools": {
