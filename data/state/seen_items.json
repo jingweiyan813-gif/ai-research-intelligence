@@ -806,8 +806,8 @@
     "title": "A model guide for the GPT-6 family",
     "source": "company_blogs",
     "first_seen_at": "2026-10-05T16:37:53.459237+00:00",
-    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "seen_count": 3
   },
   "item_b969fa439bb8": {
     "item_id": "item_b969fa439bb8",
@@ -816,8 +816,8 @@
     "title": "Disrupting a coordinated model-distillation campaign",
     "source": "company_blogs",
     "first_seen_at": "2026-10-05T16:37:53.459237+00:00",
-    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
-    "seen_count": 2
+    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "seen_count": 3
   },
   "item_21390ceb3e7c": {
     "item_id": "item_21390ceb3e7c",
@@ -836,8 +836,8 @@
     "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
     "source": "company_blogs",
     "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
-    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "seen_count": 2
   },
   "item_e7d83dbfc9b8": {
     "item_id": "item_e7d83dbfc9b8",
@@ -846,8 +846,8 @@
     "title": "Sharing AI progress in mathematics",
     "source": "company_blogs",
     "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
-    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "seen_count": 2
   },
   "item_141c6040ed4e": {
     "item_id": "item_141c6040ed4e",
@@ -856,8 +856,8 @@
     "title": "Advancing computer use with Ironclad",
     "source": "company_blogs",
     "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
-    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "seen_count": 2
   },
   "item_0a963c657551": {
     "item_id": "item_0a963c657551",
@@ -866,8 +866,8 @@
     "title": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action",
     "source": "company_blogs",
     "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
-    "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "seen_count": 2
   },
   "item_7d028e2fd506": {
     "item_id": "item_7d028e2fd506",
@@ -887,6 +887,46 @@
     "source": "company_blogs",
     "first_seen_at": "2026-10-12T17:09:31.073578+00:00",
     "last_seen_at": "2026-10-12T17:09:31.073578+00:00",
+    "seen_count": 1
+  },
+  "item_11a5dfc712a0": {
+    "item_id": "item_11a5dfc712a0",
+    "canonical_url": "https://openai.com/index/stack-overflow-chatgpt-plugin",
+    "content_fingerprint": "f9d2a9fe911f2f1c6c79c84726796336e249a1bf0582289c103e7feed239a564",
+    "title": "Stack Overflow for Agents triples signups with ChatGPT plugin",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "seen_count": 1
+  },
+  "item_51ad19a35fee": {
+    "item_id": "item_51ad19a35fee",
+    "canonical_url": "https://openai.com/index/amp-beyond-coding",
+    "content_fingerprint": "560e6c99489022bcb081ccef1d6d06568a1a0a687707f687b7f5e477bbc3bbc6",
+    "title": "Amp puts AI agents to work beyond code with OpenAI models",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "seen_count": 1
+  },
+  "item_2d4ce278626c": {
+    "item_id": "item_2d4ce278626c",
+    "canonical_url": "https://openai.com/index/third-moment-research",
+    "content_fingerprint": "b16b15d4d571930a4e12122c2f89a00e18dd3de0b716da81bff4ab2f12e54b93",
+    "title": "How Third Moment Research runs 10,000 agents for 36+ hours",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "seen_count": 1
+  },
+  "item_e676dc3d66d7": {
+    "item_id": "item_e676dc3d66d7",
+    "canonical_url": "https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic",
+    "content_fingerprint": "3f27e729c190c93ed5b6c2ccab2db507ba3dfcea39bcd4880cab3ec28b9d0d57",
+    "title": "The EU’s next chapter in AI is agentic",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
     "seen_count": 1
   }
 }
