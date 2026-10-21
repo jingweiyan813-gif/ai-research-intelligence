@@ -4287,22 +4287,14 @@
   },
   "2026-10-21": {
     "ai_agents": {
-      "item_count": 7,
+      "item_count": 8,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 7,
+      "company_count": 8,
       "source_count": 1
     },
-    "devtools": {
-      "item_count": 1,
-      "paper_count": 0,
-      "repo_count": 0,
-      "hn_count": 0,
-      "company_count": 1,
-      "source_count": 1
-    },
-    "protocols": {
+    "coding_agents": {
       "item_count": 1,
       "paper_count": 0,
       "repo_count": 0,
