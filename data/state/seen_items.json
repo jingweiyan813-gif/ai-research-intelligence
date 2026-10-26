@@ -896,8 +896,8 @@
     "title": "Stack Overflow for Agents triples signups with ChatGPT plugin",
     "source": "company_blogs",
     "first_seen_at": "2026-10-19T15:08:55.527054+00:00",
-    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "seen_count": 2
   },
   "item_51ad19a35fee": {
     "item_id": "item_51ad19a35fee",
@@ -906,8 +906,8 @@
     "title": "Amp puts AI agents to work beyond code with OpenAI models",
     "source": "company_blogs",
     "first_seen_at": "2026-10-19T15:08:55.527054+00:00",
-    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "seen_count": 2
   },
   "item_2d4ce278626c": {
     "item_id": "item_2d4ce278626c",
@@ -916,8 +916,8 @@
     "title": "How Third Moment Research runs 10,000 agents for 36+ hours",
     "source": "company_blogs",
     "first_seen_at": "2026-10-19T15:08:55.527054+00:00",
-    "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "seen_count": 2
   },
   "item_e676dc3d66d7": {
     "item_id": "item_e676dc3d66d7",
@@ -927,6 +927,76 @@
     "source": "company_blogs",
     "first_seen_at": "2026-10-19T15:08:55.527054+00:00",
     "last_seen_at": "2026-10-19T15:08:55.527054+00:00",
+    "seen_count": 1
+  },
+  "item_899a11ec8c2f": {
+    "item_id": "item_899a11ec8c2f",
+    "canonical_url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+    "content_fingerprint": "5e5e7aff79f4aff34ee4c1a515b7dac84fe05807f1a299c7e7b8e34a6e25d803",
+    "title": "Securing our frontier model training environment",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "seen_count": 1
+  },
+  "item_eff206ddb188": {
+    "item_id": "item_eff206ddb188",
+    "canonical_url": "https://openai.com/index/openai-models-google-cloud",
+    "content_fingerprint": "5bbae981a1bf7e5ae92633fb0fa9961180ec3c319c2a4844579ef835c40ee38d",
+    "title": "OpenAI models are coming to Google Cloud",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "seen_count": 1
+  },
+  "item_4809e064da0f": {
+    "item_id": "item_4809e064da0f",
+    "canonical_url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
+    "content_fingerprint": "f20f50ecafa9fd0eec398e005bfc36c756fd4883b74767d3420df61dc134f260",
+    "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "seen_count": 1
+  },
+  "item_9788ba776cf7": {
+    "item_id": "item_9788ba776cf7",
+    "canonical_url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+    "content_fingerprint": "dc2c1f506bfc6661003969baf5192495326d1b278a49d5f4b0c38ae8517c84a5",
+    "title": "Using thousands of AI agents to uncover new leads in biological data",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "seen_count": 1
+  },
+  "item_604e2fd668e4": {
+    "item_id": "item_604e2fd668e4",
+    "canonical_url": "https://openai.com/index/cloudflare-cyber",
+    "content_fingerprint": "121ff2c6d6782104248ebc866f52413daddbd66c66d30a61bc8367af0dc1e60b",
+    "title": "Cloudflare links vulnerability discovery to defense with OpenAI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "seen_count": 1
+  },
+  "item_9f8853fecbf2": {
+    "item_id": "item_9f8853fecbf2",
+    "canonical_url": "https://openai.com/index/terminal-x",
+    "content_fingerprint": "eb89ad903458f99fc5239fc69a0acd50b83d18aed728d32c8b035c072dee8a85",
+    "title": "Terminal X matches senior investor judgment 88.6% with GPT-6.1",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "seen_count": 1
+  },
+  "item_d4111543fe9e": {
+    "item_id": "item_d4111543fe9e",
+    "canonical_url": "https://openai.com/index/low-resource-programming-languages",
+    "content_fingerprint": "c6fdd170f1ccdeee67fd590419a3672f3f972212e5e6cd25749b177995bd7bb8",
+    "title": "Advancing coding in low‑resource programming languages",
+    "source": "company_blogs",
+    "first_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
     "seen_count": 1
   }
 }
