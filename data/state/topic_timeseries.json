@@ -4427,11 +4427,11 @@
   },
   "2026-10-27": {
     "ai_agents": {
-      "item_count": 7,
+      "item_count": 6,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 7,
+      "company_count": 6,
       "source_count": 1
     },
     "coding_agents": {
