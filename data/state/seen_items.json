@@ -936,8 +936,8 @@
     "title": "Securing our frontier model training environment",
     "source": "company_blogs",
     "first_seen_at": "2026-10-26T14:41:23.104035+00:00",
-    "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "seen_count": 2
   },
   "item_eff206ddb188": {
     "item_id": "item_eff206ddb188",
@@ -997,6 +997,96 @@
     "source": "company_blogs",
     "first_seen_at": "2026-10-26T14:41:23.104035+00:00",
     "last_seen_at": "2026-10-26T14:41:23.104035+00:00",
+    "seen_count": 1
+  },
+  "item_2745e0928c11": {
+    "item_id": "item_2745e0928c11",
+    "canonical_url": "https://openai.com/index/updated-model-spec",
+    "content_fingerprint": "9f0f2bf136b05ab9b64ed3e64b44538dc1ad433c71e4b8fe16124b5830ddf3f9",
+    "title": "An updated Model Spec for more capable and beneficial AI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "last_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "seen_count": 1
+  },
+  "item_5c1759049090": {
+    "item_id": "item_5c1759049090",
+    "canonical_url": "https://openai.com/index/how-we-detect-frontier-model-misalignment",
+    "content_fingerprint": "d6814260753efcf0d7ccf41608b1dba2280dad6a8723d8723dd164d30ad55919",
+    "title": "How we detect frontier model misalignment",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "last_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "seen_count": 1
+  },
+  "item_b7e55e8401b6": {
+    "item_id": "item_b7e55e8401b6",
+    "canonical_url": "https://openai.com/index/openai-servicenow-partnership-expansion",
+    "content_fingerprint": "0c8fb48b7f95ad2154fadb3b724c105093ceae7bf92fc5e9d44d3c8310cfc7c0",
+    "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "last_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "seen_count": 1
+  },
+  "item_2b6813bdba76": {
+    "item_id": "item_2b6813bdba76",
+    "canonical_url": "https://openai.com/index/legora",
+    "content_fingerprint": "05c3b3d8301a8238176e77852ad06d30b43117f810f9ac29b29e73949eec4be9",
+    "title": "Legora is building the agentic operating system for legal work",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "last_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "seen_count": 1
+  },
+  "item_3875c48e1f9d": {
+    "item_id": "item_3875c48e1f9d",
+    "canonical_url": "https://openai.com/index/retell-ai",
+    "content_fingerprint": "56e078a5669bf86cc41cd38eb88eda95ca746fbb65d8424c7998ef0df6afcff5",
+    "title": "Retell uses OpenAI models to help power 100M monthly calls",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "last_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "seen_count": 1
+  },
+  "item_4fffedb83ec9": {
+    "item_id": "item_4fffedb83ec9",
+    "canonical_url": "https://openai.com/index/oracle-apps-in-chatgpt",
+    "content_fingerprint": "5844d07ed6656a964656188022ed48c61188513b564e21a726bd08ce7f7912c7",
+    "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "last_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "seen_count": 1
+  },
+  "item_661cac85d306": {
+    "item_id": "item_661cac85d306",
+    "canonical_url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
+    "content_fingerprint": "c6a423acdeff6c32404d2ce6c9459f2824c81437965000c5017c84f8e2ecf6a9",
+    "title": "Working with academic communities to build scientific understanding",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "last_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "seen_count": 1
+  },
+  "item_d5d77a0b8e91": {
+    "item_id": "item_d5d77a0b8e91",
+    "canonical_url": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
+    "content_fingerprint": "c136382c5ff8198c14c60ba98f8ab0a34d176e70aa974099bf95bb112e365d13",
+    "title": "GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "last_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "seen_count": 1
+  },
+  "item_bdbf394ab70f": {
+    "item_id": "item_bdbf394ab70f",
+    "canonical_url": "https://openai.com/index/anima",
+    "content_fingerprint": "22a5fdd86349589540399d605110fb293abe19fbb8ce4f48be3438c5e4b4788f",
+    "title": "Anima helps clinics cut call waits by 75% with GPT-6 and GPT-Live",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-02T17:35:54.762491+00:00",
+    "last_seen_at": "2026-11-02T17:35:54.762491+00:00",
     "seen_count": 1
   }
 }
