@@ -1128,5 +1128,105 @@
     "first_seen_at": "2026-11-09T18:00:39.633019+00:00",
     "last_seen_at": "2026-11-09T18:00:39.633019+00:00",
     "seen_count": 1
+  },
+  "item_520875be5ee5": {
+    "item_id": "item_520875be5ee5",
+    "canonical_url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+    "content_fingerprint": "249cb63abef40055bdc32fc731a3bdc1bcd58ca5fbf23b46fba565182ae1964f",
+    "title": "Broadening access to AI for scientists",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
+  },
+  "item_c659c75ba723": {
+    "item_id": "item_c659c75ba723",
+    "canonical_url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
+    "content_fingerprint": "8674f0e9ce89ef0df2b14665df8f9c25b0e1d230144a602555ea7678a2886fd3",
+    "title": "Our first phase of embedded assessments",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
+  },
+  "item_0b5381c2537b": {
+    "item_id": "item_0b5381c2537b",
+    "canonical_url": "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
+    "content_fingerprint": "437c44a76c61116a788c3c2a3cf611d76dfebbd1e9f953330d42aee4ec875dc4",
+    "title": "Advancing computer-use agents for healthcare teams",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
+  },
+  "item_987912230436": {
+    "item_id": "item_987912230436",
+    "canonical_url": "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
+    "content_fingerprint": "affea2e9d60dbe9039927299c26afaeecd39d1aff01cd23998477bea6e2adf38",
+    "title": "More ways to move care forward with ChatGPT for Healthcare",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
+  },
+  "item_f0d66a45fc0b": {
+    "item_id": "item_f0d66a45fc0b",
+    "canonical_url": "https://openai.com/index/step-toward-defining-the-standard-model",
+    "content_fingerprint": "54a6638eddb038affc4be2ad9a19ae72e2a044a16cbffe2a648752fdfdbd4b46",
+    "title": "A step toward defining the Standard Model on a lattice",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
+  },
+  "item_f63a59528aa5": {
+    "item_id": "item_f63a59528aa5",
+    "canonical_url": "https://openai.com/index/introducing-chatgpt-wallet",
+    "content_fingerprint": "43b69e422c3610d967de8006730181f98e6b1627b726f9da18db552dbbafb25a",
+    "title": "Introducing ChatGPT Wallet",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
+  },
+  "item_5ae8fadc1b81": {
+    "item_id": "item_5ae8fadc1b81",
+    "canonical_url": "https://openai.com/business/customer-stories/shield",
+    "content_fingerprint": "450369f3919a88bf5ab9c8deab35efc19008248d98b68c8b829a72a2dd567745",
+    "title": "Shield helps technicians hand off legacy portal work with OpenAI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
+  },
+  "item_584ebc3a4a43": {
+    "item_id": "item_584ebc3a4a43",
+    "canonical_url": "https://openai.com/business/customer-stories/amplitude",
+    "content_fingerprint": "a106e4e3d077b61cb9a16d8d7ea34abf251c5a0ed1138ffda2831a2cf3ba84b8",
+    "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
+  },
+  "item_0f55f2e92d32": {
+    "item_id": "item_0f55f2e92d32",
+    "canonical_url": "https://openai.com/index/singapore-airlines-travel-work",
+    "content_fingerprint": "8fe0ae99c8393b72c68f88c8f35246494191c3af7f8d8675b2f787a98aec57b4",
+    "title": "Singapore Airlines elevates travel & work with OpenAI technology",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
+  },
+  "item_7815375c3734": {
+    "item_id": "item_7815375c3734",
+    "canonical_url": "https://openai.com/index/cogent-security",
+    "content_fingerprint": "d53ebbad84f30da4b3e0697df74e1e4db693a564ab4007cca1c12db29d4bce6c",
+    "title": "Cogent and OpenAI build cyber defense factories for enterprises",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
   }
 }
