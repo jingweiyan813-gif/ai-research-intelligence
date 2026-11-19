@@ -5089,11 +5089,11 @@
   },
   "2026-11-19": {
     "ai_agents": {
-      "item_count": 5,
+      "item_count": 3,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 5,
+      "company_count": 3,
       "source_count": 1
     },
     "coding_agents": {
@@ -5105,11 +5105,11 @@
       "source_count": 1
     },
     "devtools": {
-      "item_count": 4,
+      "item_count": 3,
       "paper_count": 0,
       "repo_count": 0,
       "hn_count": 0,
-      "company_count": 4,
+      "company_count": 3,
       "source_count": 1
     }
   }
