@@ -1136,8 +1136,8 @@
     "title": "Broadening access to AI for scientists",
     "source": "company_blogs",
     "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
-    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "seen_count": 2
   },
   "item_c659c75ba723": {
     "item_id": "item_c659c75ba723",
@@ -1146,8 +1146,8 @@
     "title": "Our first phase of embedded assessments",
     "source": "company_blogs",
     "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
-    "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
-    "seen_count": 1
+    "last_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "seen_count": 2
   },
   "item_0b5381c2537b": {
     "item_id": "item_0b5381c2537b",
@@ -1227,6 +1227,86 @@
     "source": "company_blogs",
     "first_seen_at": "2026-11-16T17:41:12.247401+00:00",
     "last_seen_at": "2026-11-16T17:41:12.247401+00:00",
+    "seen_count": 1
+  },
+  "item_c568004c4c38": {
+    "item_id": "item_c568004c4c38",
+    "canonical_url": "https://openai.com/index/perplexity-and-intelligence",
+    "content_fingerprint": "e73c49b49452d476b7e45464ba346a1e0a39996f1783184393053a364468937c",
+    "title": "Perplexity and Intelligence",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "last_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "seen_count": 1
+  },
+  "item_6680bb9c7d15": {
+    "item_id": "item_6680bb9c7d15",
+    "canonical_url": "https://openai.com/index/combatting-adversarial-distillation",
+    "content_fingerprint": "40cb7681e15cde32ec84c5981bee5fedfbd2d607d4a36718a88b587e2ebbd7f1",
+    "title": "Combatting adversarial distillation",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "last_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "seen_count": 1
+  },
+  "item_2a2973ee3be9": {
+    "item_id": "item_2a2973ee3be9",
+    "canonical_url": "https://openai.com/index/introducing-medchembench",
+    "content_fingerprint": "7a5356e1419834abe8d4e5539003f11cdccc7c4a0f71c5dfcf3934dd3f114e4e",
+    "title": "Can AI help scientists identify promising drug candidates?",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "last_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "seen_count": 1
+  },
+  "item_7435218e65cc": {
+    "item_id": "item_7435218e65cc",
+    "canonical_url": "https://openai.com/index/research-acceleration-jagged-frontier",
+    "content_fingerprint": "d22cd7f2af9b7ae671da6ffc8efe8e652e4dd52d923ed4e9b1f1ac2df7ec775f",
+    "title": "Research acceleration: The jagged frontier",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "last_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "seen_count": 1
+  },
+  "item_36b7e0626f0d": {
+    "item_id": "item_36b7e0626f0d",
+    "canonical_url": "https://openai.com/index/managing-frontier-ai-risk",
+    "content_fingerprint": "d6277ed94be27a52197fb66fc8089c99182dfae48eb76434a9e9855dc57e9338",
+    "title": "Managing frontier AI risk: From training to deployment",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "last_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "seen_count": 1
+  },
+  "item_706c22ab5cd7": {
+    "item_id": "item_706c22ab5cd7",
+    "canonical_url": "https://openai.com/index/advancing-chip-design-with-our-models",
+    "content_fingerprint": "9db0ba7788c29eb37ce159496541c7c28fc2c8b0a377b41a0315ad150dfe9229",
+    "title": "Advancing chip design with OpenAI models",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "last_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "seen_count": 1
+  },
+  "item_c20a5d252f47": {
+    "item_id": "item_c20a5d252f47",
+    "canonical_url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+    "content_fingerprint": "97c95f95ad7443353f581ab79b2e12c37d8ec6776ac2f5fa4c8a69f72181ece9",
+    "title": "Introducing GPT-6.2 Astra and Sol",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "last_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "seen_count": 1
+  },
+  "item_0261f0b04820": {
+    "item_id": "item_0261f0b04820",
+    "canonical_url": "https://openai.com/business/customer-stories/revolut",
+    "content_fingerprint": "b93bf41b60f85170f24d2bb1f7bf7f0d39facab28920c9c188ef086c27a69fe1",
+    "title": "How Revolut raises ambition without lowering the bar",
+    "source": "company_blogs",
+    "first_seen_at": "2026-11-23T19:40:26.077378+00:00",
+    "last_seen_at": "2026-11-23T19:40:26.077378+00:00",
     "seen_count": 1
   }
 }
